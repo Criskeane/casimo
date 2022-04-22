@@ -1,0 +1,19 @@
+<svg id="Group_2877" data-name="Group 2877" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="70" height="70" viewBox="0 0 70 70">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_9" data-name="Rectangle 9" width="60" height="60" transform="translate(0 0)"/>
+    </clipPath>
+  </defs>
+  <circle id="Ellipse_1" data-name="Ellipse 1" cx="30" cy="30" r="30" transform="translate(65 5) rotate(90)"/>
+  <path id="楕円形_1_-_アウトライン" data-name="楕円形 1 - アウトライン" d="M35,65A30,30,0,1,1,65,35,30,30,0,0,1,35,65m0,5A35.008,35.008,0,0,0,48.625,2.753a35.008,35.008,0,0,0-27.25,64.495A34.786,34.786,0,0,0,35,70Z" transform="translate(70) rotate(90)"/>
+  <g id="ベクトルスマートオブジェクト" transform="translate(65 5) rotate(90)">
+    <g id="ベクトルスマートオブジェクト-2" data-name="ベクトルスマートオブジェクト" transform="translate(0 60) rotate(-90)">
+      <g id="Group_18" data-name="Group 18">
+        <g id="Group_17" data-name="Group 17" clip-path="url(#clip-path)">
+          <path id="Path_20" data-name="Path 20" d="M17.8,28.642a3.111,3.111,0,0,1-4.4-4.4l6.354-6.354H3.111a3.111,3.111,0,1,1,0-6.223H19.756L13.4,5.311a3.111,3.111,0,1,1,4.4-4.4L29.468,12.577a3.111,3.111,0,0,1,0,4.4Z" transform="translate(14.811 15.223)" fill="#fff"/>
+          <path id="Path_21" data-name="Path 21" d="M57.641,41.679A30.084,30.084,0,1,1,60,30a29.894,29.894,0,0,1-2.359,11.679M30,4.55A25.45,25.45,0,1,0,55.45,30,25.45,25.45,0,0,0,30,4.55" transform="translate(0 0)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

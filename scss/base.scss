@@ -54,14 +54,14 @@ body {
     .maincl{
         color: $cl;
     }
-    .fontnoto{
-        @include fontnoto;
-    }
-    .fontmin{
-        @include mincho;
-    }
+    // .fontnoto{
+    //     @include fontnoto;
+    // }
+    // .fontmin{
+    //     @include mincho;
+    // }
     .fontspec{
-        font-family: 'Montserrat', sans-serif;
+        @include montserrat;
     }
     p{
         line-height: 1.8;

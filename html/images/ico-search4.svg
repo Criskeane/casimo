@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="47.2" height="47.2" viewBox="0 0 47.2 47.2">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_5498" data-name="Rectangle 5498" width="47.2" height="47.2" transform="translate(-4018.418 -17846.398)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Group_3233" data-name="Group 3233" transform="translate(4018.418 17846.398)">
+    <g id="Mask_Group_5" data-name="Mask Group 5" clip-path="url(#clip-path)">
+      <g id="初心者マークのアイコン素材" transform="translate(-4066.355 -17862.225) rotate(17)">
+        <path id="Path_3642" data-name="Path 3642" d="M79.824,7.414,72.974.79A2.795,2.795,0,0,0,68.235,2.8V19.71a4.2,4.2,0,0,0,1.278,3.015l8.367,8.092a2.8,2.8,0,0,0,3.887,0l8.368-8.092a4.2,4.2,0,0,0,1.278-3.015V2.8A2.795,2.795,0,0,0,86.673.79Zm7.643,11.809a1.4,1.4,0,0,1-.426,1l-7.217,6.981V12.9l1.371-1.327,5.088-4.92a.7.7,0,0,1,1.184.5Z" transform="translate(0 1.623)" fill="#fff"/>
+      </g>
+      <path id="Path_3684" data-name="Path 3684" d="M1019.692,125.417h-5.107a1.067,1.067,0,0,0,0,2.135h5.107a1.067,1.067,0,1,0,0-2.135" transform="translate(-5026.126 -17967.908)" fill="#fff"/>
+      <path id="Path_3685" data-name="Path 3685" d="M1006.872,145.729h-9.54a1.067,1.067,0,1,0,0,2.135h9.54a1.067,1.067,0,1,0,0-2.135" transform="translate(-5013.306 -17983.002)" fill="#fff"/>
+      <path id="Path_3687" data-name="Path 3687" d="M1019.692,125.417h-5.107a1.067,1.067,0,0,0,0,2.135h5.107a1.067,1.067,0,1,0,0-2.135" transform="translate(-2964.282 -17678.502) rotate(180)" fill="#fff"/>
+      <path id="Path_3688" data-name="Path 3688" d="M1006.872,145.729h-9.54a1.067,1.067,0,1,0,0,2.135h9.54a1.067,1.067,0,1,0,0-2.135" transform="translate(-2977.102 -17663.408) rotate(180)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

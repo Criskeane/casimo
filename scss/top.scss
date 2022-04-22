@@ -1,2 +1,59 @@
 @charset "utf-8";
 @import "../scss/components/mixins";
+
+.header{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: url(../images/linehd.png) no-repeat left top;
+  border: 0;
+  &_nav{
+    background: none;
+    position: absolute;
+    top: 649px;
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.banner{
+  max-height: 720px;
+  background: url(../images/banner.jpg) no-repeat top center;
+  background-size: cover;
+  .container{
+    height: 720px;
+    @include flexbox(flex-start, center)
+  }
+  &-tit{
+    font-size: 60px;
+    color: #fff;
+    line-height: 1.4;
+  }
+}
+
+.block{
+  padding: 90px 0 100px;
+  &--tit{
+    font-size: 80px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 6t0px;
+    line-height: 1;
+    span {
+      font-weight: bold;
+      text-align: center;
+      display: block;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+    @include query($tab) {
+      font-size: 3.5vw;
+    }
+  }
+}
+
+.block__ranking{
+  background: url(../images/bgranking.jpg) no-repeat top center;
+  background-size: cover;
+}

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500,600,700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,600,700&subset=vietnamese");
 * {
   margin: 0;
   padding: 0;
@@ -572,21 +573,8 @@ body .maincl {
   color: #000;
 }
 
-body .fontnoto {
-  font-family: 'Noto Sans JP';
-}
-
-body .fontmin {
-  font-family: "Yu Mincho", "YuMincho", "YuMin-medium", 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', '游明朝', '游明朝体', 'MS 明朝', 'MS Mincho', HiraMinProN-W3, 'TakaoEx明朝', TakaoExMincho, 'MotoyaLCedar', 'Droid Sans Japanese', serif !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-transform: rotate(0.05deg);
-  -ms-transform: rotate(0.05deg);
-      transform: rotate(0.05deg);
-}
-
 body .fontspec {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 body p {
@@ -1074,7 +1062,310 @@ body .img img {
 @media all and (min-width: 1200px) {
   .nav-list-item a:hover {
     opacity: 0.7;
+    background-position: center bottom 2px;
   }
+}
+
+.sidebar .sidetit {
+  font-size: 50px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 1;
+}
+
+.sidebar .sidetit span {
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+@media all and (max-width: 1199px) {
+  .sidebar .sidetit {
+    font-size: 3.5vw;
+  }
+}
+
+.sidebar .sidebox {
+  margin-bottom: 70px;
+}
+
+.sidebar .sidebox:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar_list--item {
+  margin-bottom: 6px;
+}
+
+.sidebar_list--item:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar_list--item a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 12px 15px;
+}
+
+.sidebar_list--item a:hover .txt {
+  text-decoration: none;
+}
+
+.sidebar_list--item .img {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+
+.sidebar_list--item .img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.sidebar_list--item .txt {
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: underline;
+  margin-left: 15px;
+}
+
+.sidebar_list--item a:hover {
+  opacity: 0.7;
+}
+
+.sidebar_list--item a:hover img {
+  opacity: 1;
+}
+
+.sidebar .btnpage {
+  max-width: 295px;
+  margin-top: 35px;
+}
+
+.sidebar .btnpage a,
+.sidebar .btnpage button {
+  height: 66px;
+}
+
+.sidebar .btnpage a span,
+.sidebar .btnpage button span {
+  font-size: 17px;
+}
+
+.sidebar .btnpage a span::before,
+.sidebar .btnpage button span::before {
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+}
+
+.sidebar .recommend .sidebar_list--item:first-child, .sidebar .recommend .sidebar_list--item:nth-child(2) {
+  position: relative;
+}
+
+.sidebar .recommend .sidebar_list--item:first-child::before, .sidebar .recommend .sidebar_list--item:nth-child(2)::before {
+  content: '';
+  background: transparent;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  right: 0;
+  top: 50%;
+  margin-top: -6px;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.sidebar .recommend .sidebar_list--item:first-child::before, .sidebar .recommend .sidebar_list--item:nth-child(2)::before {
+  right: 20px;
+  margin-top: -4px;
+}
+
+.sidebar .recommend .sidebar_list--item:first-child:hover::before, .sidebar .recommend .sidebar_list--item:nth-child(2):hover::before {
+  right: 15px;
+}
+
+.sidebar .payment .sidebar_list--item,
+.sidebar .game .sidebar_list--item {
+  position: relative;
+}
+
+.sidebar .payment .sidebar_list--item::before,
+.sidebar .game .sidebar_list--item::before {
+  content: '';
+  background: transparent;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  right: 0;
+  top: 50%;
+  margin-top: -6px;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.sidebar .payment .sidebar_list--item::before,
+.sidebar .game .sidebar_list--item::before {
+  right: 20px;
+  margin-top: -4px;
+}
+
+.sidebar .payment .sidebar_list--item:hover::before,
+.sidebar .game .sidebar_list--item:hover::before {
+  right: 15px;
+}
+
+.sidebar .pickup .sidebar_list--item {
+  margin-bottom: 25px;
+}
+
+.sidebar .pickup .sidebar_list--item:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar .pickup img {
+  width: 100%;
+}
+
+.sidebar .pickup a {
+  padding: 0;
+}
+
+.sidebar .pickup a::before {
+  border: 0;
+  background: none;
+}
+
+.sidebar .popular_list--item {
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+  background: url(../images/linedot.png) repeat-x left bottom;
+}
+
+.sidebar .popular_list--item:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar .popular_list .flexbox {
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.sidebar .popular_list .flexbox .img {
+  width: 105px;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 105px;
+      -ms-flex: 0 0 105px;
+          flex: 0 0 105px;
+  height: 105px;
+  margin-right: 18px;
+}
+
+.sidebar .popular_list .flexbox .img img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar .popular_list .flexbox .date {
+  display: block;
+  font-size: 15px;
+  line-height: 1;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.sidebar .popular_list .flexbox .tit {
+  text-decoration: underline;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.32;
+  display: block;
+}
+
+.sidebar .popular_list .flexbox .tit:hover {
+  text-decoration: none;
+}
+
+.sidebar .popular_list .tag {
+  margin-top: 15px;
+}
+
+.sidebar .popular_list .tag span {
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  background: #707070;
+  border-radius: 16px;
+  text-align: center;
+  padding: 5px 12px;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 2px;
+  line-height: 1;
+}
+
+.sidebar .bonus .boxshadow {
+  padding: 27px;
+  padding-bottom: 35px;
+}
+
+.sidebar .bonus .btnpage {
+  margin-top: 55px;
+}
+
+.sidebar .slideritem a:hover {
+  opacity: 0.7;
+}
+
+.sidebar .slideritem a:hover img {
+  opacity: 1;
+}
+
+.sidebar .game,
+.sidebar .pickup,
+.sidebar .popular,
+.sidebar .twitter {
+  display: none;
+}
+
+.sidebar .twitter {
+  text-align: center;
+}
+
+.sidebar .twitter iframe {
+  text-align: center;
 }
 
 .footer {
