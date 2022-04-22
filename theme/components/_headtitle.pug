@@ -1,0 +1,194 @@
+mixin headtitle(title,subtitle)
+  // TITLE PAGE 
+  .headtitle(class="headtitle-"+page)
+    .container
+      h1!=title
+  // /END TITLE PAGE 
+
+mixin sidebar()
+  aside.sidebar
+    .sidebox.recommend
+      h2.fontspec.sidetit RECOMMEND
+        span おすすめオンラインカジノ
+      ul.sidebar_list
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img
+              img(src="../images/imgrec1.png", alt="")
+            span.txt ベラジョンカジノ
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img
+              img(src="../images/imgrec2.png", alt="")
+            span.txt ミスティーノカジノ
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img
+              img(src="../images/imgrec3.png", alt="")
+            span.txt カジノシークレット
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img
+              img(src="../images/imgrec4.png", alt="")
+            span.txt インターカジノ
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img
+              img(src="../images/imgrec5.png", alt="")
+            span.txt ビットカジノ
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img
+              img(src="../images/imgrec6.png", alt="")
+            span.txt ラッキーニッキーカジノ
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img
+              img(src="../images/imgrec7.png", alt="")
+            span.txt カジ旅
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img
+              img(src="../images/imgrec8.png", alt="")
+            span.txt エンパイアカジノ
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img
+              img(src="../images/imgrec9.png", alt="")
+            span.txt エルドアカジノ
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img
+              img(src="../images/imgrec10.png", alt="")
+            span.txt 賭けっ子リンリン
+    .sidebox.bonus
+      h2.fontspec.sidetit BONUS
+        span 限定ボーナス
+      .boxshadow
+        .sliderbonus
+          .slideritem
+            a(href="").img
+              img(src="../images/imgbonus.png", alt="") 
+          .slideritem
+            a(href="").img
+              img(src="../images/imgbonus.png", alt="") 
+          .slideritem
+            a(href="").img
+              img(src="../images/imgbonus.png", alt="") 
+          .slideritem
+            a(href="").img
+              img(src="../images/imgbonus.png", alt="") 
+          .slideritem
+            a(href="").img
+              img(src="../images/imgbonus.png", alt="") 
+        .btnpage 
+          a(href="")
+            span キャンペーン一覧
+    .sidebox.payment
+      h2.fontspec.sidetit PAYMENT
+        span オンラインカジノで使える決済方法
+      ul.sidebar_list
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            img(src="../images/imgpay1.png", alt="")
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            img(src="../images/imgpay2.png", alt="")
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            img(src="../images/imgpay3.png", alt="")
+      .btnpage
+        a(href="")
+          span 決済方法一覧
+    .sidebox.game
+      h2.fontspec.sidetit GAMES
+        span オンラインカジノで遊べるカジノゲーム
+      ul.sidebar_list
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img 
+              img(src="../images/icongame.png", alt="")
+            span.txt バカラ
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img 
+              img(src="../images/icongame.png", alt="")
+            span.txt ルーレット
+        li.boxshadow.sidebar_list--item
+          a(href="")
+            .img 
+              img(src="../images/icongame.png", alt="")
+            span.txt ブラックジャック
+      .btnpage
+        a(href="")
+          span おすすめの<br>カジノゲーム一覧
+    .sidebox.twitter
+      h2.fontspec.sidetit TWITTER
+        span Twitterでカジモの最新情報をチェック！
+      .boxshadow
+        img(src="../images/twitter2.png", alt="")
+    .sidebox.pickup
+      ul.sidebar_list
+        li.boxshadow.sidebar_list--item
+          a(href="" target="_Blank")
+            img(src="../images/brn1.jpg", alt="")
+        li.boxshadow.sidebar_list--item
+          a(href="" target="_Blank")
+            img(src="../images/dummy2.png", alt="")
+        li.boxshadow.sidebar_list--item
+          a(href="" target="_Blank")
+            img(src="../images/dummy2.png", alt="")
+        //- li.boxshadow.sidebar_list--item
+        //-   a(href="" target="_Blank")
+        //-     img(src="../images/brn2.jpg", alt="")
+        //- li.boxshadow.sidebar_list--item
+        //-   a(href="" target="_Blank")
+        //-     img(src="../images/brn3.jpg", alt="")
+        //- li.boxshadow.sidebar_list--item
+        //-   a(href="" target="_Blank")
+        //-     img(src="../images/brn4.jpg", alt="")
+    .sidebox.popular
+      h2.fontspec.sidetit POPULAR
+        span 人気記事一覧
+      ul.popular_list
+        - for (i=1;i<6;i++)
+          li.popular_list--item
+            .flexbox
+              .img 
+                img(src="../images/imgpop.jpg", alt="")
+              .txt
+                span.date 2021.01.01
+                a(href="").tit 【2021年最新】オンラインカジノおすすめランキング
+            .tag 
+              span #カジノHOW TO
+              span #決済方法
+              span #新規サービス
+              span #キャンペーン
+    .sidebox.popular
+      h2.fontspec.sidetit NEWS
+        span 新着記事一覧
+      ul.popular_list
+        - for (i=1;i<6;i++)
+          li.popular_list--item
+            .flexbox
+              .img 
+                img(src="../images/imgpop.jpg", alt="")
+              .txt
+                span.date 2021.01.01
+                a(href="").tit 【2021年最新】オンラインカジノおすすめランキング
+            .tag 
+              span #カジノHOW TO
+              span #決済方法
+              span #新規サービス
+              span #キャンペーン
+    .sidebox.pickup
+      h2.fontspec.sidetit MEDIA
+        span 当社運営メディア
+      ul.sidebar_list
+        li.sidebar_list--item
+          a(href="" target="_Blank")
+            img(src="../images/imgmedia.jpg", alt="")
+        li.sidebar_list--item
+          a(href="" target="_Blank")
+            img(src="../images/imgmedia.jpg", alt="")
+  

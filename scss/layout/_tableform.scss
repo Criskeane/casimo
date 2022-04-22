@@ -1,0 +1,112 @@
+@import "../components/mixins";
+
+@mixin tableform($bordercolor, $thper, $thbg, $thvertical, $thfontsize, $tdpadding, $inputheight, $inputborder, $requirebg, $norequirebg, $b_radius:3px) {
+	table {
+		border: 1px solid $bordercolor;
+		width: 100%;
+		border-spacing: 0;
+		border-collapse: collapse;
+		//if IE
+		border-collapse: separate;
+		input[type="radio"], input[type="checkbox"] { 
+			vertical-align: 0em; 
+			margin-right: 10px;
+		}
+		th,td{
+			line-height: 1.6;
+			text-align: justify;
+			border: 1px solid $bordercolor;
+			padding: $tdpadding;
+			color: #000;
+
+			@include query($sp){
+				padding: 15px;
+				border: none;
+				border-bottom: 1px solid $bordercolor;
+				&:after {
+					@include clearfix();
+				}
+			}
+		}
+		input[type="text"],
+		input[type="email"],
+		input[type="name"],
+		input[type="tel"],
+		input[type="number"],
+		input[type="password"],
+		select,
+		textarea {
+			height: $inputheight;
+			border: 1px solid $inputborder;
+			padding: 10px 20px;
+			background: #EBEBEB;
+			width: 100%;
+			font-size: 18px;
+			font-weight: bold;
+			border-radius: $b_radius;
+			@include query($sp) {
+				height: 42px;
+			}
+			&:focus { 
+				outline: none !important;
+				border-color: none;
+		 	}
+		}
+		select{
+			-webkit-appearance: menulist;
+			-moz-appearance: menulist;
+			appearance: menulist;
+		}
+		textarea {
+			padding: 20px;
+			height: 270px;
+			@include query($sp) {
+				height: 150px;
+			}
+		}
+		th {
+			background: $thbg;
+			font-weight: bold;
+			width: $thper;
+			font-size: $thfontsize;
+			vertical-align: $thvertical;
+			.required,.nonerequired {
+				display: table;
+				float: right;
+				margin-right: 15px;
+				&:before {
+					content: "必須";
+					font-size: 18px;
+					font-weight: bold;
+					display: block;
+					color: #fff;
+					padding: 5px 10px;
+					border-radius: 6px;
+					line-height: 1;
+					background: $requirebg;
+					@include query($sp){
+						font-size: 11px;
+					}
+				}
+			}
+			.required{
+				&:before {
+					content: "必須";
+					background: $requirebg;
+				}
+			}
+			.nonerequired {
+				&:before {
+					content: "任意";
+					background: $norequirebg;
+				}
+			}
+		}
+		@include query($sp){
+			tr,tbody,th,td {
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+}

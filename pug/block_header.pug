@@ -1,0 +1,29 @@
+header.header
+  .top_nav
+    .container
+      .header_top
+        .header_top_logo
+          a(href=dir)
+            if logo_type == "text"
+              |Logo Here
+            if logo_type == "image"
+              img.dispc(alt=sitetitle, src=dirShare+'logo_black.png')
+              img.dissp(alt=sitetitle, src=dirShare+'logo_black_sp.png')
+        .header_top_info
+          .righticons
+            include ./components/_mailtel_icon.pug
+            include ./components/_nav_icon.pug
+  nav#nav
+    case type_nav
+      when 2
+        .nav.type2
+          include ./components/_nav.pug
+      when 3 
+        .nav.type3
+          include ./components/_nav.pug
+      when 4
+        .nav.type4
+          include ./components/_nav.pug    
+      default  
+        .nav
+          include ./components/_nav.pug

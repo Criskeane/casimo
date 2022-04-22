@@ -1,0 +1,56 @@
+extends ../../pug/layout.pug
+block define
+  - var pagelevel = 1
+  - var secondpage = 1
+  - var page = "contact"
+  - var textdemo = 0
+//- EDIT ANOTHER 
+block thebreadcrumb
+  +breadcrumb("お問い合わせ")
+block mainvs
+  +headtitle("お問い合わせ")
+block content
+  section.container
+    .content
+      p.txttop お問い合わせをいただきましたら、内容を確認のうえ、担当者より返信させていただきます。（お問い合わせは内容によっては返信ができない場合がございます。）<br>ご了承のほど、どうぞよろしくお願いいたします。
+        
+      .table_template
+        table
+          tbody
+            tr
+              th
+                span.required
+                |お名前
+              td
+                input(name="nameuser" id="nameuser" placeholder="例）山田　太郎" type="text" size="150" value="")
+            tr
+              th
+                span.required
+                |お名前（フリガナ）
+              td
+                input(name="phonetic" id="phonetic" placeholder="例）ヤマダ　タロウ" type="text" maxlength="150" value="")
+            tr.vertitop
+              th
+                span.required
+                |メールアドレス
+              td
+                input(name="email" id="email" placeholder="例）info@example.com" type="email" maxlength="150" value="")
+                p.mt20 ※迷惑メールに割り振られる恐れがあるため、@docomo.ne.jp、@i.softbank.jp、@ezweb.ne.jpなどキャリアメールのご使用は極力お控えください。
+            tr
+              th
+                span.nonerequired
+                |電話番号
+              td
+                input(name="tel" id="tel" placeholder="例）090-1234-5678" type="tel" maxlength="10" value="")
+            tr.vertitop
+              th
+                span.nonerequired
+                |お問い合わせ内容
+              td
+                textarea(rows='4', cols='50', placeholder="お問い合わせの内容をご記入ください")
+        .form_submit
+          .btnpage
+            button
+              span 上記の内容で送信する
+
+    +sidebar

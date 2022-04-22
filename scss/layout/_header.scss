@@ -1,0 +1,180 @@
+@import "../components/mixins";
+
+.header{
+  background: #000 url(../images/linehd.png) no-repeat left top;
+  background-size: 100%;
+  border-bottom: 3px solid #fff;
+  padding-top: 35px;
+  @include query($tab){
+    padding: 20px 0;
+  }
+  &_top{
+    &_logo{
+      position: relative;
+      z-index: 1;
+      a{
+        line-height: 0;
+      }
+      @include query($sp) {
+        flex: 0 0 40%;
+      }
+    }
+    &_icon{
+      flex: 1 1 auto;
+      @include flexbox(flex-end, center);
+    }
+    // &_menu{
+    //   .header_nav{
+    //     flex: 1;
+    //     position: inherit;
+    //   }
+    // }
+  }
+  &_nav{
+    position: relative;
+    z-index: 98;
+    @include minquery($tab) {
+      height: 71px;
+      margin-top: 28px;
+      background: #000;
+    }
+    &_inside{
+      background: #fff;
+      border: 1px solid #fff;
+      height: 100%;
+      &.container{
+        padding: 0;
+      }
+      @include minquery($pc) {
+        min-width: inherit;
+      }
+      @include query($tab) {
+				position: absolute;
+				left: -100%;
+				top: 0;
+				padding: 0;
+        opacity: 0;
+				visibility: hidden;
+				transition: all .3s ease;
+			}
+    }
+  }
+  .icon{
+    margin-left: 5px;
+    @include query($sp) {
+      margin-left: 10px;
+    }
+    &_inside, &-hamburger {
+      position: relative;
+      cursor: pointer;
+      @include flexbox(center, center);
+      width: 57px;
+      height: 57px;
+      background: $cl;
+      transition: all .3s;
+      @include minquery($pc) {
+        &:hover {
+          background: color($cl, 10);
+          @include transition_cubic(background);
+        }
+      }
+      @include query($q520) {
+        width: 44px;
+        height: 44px;
+      }
+    }
+    &-hamburger{
+      z-index: 99;
+      .icon-bar {
+        span {
+          left: 0;
+          height: 2px;
+          position: absolute;
+          background: #fff;
+          display: inline-block;
+          width: 100%;
+          border-radius: 3px;
+          @include transition(.4s);
+          &:first-child {
+            top: 0;
+          }
+          &:nth-child(2) {
+            @include centerver;
+          }
+          &:last-child {
+            bottom: 0;
+          }
+        }
+      }
+    }
+    &-img, &-bar{
+      position: relative;
+      @include flexbox(center, center);
+      height: 38%;
+      width: 56%;
+      img{
+        max-width: 30px;
+      }
+    }
+  }
+  .boxsearch{
+    position: relative;
+    width: 345px;
+    input{
+      background: #fff;
+      width: 345px;
+      height: 48px;
+      border-radius: 30px;
+      border: 0;
+      padding: 10px;
+      padding-right: 50px;
+    }
+    button{
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      width: 36px;
+      height: 36px;
+      margin-top: -18px;
+      background: #000;
+      border-radius: 100%;
+    }
+  }
+  .icon-hamburger {
+		@include minquery($pc) {
+			display: none;
+		}
+	}
+}
+
+.menu-open {
+  position: relative;
+  .header_nav {
+    &.show{
+      .header_nav_inside{
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  .icon-hamburger{
+    .icon-bar{
+      span {
+        &:nth-child(1) {
+          transform: translateY(9px) rotate(-225deg);
+          @include query($q520) {
+            transform: translateY(7px) rotate(-225deg);
+          }
+        }
+        &:nth-child(2) {
+          transform: translateY(0) rotate(225deg);
+          width: 100%;
+        }
+        &:nth-child(3) {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}

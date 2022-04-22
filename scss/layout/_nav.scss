@@ -1,0 +1,158 @@
+@import "../components/mixins";
+
+.nav-list {
+	@include minquery($pc) {
+		@include flexbox(space-between, center);
+		background: #fff;
+	}
+	@include query($sp) {
+		height: auto;
+		padding: 0 3%;
+		overflow: hidden;
+	}
+	&-item {
+		@include minquery($pc){
+			padding: 12px 0;
+			flex: 1 1 auto;
+			position: relative;
+			align-self: stretch;
+			&::after{
+				content: '';
+				position: absolute;
+				background: #000;
+				width: 1px;
+				left: 0;
+				top: 50%;
+				height: 36px;
+				margin-top: -18px;
+			}
+			&:first-child{
+				background: #000 url(../images/arrmenu.png) no-repeat right 20px center;
+				max-width: 165px;
+				color: #fff;
+				font-weight: 600;	
+				padding-left: 25px;
+				@include flexbox(flex-start, center);
+				font-size: 25px;
+				letter-spacing: 2px;
+				&::after{
+					background: none;
+				}
+				span{
+					line-height: 1;
+					height: 18px;
+				}
+			}
+			&:nth-child(2){
+				&::after{
+					background: none;
+				}
+				a{
+					background: none;
+					padding: 16px 0;
+				}
+			}
+		}
+		a {
+			font-size: 14px;
+			font-weight: bold;
+			line-height: 1;
+			color: $cl;
+			text-decoration: none;
+			display: block;
+			padding: 10px 0 22px;
+			text-align: center;
+			background: url(../images/arrdown.svg) no-repeat center bottom 6px;
+			background-size: 11px;
+			@include query($sp) {
+				padding: 20px 0;
+				text-align: left;
+			}
+			@include minquery($pc) {
+				&:hover {
+					opacity: 0.7;
+				}
+			}
+		}
+	}
+}
+
+// .header_nav_dropdown{
+// 	.nav-list{
+// 		//IF WANT SET FULL BACKGROUND REMOVE COMMENT POSITION UNDER
+// 		//position: relative;
+// 		> li {
+// 			&.dropdown{
+// 				position: relative;
+// 			}
+// 		}
+// 		.childmenu{
+// 			display: none;
+// 			overflow: hidden;
+// 			@include minquery($pc) {
+// 				position: absolute;
+// 				left: 0;
+// 				z-index: 9;
+// 				background: #f1f1f1;
+// 				min-width: 200px;
+// 			}
+// 			li{
+// 				@include query($sp) {
+// 					&:first-child {
+// 						border-top: 1px solid #ccc;
+// 					}
+// 					&:last-child {
+// 						border-bottom: none;
+// 					}
+// 				}
+// 				a{
+// 					text-align: left;
+// 					padding: 15px 10px;
+// 				}
+// 			}
+// 		}
+// 		.megamenu{
+// 			> a{
+// 				@include query($sp) {
+// 					position: relative;
+// 					@include plusicon(#000);
+// 				}
+// 			}
+// 			&_inside{
+// 				width: 100%;
+// 			}
+// 			&_list{
+// 				@include minquery($pc) {
+// 					@include flexbox(space-between, center);
+// 					//IF DONT WANT SET MAX WIDTH REMOVE UNDER
+// 					max-width: 1000px;
+// 					margin: 0 auto;
+// 				}
+// 			}
+// 			&_col{
+// 				@include minquery($pc) {
+// 					flex: 0 0 25%;
+// 					padding: 10px 20px;
+// 				}
+// 				@include query($sp) {
+// 					li a{
+// 						padding-left: 20px;
+// 					}
+// 				}
+// 			}
+// 			&_title{
+// 				color: #000;
+// 				font-size: 16px;
+// 				display: block;
+// 				line-height: 1;
+// 				text-align: left;
+// 				@include minquery($pc) {
+// 					padding: 10px 0;
+// 				}
+// 				@include query($sp) {
+// 					padding: 15px 10px;
+// 				}
+// 			}
+// 		}
+// 	}
+// }

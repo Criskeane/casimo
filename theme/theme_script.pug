@@ -1,0 +1,93 @@
+script(src=dir+'js/main.js')
+//- script(src=dir+'js/slick.min.js')
+//- script.
+//-   $(document).ready(function() {
+//-     $('.sliderbonus').slick({
+//-       slidesToShow: 1,
+//-       arrows: true,
+//-       dots: true,
+//-       autoplay: true,
+//-     });
+//-   });
+
+if (effectscroll == true && preload == false)
+  script(src=dir+'js/anyview.js')
+  script.
+    $(document).ready(function(){
+      $(".loadit").AniView({animateThreshold:30,scrollPollInterval:30});
+    });    
+if preload == true
+  script(src=dir+'js/anyview.js')
+  script(src=dir+'js/jquery.cookie.min.js')
+  script.
+    $(document).ready(function() {
+      $.cookie("gonocook") ? setTimeout(function() {
+        $(".gono-preload").addClass("load_end").delay(800).queue(function() {
+            $(".gono-preload, html").removeClass("beforeload");
+            $("body").addClass("pageloaded");
+            $(".loadit").AniView({animateThreshold:30,scrollPollInterval:30});
+        })
+      }, 500) : (setTimeout(function() {
+          $(".gono-preload").addClass("load_end").delay(1E3).queue(function() {
+          $(".gono-preload, html").removeClass("beforeload");
+          $("body").addClass("pageloaded");
+          $(".loadit").AniView({animateThreshold:30,scrollPollInterval:30});
+        })
+      }, 2500), $.cookie("gonocook", "firstSet", {
+        expires: 7,
+        path: "/"
+      }));
+      $.removeCookie("gonocook");
+    });
+if carousel == true
+  script(src=dir+'js/owl.carousel.min.js')
+  script.
+    $('.carousel-slider').owlCarousel({
+      loop: true,
+      navigation: true,
+      nav: true,
+      navText: ['', ''],
+      margin: 0,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplaySpeed: 100,
+      responsiveClass: true,
+      animateOut: 'fadeOut',
+      animateIn: 'fadeIn',
+      items: 1,
+      dots: false,
+    });
+if slickslider == true
+  script(src=dir+'js/slick.min.js')
+  script.
+    $('.slick-slider').slick({
+      centerMode: true,
+      focusOnSelect: true,
+      accessibility: false,
+      centerPadding: '0px',
+      slidesToShow: 5,
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 0,
+      adaptiveHeight: true,
+      cssEase: 'linear',
+      speed: 5000,
+      responsive: [{
+        breakpoint: 960,
+        settings: {
+          centerMode: true,
+          centerPadding: '0px',
+          slidesToShow: 5
+        }
+      }, {
+        breakpoint: 768,
+        settings: {
+          centerMode: true,
+          centerPadding: '0px',
+          slidesToShow: 3
+        }
+      }]
+    });
+if lightbox == true
+  script(src=dir+'js/lightbox.min.js')
+// Structured data settings 

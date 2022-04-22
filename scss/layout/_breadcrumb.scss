@@ -1,0 +1,20 @@
+@import "../components/mixins";
+
+@mixin breadcrumb($bg) {
+	background: $bg;
+	li {
+		margin-left: 5px;
+		color: #333;
+		&:first-child {
+			padding-left: 0;
+			margin-left: 0;
+		}
+		a {
+			color: #000;
+			&:hover {
+				text-decoration: underline;
+				opacity: 0.8;
+			}
+		}
+	}
+}

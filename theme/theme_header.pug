@@ -1,0 +1,60 @@
+
+if(headerfixed == 1)
+  -var fixed='header-fixed'
+
+if(headerlayout == 0)
+  header.header(class=fixed)
+    .header_top
+      .container.flexbox
+        .header_top_logo
+          a(href=dir+'')
+            img(alt=sitetitle, src=dirShare+'logohd.png')
+        .header_top_icon
+          //- .boxsearch 
+          //-   form(action="")
+          //-     input(type="text")
+          //-     button 
+          //-       img(src=dirShare+"ico_search.svg", alt="")
+
+          //- include ./components/_mailtel_icon.pug
+          //- include ./components/_nav_icon.pug
+    // /Header Top 
+    case type_nav
+      when 2
+        .header_nav.type2
+          include ./components/_nav.pug
+      when 3 
+        .header_nav.type3
+          include ./components/_nav.pug
+      when 4
+        .header_nav.type4
+          include ./components/_nav.pug    
+      default  
+        .header_nav
+          include ./components/_nav.pug
+    // /Global Nav 
+else
+  header.header(class=fixed)
+    .header_top
+      .container.flexbox
+        .header_top_logo
+          a(href=dir+'')
+            img(alt=sitetitle, src=dirShare+'logo.png')
+        .header_top_menu.header_top_icon(class="hastext_"+hastext)
+          // Global nav 
+          case type_nav
+            when 2
+              .header_nav.type2
+                include ./components/_nav.pug
+            when 3 
+              .header_nav.type3
+                include ./components/_nav.pug
+            when 4
+              .header_nav.type4
+                include ./components/_nav.pug    
+            default  
+              .header_nav.type1
+                include ./components/_nav.pug
+          // /Global nav 
+          include ./components/_mailtel_icon.pug
+          include ./components/_nav_icon.pug

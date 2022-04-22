@@ -1,0 +1,28 @@
+
+$colors: (
+  0: #E58383,
+  1: #F48A65,
+  2: #88CDDE,
+  3: #6DBABA,
+  4: #96C0AC,
+  5: #A0A0A0,
+  6: #646464,
+  7: #5F9BD7,
+);
+
+@each $color in $colors{
+  // .btn-color
+  // .btncl#{nth($color, 1)}{
+  //   background: nth($color, 2);
+  //   color: #fff;
+  // }
+}
+
+// @for $i from 1 to 10 {
+//   .delay#{$i}{
+//     animation-delay: $i * 0.2s;
+//     @include query(768) {
+//       animation-delay: $i * 0.15s;
+//     }
+//   }
+// }

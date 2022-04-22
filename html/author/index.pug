@@ -1,0 +1,106 @@
+extends ../../pug/layout.pug
+block define
+  - var pagelevel = 1
+  - var secondpage = 1
+  - var page = "author"
+  - var textdemo = 0
+//- EDIT ANOTHER 
+block thebreadcrumb
+  +breadcrumb("カジモ編集部のご紹介","笠原　豪")
+block mainvs
+  +headtitle("笠原 豪 のプロフィール")
+block content
+  section.container
+    .content
+      .author__info.row
+        .author__info--img
+          .img
+            img(src="../images/person.png", alt="")
+          span.txt 笠原　豪
+        .author__info--txt
+          p こんにちは！Casimo編集部の笠原豪です。<br>このメディアは俺の半生を文章化したようなもので、失敗談を含め、参考になる情報がたくさんあります。少しでも稼ぎたいという人はぜひCasimoの情報を参考にしてみてください。
+      .author__detail
+        table.author__detail--table
+          tr
+            th 名前
+            td 笠原　豪（かさはら　ごう）
+          tr
+            th 愛称
+            td 豪くん
+          tr
+            th 年齢
+            td 1985年生まれ（33歳）
+          tr
+            th 性格
+            td 知的で理屈っぽい。気になったら徹底的に調べて、実際に経験してみたいと気が済まない。
+          tr
+            th 趣味
+            td ギャンブルで作った1,000万円以上の借金を返し続ける生活を送っていたところ、26歳でオンラインカジノに出会う。5年間カジノ攻略法・必勝法の研究を続け、今ではメディアを立ち上げるほど稼げるようになった。
+          tr
+            th SNS
+            td
+              ul.row 
+                li
+                  a(href="") 
+                    img(src="../images/twitter-square-brands.svg", alt="twitter")
+                li
+                  a(href="") 
+                    img(src="../images/facebook-square-brands.svg", alt="facebook")
+                li
+                  a(href="") 
+                    img(src="../images/instagram-square-brands.svg", alt="instagram")
+      .author__view
+        h2 他のライターのプロフィールを見る
+        ul.row
+          - for (i=1; i<13; i++)
+            li.author__view--writers
+              .flexbox
+                a(href="").author__view--img
+                  img(src="../images/person.png", alt="")
+                .author__view--txt
+                  a(href="").name 笠原　豪
+                  span.txt 管理人/オンカジ歴10年以上
+        .btnmore
+          span もっと見る
+      .author__article
+        h2 笠原豪が担当した記事
+        ul.listarticle
+          li.listarticle--item
+            .row
+              .img
+                a(href="")
+                  .lable
+                    span.date 2021.01.01
+                  img(src="../images/article1.png", alt="")
+              .text
+                a(href="").tit 【2021年最新】オンラインカジノおすすめランキング…
+                span.txt 2016年には「信頼性・安全性」の欠落が主な要因で日本で逮捕者が出てしまいました。
+                dl.row
+                  dt
+                    img(src="../images/ico-cal.svg", alt="")
+                    span 公開日: 2022年00月00日
+                  dt
+                    img(src="../images/ico-time.svg", alt="")
+                    span 更新日: 2022年00月00日
+          - for (i=1; i<10; i++)
+            li.listarticle--item
+              .row
+                .img
+                  a(href="")
+                    .lable.row
+                      span.date 2021.01.01
+                      span.new NEW
+                    img(src="../images/article2.png", alt="")
+                .text
+                  a(href="").tit 【2021年最新】オンラインカジノおすすめランキング…
+                  span.txt 2016年には「信頼性・安全性」の欠落が主な要因で日本で逮捕者が出てしまいました。
+                  dl.row
+                    dt
+                      img(src="../images/ico-cal.svg", alt="")
+                      span 公開日: 2022年00月00日
+                    dt
+                      img(src="../images/ico-time.svg", alt="")
+                      span 更新日: 2022年00月00日
+        .btnmore
+          span もっと見る
+    +sidebar

@@ -1,0 +1,134 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500,600,700;800;900&display=swap');
+//RESET
+@import "../scss/reset/normalize2";
+@import "../scss/reset/other";
+
+//FONT
+@import "fonts/font";
+
+//MIXINS
+@import "../scss/components/mixins";
+
+//ANIMATION
+@import "../scss/animate/animate";
+
+//If EFFECT
+@import "../scss/components/effect";
+// @import "../scss/function/function";
+
+//FIX LAYOUT
+// @import "../scss/components/IE";
+// @import "../scss/components/fixlayout";
+
+//If PRELOAD
+// @import "../scss/components/preload";
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #C3C0C0;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #C3C0C0;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #C3C0C0;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #C3C0C0;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:    #C3C0C0;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+    color:    #C3C0C0;
+}
+
+body {
+    @include gothic;
+    font-size:17px;
+	font-weight:500;
+    color: $cltext;
+    .maincl{
+        color: $cl;
+    }
+    .fontnoto{
+        @include fontnoto;
+    }
+    .fontmin{
+        @include mincho;
+    }
+    .fontspec{
+        font-family: 'Montserrat', sans-serif;
+    }
+    p{
+        line-height: 1.8;
+        @include gothic;
+        color: $cltext;
+        @include minquery($pc){ 
+            font-size: 17px;
+        }
+    }
+    a{
+        color: $cltext;
+        line-height: normal;
+    }
+    img, iframe {
+        max-width: 100%;
+        line-height: 0;
+    }
+    .img{
+        overflow: hidden;
+        line-height: 0;
+        img{
+            transform: scale(1);
+            transition-duration: 4s;
+            -webkit-transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            -o-transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            -webkit-transition-property: -webkit-transform;
+            -o-transition-property: transform;
+            transition-property: transform, -webkit-transform;
+        }
+    }
+}
+
+.flexbox{
+    @include flexbox(space-between,center);
+    flex-wrap: wrap;
+    &_start{
+        justify-content: flex-start;
+    }
+    &_end{
+        justify-content: flex-end;
+    }
+    &_center{
+        justify-content: center;
+    }
+}
+
+.container {
+    max-width: $container+px;
+    margin: 0 auto;
+    width: 100%;
+    @include query($container) {
+        padding: 0 15px;
+    }
+    @include query($sp) {
+        padding: 0 3%;
+    }
+}
+
+.row {@include flexbox(flex-start, flex-start); flex-wrap:wrap;}
+
+//LAYOUT
+@import "../scss/layout/header";
+@import "../scss/layout/nav";
+@import "../scss/layout/aside";
+@import "../scss/layout/footer";
+
+//COMPONENT
+@import "../scss/components/btn";
+@import "../scss/components/wpcontent";

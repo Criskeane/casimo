@@ -1,0 +1,101 @@
+@import "./mixins";
+/* purgecss start ignore */
+// .wimg,.wimgright{
+//   position:relative;
+//   &:after,&:before{
+//     position: absolute;
+//     content: '';
+//     left: 0;
+//     top: 0;                
+//     width: 100%;                
+//     height: 100%;                      
+//     z-index: 3;                
+//     @include transition_cubic(all, $duration:0.8s, $effect:cubic-bezier(.77,0,.175,1), $delay:0)
+//   }
+// }
+
+// .wimg,.wimgright {       
+//   &:after{
+//     background: #fff;
+//   }     
+// }
+
+// .wimg,.wimgright {       
+//   &:before{
+//     background: $cl;
+//   }     
+// }
+
+// .wimg:after,.wimg:before  {
+//   right: 0;
+//   transform-origin: top right;
+// }
+
+// .wimgright:after,.wimgright:before  {
+//   left: 0;
+//   transform-origin: top left;
+// }
+
+// .wimg.slideright:after,
+// .wimgright.slideleft:after {
+//   transform: scaleX(0);
+// }
+
+// .wimg.slideright:before,
+// .wimgright.slideleft:before {
+//   transform: scaleX(0);
+//   transition-delay: 0.3s;
+//   opacity: 0.7;
+// }
+/* purgecss end ignore */
+
+.fadeOut{
+  @include fadeOut($duration: 0.3s, $delay: 0s, $function: cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+
+// .fadeIn{
+//   @include fadeIn($duration: 1s, $delay: 0.3s, $function: cubic-bezier(0.25, 0.1, 0.25, 1));
+// }
+
+// .fadeInUp{
+//   @include fadeInUp($duration: 1s, $delay: 0.3s, $function: cubic-bezier(0.25, 0.1, 0.25, 1));
+// }
+
+//Menu run in step - Navstate SHOW
+.menu-open{
+  .nav-list-item {
+    @include query($tab) {
+      @include fadeInLeft($duration: 0.6s,$function: cubic-bezier(0, 0.2, 0.8, 1));
+    }
+    @for $i from 1 through 7 {
+      &:nth-child(#{$i}) {
+        animation-delay: $i * .1 + s;
+      }
+    }
+  }
+}
+
+//Menu run in step - Navstate HIDE
+// .menu-open.navstate_hide{
+//   .type1 .nav-list > .nav-list-item {
+//     > a{
+//       @include slideInUp($duration: 0.5s,$function: ease);
+//     }
+//     @for $i from 1 through 15 {
+//       &:nth-child(#{$i}) a{
+//         animation-delay: $i * .2 + s;
+//       }
+//     } 
+//   }
+//   .type2 .nav-list > .nav-list-item {
+//     > a{
+//       @include slideInUp($duration: 0.5s,$function: cubic-bezier(0, 0.2, 0.8, 1));
+//     }
+//     @for $i from 1 through 15 {
+//       &:nth-child(#{$i}) a{
+//         animation-delay: $i * .2 + 0.1s;
+//       }
+//     } 
+//   }
+// }
+//END EFFECT

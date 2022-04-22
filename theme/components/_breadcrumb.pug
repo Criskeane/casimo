@@ -1,0 +1,43 @@
+mixin breadcrumb(title1, title2, title3)
+    // BREADCRUMB 
+    .breadcrumb
+        .container
+            if pagelevel == 2
+                ul.breadcrumb__list
+                    li.breadcrumb--item
+                        a(href=dir) Casimoトップページ
+                    li.breadcrumb--item
+                        a(href="../")=title1
+                    li=title2
+            else
+                ul.breadcrumb__list
+                    li.breadcrumb--item
+                        a(href=dir) Casimoトップページ
+                    li.breadcrumb--item
+                        if(title2)
+                            a(href="./")=title1
+                        else
+                            =title1
+                    if(title3)
+                        if(title2)
+                            li.breadcrumb--item
+                                a(href="./")=title2
+                            li.breadcrumb--item=title3
+                        else
+                            li.breadcrumb--item=title2
+                    else
+                        if(title2)
+                            li.breadcrumb--item=title2
+                        else
+    // /END BREADCRUMB
+
+mixin breadcrumbc(name)
+    .breadcrumb
+        .container
+            ul.breadcrumb__list
+            -for(i = 0; i < name.length; i++)
+                li.breadcrumb--item
+                    -if(i == name.length - 1)
+                        =name[i]
+                    -else
+                        a(href=dir)=name[i]

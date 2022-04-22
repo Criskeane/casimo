@@ -1,0 +1,55 @@
+extends ../../pug/layout.pug
+block define
+  - var pagelevel = 1
+  - var secondpage = 1
+  - var page = "author"
+  - var textdemo = 0
+//- EDIT ANOTHER 
+block thebreadcrumb
+  +breadcrumb("カジモ編集部のご紹介")
+block mainvs
+  +headtitle("カジモ編集部のご紹介")
+block content
+  section.container
+    .content
+      p 日本最大級のオンラインカジノメディア「Casimo（カジモ）」は、笠原豪の実体験をもとに、オンラインカジノで稼ぐための攻略法・必勝法を徹底解説しています。<br><br>カジノゲームの種類やルール、攻略法・必勝法、稼ぐための考え方、海外のカジノなどの様々な情報を網羅的に紹介しており、Casimoの記事さえ読んでいただければ、カジノ関連の情報を漏れなく収集することができます。<br><br>Casimo編集部は、笠原豪を筆頭に、弟子入りした蒼井那奈と20名以上のスタッフ・ライターで、実際にオンラインカジノで遊んだ体験談や徹底的にリサーチした最新情報を、ユーザーにとって分かりやすいことを最も重視し記事を構成しています。
+      .boxheading
+        h3 Casimoの情報を活用してほしいユーザー像
+        .boxlist
+          ul
+            li 効率よく稼いで人生を謳歌したい
+            li 日本で気軽にカジノゲームをやりたい
+            li パチンコや競馬に飽きてしまった
+      p また、日本でのオンラインカジノの利用は法律的に「グレーゾーン」で、違法とも合法とも言えないことも事実としてあり、その結果、2016年にオンラインカジノ利用者が逮捕・起訴されるという事件が起きてしまいました。<br><br>逮捕の主な原因は、オンラインカジノのサービスや体裁が日本の法律に違反していると判断できるものだったということです。<br><br>つまり、オンラインカジノによっては、日本の法律と照らし合わせて、グレーゾーンではなく、「違法」になってしまう可能性があるということです。<br><br>そこでCasimo編集部では、2016年の事件を研究し、その原因と同じようなことが起きないための対策を考え、オンラインカジノ選びの注意点としてユーザーへ情報提供しています。日本の法律にオンラインカジノの利用を合法にする旨が明記されるまで、「確実」とは言えませんが、ユーザーが安心して遊べるオンラインカジノを選ぶための情報を提供し続けます。
+      .author__detail.operator
+        h2 運営者情報
+        table.author__detail--table
+          tr
+            th 運営者
+            td オンラインカジノ情報サイト「Casimo」
+          tr
+            th URL
+            td https://online-casino.media/
+          tr
+            th 連絡先
+            td info@online-casino.media
+          tr
+            th 住所
+            td.tdmap
+              span 東京都千代田区丸の内1-1-1
+              .iframe
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.695456462712!2d139.75903241525893!3d35.68450008019351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c08138711bd%3A0xa402c385b2663826!2z5pel5pys44CB44CSMTAwLTAwMDUg5p2x5Lqs6YO95Y2D5Luj55Sw5Yy65Li444Gu5YaF77yR5LiB55uu77yR4oiS77yR!5e0!3m2!1sja!2s!4v1650272173822!5m2!1sja!2s" width="100%" height="375" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      .author__view
+        h2 メンバー紹介
+        ul.row
+          - for (i=1; i<13; i++)
+            li.author__view--writers
+              .flexbox
+                a(href="").author__view--img
+                  img(src="../images/person.png", alt="")
+                .author__view--txt
+                  a(href="").name 笠原　豪
+                  span.txt 管理人/オンカジ歴10年以上
+        .btnmore
+          span もっと見る
+    +sidebar

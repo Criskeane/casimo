@@ -1,0 +1,78 @@
+.container
+    .nav__inside
+        if(navlevel == 1)
+            ul.nav__inside__list
+                li.active
+                    a(href=dir) TOP
+                li
+                    a(href=dir+'EMC') EMCとは
+                li
+                    a(href=dir+'introduction') 事業紹介
+                li
+                    a(href=dir+'company') 企業情報
+                li
+                    a(href=dir+'contact') お問い合わせ
+        if(navlevel == 2)
+            ul.nav__inside__list
+                li.active
+                    a(href=dir) TOP
+                li.hasdrop
+                    a(href='javascript:void(0)') Dropdown
+                    ul.childmenu
+                        li
+                            a(href=dir+'sub1') Submenu1
+                        li
+                            a(href=dir+'sub2') Submenu2
+                        li
+                            a(href=dir+'sub3') Submenu3
+                        li
+                            a(href=dir+'sub4') Submenu4
+                        li
+                            a(href=dir+'sub5') Submenu5
+                li.hasdrop.megamenu
+                    a(href='javascript:void(0)') MegaMenu
+                    .childmenu.megamenu_inside
+                        .container
+                            .megamenu_inside_mother
+                                .megamenu_inside_col.colsame
+                                    h3 Mega Title
+                                    ul
+                                        li
+                                            a(href="") Menu
+                                        li
+                                            a(href="") Menu1
+                                        li
+                                            a(href="") Menu2
+                                .megamenu_inside_col.colsame
+                                    h3 Mega Title
+                                        ul
+                                            li
+                                                a(href="") Menu
+                                            li
+                                                a(href="") Menu1
+                                            li
+                                                a(href="") Menu2
+                                .megamenu_inside_col.colsame
+                                    h3 Mega Title
+                                        ul
+                                            li
+                                                a(href="") Menu
+                                            li
+                                                a(href="") Menu1
+                                            li
+                                                a(href="") Menu2
+                                .megamenu_inside_col.colsame
+                                    h3 Mega Title
+                                        ul
+                                            li
+                                                a(href="") Menu
+                                            li
+                                                a(href="") Menu1
+                                            li
+                                                a(href="") Menu2
+                li
+                    a(href=dir+'introduction') 事業紹介
+                li
+                    a(href=dir+'company') 企業情報
+                li
+                    a(href=dir+'contact') お問い合わせ

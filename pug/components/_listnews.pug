@@ -1,0 +1,9 @@
+mixin listnews(title1, title2, title3, title4, title5)
+    - var list = [title1, title2, title3, title4, title5]
+        ul.top_listnews
+            each item in list
+                li
+                    a(href=dir+"news/detail.html")
+                        span.date 2019.11.06
+                        span.title 
+                            = item 

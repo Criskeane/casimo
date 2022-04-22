@@ -1,0 +1,10 @@
+mixin article(title,img)
+  .flex
+    .txt
+      h3.titblock.fonttit= title
+      if block
+        block
+      else
+        p No content provided
+    .img.lh00
+      img(src=dirImg+img, alt="")  

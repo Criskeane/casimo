@@ -1,0 +1,59 @@
+//- Page Elements
+- var sitetitle = "TITLE"
+- var phpinclude = 0
+- var preload = 0 
+- var effectscroll = 0 //true - false
+- var lightbox = 0 //true - false
+- var carousel = 0 //true - false
+- var slickslider = 0 //true - false
+- var sitelang = "ja"
+- var textdemo = 1
+
+- var dirImage = './images/' // directory image in page.
+
+//-logo
+- var logo_type = "text" // text or image.
+
+//-Nav
+- var type_nav = "default"//default, 2, 3.
+  - var hastext = true//true or false - show text in nav icon.
+- var navstate = "show"//show or hide. (if navigation shown then nav humberger is hidden)
+- var navlevel = "2"//1, 2.
+
+if pagelevel == 0
+  - var dir = './'
+  - var dirShare = './images/share/'  
+else if pagelevel == 1
+  - var dir = '../'
+  - var dirShare = '../images/share/'
+else if pagelevel == 2
+  - var dir = '../../'
+  - var dirShare = '../../images/share/'
+else
+  - var dir = '.'
+    
+case page
+  when "detail templete"
+    - title = "page detail templete"
+    - description = "Description detail templete page"
+    - keywords = ""
+  when "company"
+    - title = "Company Title"
+    - description = "Description company page"
+    - keywords = ""
+  when "about"
+    - title = "about"
+    - description = "Description about page"
+    - keywords = ""
+  when "contact"
+    - title = "お問い合わせ"
+    - description = "お問い合わせ"
+    - keywords = ""
+  when "news"
+    - title = "news"
+    - description = "Description news page"
+    - keywords = ""
+  default
+    - title = ""
+    - description = ""
+    - keywords = ""

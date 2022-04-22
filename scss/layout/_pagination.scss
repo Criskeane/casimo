@@ -1,0 +1,75 @@
+@import "../components/mixins";
+
+.pagination {
+    margin: 50px 0; 
+    ul {
+        text-align: center;
+        @include flexbox(center, center);
+        li {
+            display: inline-block; 
+            &:first-child {
+                a {
+                    border-left:1px solid #ddd;                    
+                }
+            }  
+            &.b_prev a, &.b_next a {
+               position: relative;
+               width: 50px;  
+               color: transparent; 
+               &:before {
+                    content:"";
+                    background: url(../images/share/svg/chevron_up.svg) no-repeat; 
+                    @include rotate(-90); 
+                    height: 14px;
+                    width:14px;
+                    background-size: 100%;
+                    background-position: center; 
+                    position: absolute;
+                    @include centerboth;
+               }
+            }
+            &.b_next a {
+                &:before {
+                    @include rotate(90);
+                }
+            }
+            a {
+                font-size: 16px;
+                font-weight: 500; 
+                padding: 8px 15px; 
+                background: #fff; 
+                border:1px solid #ddd; 
+                border-left: none;
+                @include query($q768) {
+                    font-size: 13px;
+                }
+                &:hover {
+                    background: #f1f1f1; 
+                } 
+            }			
+			span.current
+			{
+				 font-size: 16px;
+				 font-weight: 500; 
+				 padding: 8px 15px;
+				 background: #d6000f;
+				 color: #fff;
+                 border: 1px solid #d6000f;
+                 @include query($q768) {
+                    font-size: 13px;
+                }
+			}
+            &.activepage {
+                a {
+                    background: #d6000f;
+                    color: #fff;
+                    border: 1px solid #d6000f;
+                }
+            }
+
+            &.neardot a {
+                border-left:1px solid #ccc; 
+            }
+        }
+    }
+}

@@ -1,0 +1,117 @@
+@import "../components/mixins";
+
+// .ahover{
+//   position: relative;
+//   a{
+//     position: relative;
+//   }
+//   a:after {
+//     position: absolute;
+//     -webkit-transition: all 0.35s ease;
+//     transition: all 0.35s ease;
+//   }
+//   a:after {
+//     bottom: -1px;
+//     display: block;
+//     height: 1px;
+//     width: 0%;
+//     content: "";
+//     background-color: $cl;
+//     left: 50%;
+//   }
+//   @include minquery($pc){
+//     a:hover{
+//       opacity: 1;
+//       color: $cl;
+//     }
+//     a:hover:after {
+//       opacity: 1;
+//       width: 100%;
+//       left: 0;
+//     }
+//   }
+// }
+
+button{
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btnpage{
+  margin: 0 auto;
+  width: 100%;
+  max-width: 550px;
+  margin-top: 50px;
+  transition: all .3s;
+  @include query($sp) {
+    margin-top: 20px;
+    max-width: 360px;
+  }
+  a,button{
+    @include flexbox(center, center);
+    text-align: center;
+    padding: 29px 0;
+    width: 100%;
+    color: #fff;    
+    position: relative;
+    background: $clp;
+    border-radius: 45px;
+    z-index: 0;
+    overflow: hidden;
+    &::after{
+      position: absolute;
+      content: '';
+      background-color: $cl;
+      width: 0;
+      height: 100%;
+      right: 0;
+      top: 0;
+      transition: all 400ms cubic-bezier(0.19, 1, 0.22, 1);
+      -webkit-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+      -moz-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+      -ms-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+      -o-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+      transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    @include minquery(960){
+      &:hover::after, &:focus::after, &:active::after{
+        right: inherit;
+        left: 0;
+        width: 100%;
+        z-index: 0;
+      }
+    }
+    span{
+      z-index: 2;
+      font-size: 18px;
+      font-weight: bold;
+      @include arrright($cl: #fff, $size: 12px, $w: 2px);
+      display: block;
+      width: 100%;
+      line-height: 1.4;
+      &::before{
+        right: 25px;
+      }
+      @include query($sp) {
+      }
+    }
+  }
+  &.btnback{
+    // margin-top: 0;
+    // margin-left: 0;
+    a{
+      span{
+        &::before{
+          right: inherit;
+          left: 35px;
+          transform: rotate(-135deg) !important;
+        }
+      }
+    }
+  }
+  &.btnnext{
+    // margin-top: 0;
+    // margin-right: 0;
+  }
+}

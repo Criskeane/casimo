@@ -1,0 +1,15 @@
+mixin breadcrumb(title1, title2)
+    .breadcrumb
+        .container
+            if pagelevel == 2
+                ul
+                    li
+                        a(href=dir) Top
+                    li
+                        a(href="../")=title1
+                    li=title2
+            else 
+                ul
+                    li
+                        a(href=dir) Top
+                    li=title1

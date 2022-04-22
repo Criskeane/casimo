@@ -1,0 +1,33 @@
+mixin popup()
+  #category.modal.category
+    .modal-content
+      span.btn_close
+      h3.title 表示アイコン説明
+      .modal-content-box
+        dl
+          dt.btncl0 1個口送料無料
+          dd 1個口送料無料商品と同一温度帯の商品を同時にご注文の場合には送料無料となります。(ただし、梱包ポイントが999以内の場合に限ります)
+        dl
+          dt.btncl1 1商品送料無料
+          dd 当該商品は送料無料となり、同時に別商品を購入した場合、1個口の金額が10,800円(税込)未満の時には送料が発生します。
+        dl
+          dt.btncl2 会員限定
+          dd 会員限定の商品です。
+        dl
+          dt.btncl3 予約販売
+          dd 予約販売の商品です。他の商品との同梱はできません。
+        dl
+          dt.btncl4 同送不可
+          dd 他の商品と同梱することができない商品です。
+        dl
+          dt.btncl5 在庫わずか
+          dd 在庫が残り少ない商品です。
+        dl
+          dt.btncl6 在庫なし
+          dd 在庫がない商品です。ご注文いただくことはできません。
+        p.buttonclose.cancelbox
+          a(href="#") 閉じる
+
+//- HOW TO USE
+//- .btnpopup
+      a.clickpop(href="#" data-for="category") 表示アイコン説明を見る

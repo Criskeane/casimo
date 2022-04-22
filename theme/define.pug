@@ -1,0 +1,50 @@
+//- Page Elements
+- var sitelang = "ja"
+- var sitetitle = "Casimo"
+- var phpinclude = 0
+- var canonical = 0
+- var favicon = 0
+- var noindex = 0
+//- - var preload = 0 //true - false
+//- - var effectscroll = false //true - false
+//- - var lightbox = false //true - false
+//- - var carousel = false //true - false
+//- - var slickslider = false //true - false
+
+- var dirImage = './images/' // directory image in page.
+
+//-Header
+- var headerlayout = 0//0, 1.
+- var headerfixed = 0//0, 1.
+
+//-Nav
+- var type_nav = 1//"default", 2, 3.
+- var hastext = false//true or false - show text in nav icon.
+- var navstate = "show"//show or hide. (if navigation shown then nav humberger is hidden)
+- var navlevel = "1"//1, 2.
+
+if pagelevel == 0
+  - var dir = './'
+  - var dirShare = './images/'  
+else if pagelevel == 1
+  - var dir = '../'
+  - var dirShare = '../images/'
+else if pagelevel == 2
+  - var dir = '../../'
+  - var dirShare = '../../images/'
+else
+  - var dir = '.'
+    
+case page
+  when "contact"
+    - title = "お問い合わせ"
+    - description = "お問い合わせ"
+    - keywords = ""
+  when "news"
+    - title = "新着情報"
+    - description = "新着情報"
+    - keywords = ""
+  default
+    - title = ""
+    - description = ""
+    - keywords = ""

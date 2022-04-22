@@ -1,0 +1,115 @@
+@include keyframes(fadeInLeft) {
+  0% {
+    opacity: 0;
+    @include transform(translateX(-30px));
+  }
+  100% {
+    opacity: 1;
+    @include transform(translateX(0));
+  }
+}
+
+@mixin fadeInLeft($count: $countDefault, $duration: $durationDefault, $delay: $delayDefault, $function: $functionDefault, $fill: $fillDefault, $visibility: $visibilityDefault) {
+  @include animation-name(fadeInLeft);
+  @include count($count);
+  @include duration($duration);
+  @include delay($delay);
+  @include function($function);
+  @include fill-mode($fill);
+  @include visibility($visibility);
+}
+
+// @include keyframes(fadeUpLeftRight) {
+//   0% {
+//     opacity: 0;
+//     @include transform(translate3d(-50px,50px,0));
+//   }
+//   100% {
+//     opacity: 1;
+//     @include transform(translateX(0,0px,0));
+//   }
+// }
+
+// @mixin fadeUpLeftRight($count: $countDefault, $duration: $durationDefault, $delay: $delayDefault, $function: $functionDefault, $fill: $fillDefault, $visibility: $visibilityDefault) {
+//   @include animation-name(fadeUpLeftRight);
+//   @include count($count);
+//   @include duration($duration);
+//   @include delay($delay);
+//   @include function($function);
+//   @include fill-mode($fill);
+//   @include visibility($visibility);
+// }
+
+// @include keyframes(fadeUpRightLeft) {
+//   0% {
+//     opacity: 0;
+//     @include transform(translate3d(50px,50px,0));
+//   }
+//   100% {
+//     opacity: 1;
+//     @include transform(translateX(0,0px,0));
+//   }
+// }
+
+// @mixin fadeUpRightLeft($count: $countDefault, $duration: $durationDefault, $delay: $delayDefault, $function: $functionDefault, $fill: $fillDefault, $visibility: $visibilityDefault) {
+//   @include animation-name(fadeUpRightLeft);
+//   @include count($count);
+//   @include duration($duration);
+//   @include delay($delay);
+//   @include function($function);
+//   @include fill-mode($fill);
+//   @include visibility($visibility);
+// }
+
+// @include keyframes(fadeDownRightLeft) {
+//   0% {
+//     opacity: 0;
+//     @include transform(translate3d(50px,-50px,0));
+//   }
+//   100% {
+//     opacity: 1;
+//     @include transform(translateX(0,0px,0));
+//   }
+// }
+
+// @media (max-width:767px){
+//   @include keyframes(fadeDownRightLeft) {
+//     0% {
+//       @include transform(translate3d(-50px,50px,0));
+//     }
+//     100% {
+//       @include transform(translateX(0,0px,0));
+//     }
+//   }
+// }
+
+// @mixin fadeDownRightLeft($count: $countDefault, $duration: $durationDefault, $delay: $delayDefault, $function: $functionDefault, $fill: $fillDefault, $visibility: $visibilityDefault) {
+//   @include animation-name(fadeDownRightLeft);
+//   @include count($count);
+//   @include duration($duration);
+//   @include delay($delay);
+//   @include function($function);
+//   @include fill-mode($fill);
+//   @include visibility($visibility);
+// }
+
+// @include keyframes(fadeDownLeftRight) {
+//   0% {
+//     opacity: 0;
+//     @include transform(translate3d(-50px,-50px,0));
+//   }
+//   100% {
+//     opacity: 1;
+//     @include transform(translateX(0,0px,0));
+//   }
+// }
+
+// @mixin fadeDownLeftRight($count: $countDefault, $duration: $durationDefault, $delay: $delayDefault, $function: $functionDefault, $fill: $fillDefault, $visibility: $visibilityDefault) {
+//   @include animation-name(fadeDownLeftRight);
+//   @include count($count);
+//   @include duration($duration);
+//   @include delay($delay);
+//   @include function($function);
+//   @include fill-mode($fill);
+//   @include visibility($visibility);
+// }

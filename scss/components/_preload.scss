@@ -1,0 +1,121 @@
+@import "./mixins";
+
+.beforeload {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.gono-preload {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    z-index: 99999;
+    text-align: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(0);
+    display: table;
+    @include transition_cubic(transform, 0.4s);
+    .gonoinside {
+        display: table-cell;
+        vertical-align: middle;
+        .svgsection {
+            margin-top: -70px;
+            svg {
+                height: 160px !important;
+            }
+        }
+    }
+    .progress span {
+        transition: all 500ms ease;
+        background: #fff;
+        height: 4px;
+        width: 4px;
+        display: inline-block;
+        border-radius: 10px;
+        animation: wave 3s ease infinite;
+        @for $i from 1 through 8 {
+            &:nth-child(#{$i}) {
+                animation-delay: $i * (.05s)
+            }
+        }
+    }
+}
+
+.pageloaded {
+    .gono-preload {
+        transform: translateX(-100%);
+        height: 100%;
+        background: #fff;
+        @include transition_cubic(transform, 0.5s);
+    }
+}
+
+@for $i from 1 to 8 {
+    .textpreload.txt_end span:nth-of-type(1) {
+        animation: opacity $i*0.2s cubic-bezier(0.3, 0.6, 0.5, 1) 0.1s forwards alternate;
+    }
+}
+
+.gono-loader {
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    margin: 0 auto;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+    border-right: 2px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    border-left: 2px solid #333;
+    -webkit-animation: gonoloader 0.8s infinite linear;
+    animation: gonoloader 0.8s infinite linear;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+@-webkit-keyframes gonoloader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes gonoloader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.animated.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+@keyframes wave {
+    0%,
+    40%,
+    100% {
+        transform: translate(0, 0);
+        background-color: #eee;
+    }
+    10% {
+        transform: translate(0, -15px);
+        background-color: #000;
+    }
+}
+//END PRELOAD

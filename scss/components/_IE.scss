@@ -1,0 +1,38 @@
+//FIX IE
+.fixie {
+  // .navlevel_2 li.hasdrop,.nav__inside__list li{
+  //   position: inherit !important;
+  // }
+  // .topnav .btnshowroom a{
+  //   padding: 12px 0 6px !important;
+  // }
+  // .btnpage a{
+  //   padding-top: 6px !important;
+  //   padding-bottom: 3px !important;
+  //   line-height: 32px !important;
+  // }
+  // .megamenu_inside{
+  //   margin-top: -22px !important;
+  // }
+  body{
+    overflow: visible;
+  }
+  .custom-object-fit, .custom-object-contain{
+    position: relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+    img{
+      opacity: 0;
+    }
+  }
+  .custom-object-fit{
+    background-size: cover;
+  }
+  .custom-object-contain{
+    background-size: contain;
+  }
+  // .text_true .righticons--icon .hamburger_inside{
+  //   margin: 0;
+  // }
+}
+//END FIX IE

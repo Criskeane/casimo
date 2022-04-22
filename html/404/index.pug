@@ -1,0 +1,20 @@
+extends ../../pug/layout.pug
+block define
+  - var pagelevel = 1
+  - var secondpage = 1
+  - var page = "error"
+  - var textdemo = 0
+//- EDIT ANOTHER 
+block thebreadcrumb
+  +breadcrumb("お探しのページが見つかりません")
+block mainvs
+  +headtitle("お探しのページが見つかりません")
+block content
+  section.container
+    .content
+      p.txttop 申し訳ありませんが、アクセスしようとしているページが存在しません。<br>約5秒後にTOPページへ戻ります。<br>すぐに戻りたい方は下記のリンクからTOPページに戻ることが可能です。
+      .btnpage.btnback
+        a(href="../")
+          span TOPページに戻る
+
+    +sidebar

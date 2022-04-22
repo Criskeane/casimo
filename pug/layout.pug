@@ -1,0 +1,145 @@
+//- layout.pug
+- var theme = 1; //-If Set on theme 1 or 0
+block define
+
+<!DOCTYPE html>
+block include
+  if(theme)
+    include ../theme/define.pug
+    include ../theme/components/_mv.pug
+    include ../theme/components/_headtitle.pug
+    include ../theme/components/_breadcrumb.pug
+    include ../theme/components/_aside.pug
+    include ../theme/components/_popup.pug
+    include ../theme/theme_news.pug
+  else
+    include ./define.pug
+    include ./components/_mv.pug
+    include ./components/_headtitle.pug
+    include ./components/_breadcrumb.pug
+    include ./components/_aside.pug
+    include ./block_news.pug
+
+block phpinclude
+  if(phpinclude)
+    if(pagelevel == 0)
+      <?php require_once("./common/include_disp.php");?>
+    if(pagelevel == 1)
+      <?php require_once("../common/include_disp.php");?>
+    if(pagelevel == 2)
+      <?php require_once("../../common/include_disp.php");?>
+
+html(lang=sitelang)
+  head
+    if(phpinclude)
+      |<?= DispAfterHeadStartTag(); ?>
+    block head
+      if(theme)
+        include ../theme/theme_head.pug
+      else
+        include ./head.pug
+    if(phpinclude)
+      |<?= DispBeforeHeadEndTag(); ?>
+  block body
+    if(theme)
+      include ../theme/theme_bodyclass.pug
+    else
+      -var bodyclass1 = "toppage navlevel_"+navlevel+" navtype_"+type_nav+ " text_"+hastext+" logotype_"+logo_type+" navstate_"+navstate;
+      -var bodyclass2 = "secondpage navlevel_"+navlevel+" navtype_"+type_nav+ " text_"+hastext+" logotype_"+logo_type+" navstate_"+navstate+" page-"+page;
+      if(pagelevel == 0)
+        -var bodyclass = bodyclass1
+      if(pagelevel == 1 || pagelevel == 2)
+        -var bodyclass = bodyclass2
+  
+    body(class=bodyclass)
+      if(theme)
+        if(phpinclude)
+          |<?= DispAfterBodyStartTag(); ?>
+      else
+        if(phpinclude)
+          |<?= DispAfterBodyStartTag(); ?>
+
+      block preload
+        if (preload == true)
+          // PRELOAD PAGE 
+          if(theme)
+            include ../theme/components/_preload.pug
+          else
+            include ./components/_preload.pug
+          // /END PRELOAD PAGE 
+
+      // HEADER 
+      block header
+        if(theme)
+          if(phpinclude)
+            |<?php echo DispHeader(); ?>
+          //- if(ssi)
+            |<!--#include virtual="./include/header.inc" -->
+          else
+            include ../theme/theme_header.pug
+        else
+          if(phpinclude)
+            |<?php echo DispHeader(); ?>
+          else
+            include ./block_header.pug
+      // /END HEADER 
+      
+      block thebreadcrumb
+        if(theme)
+          include ../theme/theme_breadcrumb.pug
+        else
+          if pagelevel == 1
+            +breadcrumb(title)
+
+      block mainvs
+        if(theme)
+          include ../theme/theme_mainvs.pug
+        else
+          if pagelevel == 0
+            +mv()
+          if pagelevel == 1
+            +headtitle(title,dirImage+'imghead.jpg')
+
+      // MAIN BODY 
+      .main_body(class="p-"+page)
+        block content
+        block textdemo
+          if((!textdemo) || (pagelevel == 0))
+          else
+            .container
+              p.text_center.textdemo ただいま準備中のため、もうしばらくお待ちください。
+      // /END MAIN BODY 
+
+      // FOOTER 
+      block definefoot
+      block footer
+        if(theme)
+          if(phpinclude)
+            |<?php echo DispFooter(); ?>
+          //- if(ssi)
+            |<!--#include virtual="./include/footer.inc" -->
+          else
+            include ../theme/theme_footer.pug
+        else
+          if(phpinclude)
+            |<?php echo DispFooter(); ?>
+          else
+            include ./block_footer.pug
+      // /END FOOTER 
+
+      if(theme)
+        if(phpinclude)
+          -var disp = "<?= DispBeforeBodyEndTag(); ?>"
+          |!{disp}
+      else
+        if(phpinclude)
+          -var disp = "<?= DispBeforeBodyEndTag(); ?>"
+          |!{disp}
+
+      // SCRIPT 
+      block script
+        if(theme)
+          include ../theme/theme_script.pug
+        else
+          include ./block_script.pug
+      // /END SCRIPT 

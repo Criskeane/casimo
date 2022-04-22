@@ -1,0 +1,686 @@
+@import "./define";
+
+//MIXIN LINEAR GRADIENT
+@mixin linear-gradient($direction, $color-stops...) {
+	// Direction has been omitted and happens to be a color-stop
+	@if is-direction($direction)==false {
+		$color-stops: $direction, $color-stops;
+		$direction: 180deg;
+	}
+	background: nth(nth($color-stops, 1), 1);
+	background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+	background: linear-gradient($direction, $color-stops);
+}
+
+@function legacy-direction($value) {
+	@if is-direction($value)==false {
+		@error "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.";
+	}
+	$conversion-map: (to top : bottom,
+	to top right : bottom left,
+	to right top : left bottom,
+	to right : left,
+	to bottom right : top left,
+	to right bottom : left top,
+	to bottom : top,
+	to bottom left : top right,
+	to left bottom : right top,
+	to left : right,
+	to left top : right bottom,
+	to top left : bottom right);
+	@if map-has-key($conversion-map, $value) {
+		@return map-get($conversion-map, $value);
+	}
+	@return 90deg - $value;
+}
+
+//Call  @include linear-gradient(#31B7D7, #EDAC7D);
+//Call2  @include linear-gradient(to right, #E47D7D 0%, #C195D3 50%, #4FB4E8 100%);
+//Call3 @include linear-gradient(42deg, #B58234 0%, #D2B545 50%, #D7C04D 50.01%, #FFFFFF 100%);
+//End LINEAR GRADIENT
+
+
+// FIX POSITION
+@mixin centerver {
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	position: absolute
+}
+
+@mixin centerhor {
+	left: 0;
+	right: 0;
+	margin: auto;
+	position: absolute
+}
+
+@mixin centerboth {
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	position: absolute
+}
+
+@mixin optional-at-root($sel) {
+	@at-root #{if(not &, $sel, selector-append(&, $sel))} {
+	  @content;
+	}
+}
+  
+@mixin placeholder {
+	@include optional-at-root('::-webkit-input-placeholder') {
+	  @content;
+	}
+  
+	@include optional-at-root(':-moz-placeholder') {
+	  @content;
+	}
+  
+	@include optional-at-root('::-moz-placeholder') {
+	  @content;
+	}
+  
+	@include optional-at-root(':-ms-input-placeholder') {
+	  @content;
+	}
+}
+
+@mixin absolute($w:100%, $h:100%) {
+	content:"";
+	display: block;
+	width: $w;
+	height: $h;
+	top: 0;
+	left: 0;
+	position: absolute;
+}
+
+@mixin before($w,$h,$url) {
+	position: relative;
+	&::before{
+		content: "";
+		position: absolute;
+		width: $w;
+		height: $h;
+		background: url($url) no-repeat center center;
+	}
+}
+
+@mixin after($w,$h,$url) {
+	position: relative;
+	&::after{
+		content: "";
+		position: absolute;
+		width: $w;
+		height: $h;
+		background: url($url) no-repeat center center;
+	}
+}
+// EDN FIX POSITION
+
+
+// FLEXBOX
+@mixin flexbox($justify: space-between, $align: flex-start, $wrap: 0) {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	justify-content: $justify;
+	align-items: $align;
+	@if $wrap != 0 {
+		flex-wrap: $wrap;
+	}
+}
+// END FLEXBOX
+
+// COLUMNS
+@mixin widthbox($per, $mr) {
+	width:calc(#{$per} - #{$mr});
+	width:-webkit-calc(#{$per} - #{$mr});
+	width:-moz-calc(#{$per} - #{$mr});
+	width:-ms-calc(#{$per} - #{$mr});
+	width:-o-calc(#{$per} - #{$mr});
+}
+
+@mixin heightbox($per, $mr) {
+	height:calc(#{$per} - #{$mr});
+	height:-webkit-calc(#{$per} - #{$mr});
+	height:-moz-calc(#{$per} - #{$mr});
+	height:-ms-calc(#{$per} - #{$mr});
+	height:-o-calc(#{$per} - #{$mr});
+}
+
+@mixin widthbox2($per, $mr) {
+	width:calc(#{$per} - #{$mr/2});
+	width:-webkit-calc(#{$per} - #{$mr/2});
+	width:-moz-calc(#{$per} - #{$mr/2});
+	width:-ms-calc(#{$per} - #{$mr/2});
+	width:-o-calc(#{$per} - #{$mr/2});
+	margin-right: #{$mr};
+	float: left;
+}
+
+@mixin widthbox3($per, $mr) {
+	width:calc(#{$per} - #{$mr*2/3});
+	width:-webkit-calc(#{$per} - #{$mr*2/3});
+	width:-moz-calc(#{$per} - #{$mr*2/3});
+	width:-ms-calc(#{$per} - #{$mr*2/3});
+	width:-o-calc(#{$per} - #{$mr*2/3});
+	margin-right: #{$mr};
+	float: left;
+}
+
+@mixin widthbox4($per, $mr) {
+	width:calc(#{$per} - #{$mr*3/4});
+	width:-webkit-calc(#{$per} - #{$mr*3/4});
+	width:-moz-calc(#{$per} - #{$mr*3/4});
+	width:-ms-calc(#{$per} - #{$mr*3/4});
+	width:-o-calc(#{$per} - #{$mr*3/4});
+	margin-right: #{$mr};
+	float: left;
+}
+
+@mixin widthbox5($per, $mr) {
+	width:calc(#{$per} - #{$mr*4/5});
+	width:-webkit-calc(#{$per} - #{$mr*4/5});
+	width:-moz-calc(#{$per} - #{$mr*4/5});
+	width:-ms-calc(#{$per} - #{$mr*4/5});
+	width:-o-calc(#{$per} - #{$mr*4/5});
+	margin-right: #{$mr};
+	float: left;
+}
+
+@mixin widthbox6($per, $mr) {
+	width:calc(#{$per}% - #{$mr*5/6});
+	width:-webkit-calc(#{$per}% - #{$mr*5/6});
+	width:-moz-calc(#{$per}% - #{$mr*5/6});
+	width:-ms-calc(#{$per}% - #{$mr*5/6});
+	width:-o-calc(#{$per}% - #{$mr*5/6});
+	margin-right: #{$mr};
+	float: left;
+}
+
+@mixin widthboxc($mr:30px, $number:2, $que1:0, $mr1:0, $num1:0, $que2:0, $mr2:0, $num2:0, $que3:0, $mr3:0, $num3:0) {
+	width:-webkit-calc(#{(100/$number)}% - #{$mr*($number - 1)/$number});
+	width:-moz-calc(#{(100/$number)}% - #{$mr*($number - 1)/$number});
+	width:-ms-calc(#{(100/$number)}% - #{$mr*($number - 1)/$number});
+	width:-o-calc(#{(100/$number)}% - #{$mr*($number - 1)/$number});
+	width:calc(#{(100/$number)}% - #{$mr*($number - 1)/$number});
+	margin-top: $mr;
+	margin-right: $mr;
+
+	&:nth-child(#{$number}n) {
+		margin-right: 0;
+	}
+
+	@for $i from 1 through $number {
+		&:nth-child(#{$i}) {
+			margin-top: 0
+		}
+	}
+
+	@if ($que1!=0) {
+		@each $thequery,
+		$themargin,
+		$thenumber in $que1, $mr1, $num1 {
+			@include query($thequery) {
+				width:-webkit-calc(#{(100/$thenumber)}% - #{$themargin*($thenumber - 1)/$thenumber});
+				width:-moz-calc(#{(100/$thenumber)}% - #{$themargin*($thenumber - 1)/$thenumber});
+				width:-ms-calc(#{(100/$thenumber)}% - #{$themargin*($thenumber - 1)/$thenumber});
+				width:-o-calc(#{(100/$thenumber)}% - #{$themargin*($thenumber - 1)/$thenumber});
+				width:calc(#{(100/$thenumber)}% - #{$themargin*($thenumber - 1)/$thenumber});
+				margin-top: $themargin !important;
+				margin-right: $themargin !important;
+				&:nth-child(#{$thenumber}n) {
+					margin-right: 0 !important;
+				}
+				// @for $i from $number - $thenumber through $number {
+				// 	&:nth-child(#{$i}) {
+				// 		margin-top: $themargin !important;
+				// 	}
+				// }
+				@for $i from 1 through $thenumber {
+					&:nth-child(#{$i}) {
+						margin-top: 0 !important;
+					}
+				}
+			}
+		}
+	}
+}
+// END COLUMNS
+
+
+// EFFECT
+@mixin transition_cubic($type, $duration:0.3s, $effect:cubic-bezier(0.26, 0.8, 0.62, 0.9), $delay:0) {
+	-webkit-transition: -webkit-#{$type} $duration $effect;
+	transition: -webkit-#{$type} $duration $effect;
+	transition: #{$type} $duration $effect;
+	transition-delay: $delay;
+	-webkit-transition-delay: $delay;
+	//type duration effectype delay
+}
+
+@mixin transition($s) {
+	-webkit-transition: all $s ease-in-out 0s;
+	-moz-transition: all $s ease-in-out 0s;
+	-ms-transition: all $s ease-in-out 0s;
+	-o-transition: all $s ease-in-out 0s;
+	transition: all $s ease-in-out 0s;
+}
+
+@mixin hover_toright {
+	-webkit-transform-origin: top right;
+	-moz-transform-origin: top right;
+	-ms-transform-origin: top right;
+	-o-transform-origin: top right;
+	transform-origin: top right;
+}
+
+@mixin hover_toleft {
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-o-transform-origin: top left;
+	transform-origin: top left;
+}
+
+@mixin transform($transforms) {
+	-webkit-transform: $transforms;
+	-moz-transform: $transforms;
+	-ms-transform: $transforms;
+	-o-transform: $transforms;
+	transform: $transforms;
+}
+
+@mixin rotate ($deg) {
+	@include transform(rotate(#{$deg}deg));
+}
+
+@mixin scale($scale) {
+	@include transform(scale($scale));
+}
+
+@mixin scaleX($scale) {
+	@include transform(scaleX($scale));
+}
+
+@mixin scaleY($scale) {
+	@include transform(scaleY($scale));
+}
+
+@mixin translate ($x, $y) {
+	@include transform(translate($x, $y));
+}
+
+@mixin skew ($x, $y) {
+	@include transform(skew(#{$x}deg, #{$y}deg));
+}
+// END EFFECT
+
+
+//COMPONENT
+@mixin bradius($value) {
+	border-radius: $value;
+}
+
+@mixin nowrap() {
+	white-space: nowrap;
+}
+
+@mixin square($value) {
+	width: $value;
+	height: $value;
+}
+
+@function cp($target, $container) {
+	@return calc-percent($target, $container);
+	//retunr percentage
+}
+
+
+// BUTTON GENERATOR
+@mixin btn_normal($bg, $color, $w, $w_sp, $h, $h_sp, $fz, $fz_sp, $b_radius, $border:1px solid) {
+	.btn_normal {
+		@include flexbox(center, center);
+		background: $bg;
+		color: $color;
+		width: $w;
+		height: $h;
+		border-radius: $b_radius;
+		border: $border;
+		cursor: pointer;
+		&:hover {
+			background: darken($bg, 10%);
+		}
+		@include query($q520) {
+			width: $w_sp;
+			height: $h_sp;
+		}
+		span {
+			font-size: $fz;
+			@include query($q520) {
+				font-size: $fz_sp;
+			}
+		}
+	}
+
+	button.btn_normal {
+		border: none;
+	}
+}
+// END BUTTON GENERATOR
+
+//example: @include triangle("up", 10px, 8px, #b25c9c);
+@mixin triangle($direction,$width,$height,$color) {
+	@if not index("up""up-right""right""down-right""down""down-left""left""up-left",$direction) {
+		@error "Direction must be `up`, `up-right`, `right`, `down-right`, "+"`down`, `down-left`, `left` or `up-left`.";
+	}
+	@else if not _is-color($color) {
+		@error "`#{$color}` is not a valid color for the `$color` argument in "+"the `triangle` mixin.";
+	}
+	@else {
+		border-style: solid;
+		height: 0;
+		width: 0;
+		@if $direction=="up" {
+			border-color: transparent transparent $color;
+			border-width: 0 ($width / 2) $height;
+		}
+		@else if $direction=="up-right" {
+			border-color: transparent $color transparent transparent;
+			border-width: 0 $width $width 0;
+		}
+		@else if $direction=="right" {
+			border-color: transparent transparent transparent $color;
+			border-width: ($height / 2) 0 ($height / 2) $width;
+		}
+		@else if $direction=="down-right" {
+			border-color: transparent transparent $color;
+			border-width: 0 0 $width $width;
+		}
+		@else if $direction=="down" {
+			border-color: $color transparent transparent;
+			border-width: $height ($width / 2) 0;
+		}
+		@else if $direction=="down-left" {
+			border-color: transparent transparent transparent $color;
+			border-width: $width 0 0 $width;
+		}
+		@else if $direction=="left" {
+			border-color: transparent $color transparent transparent;
+			border-width: ($height / 2) $width ($height / 2) 0;
+		}
+		@else if $direction=="up-left" {
+			border-color: $color transparent transparent;
+			border-width: $width $width 0 0;
+		}
+	}
+}
+
+
+//OTHER
+@mixin safariremove {
+	-webkit-appearance: none;
+}
+
+@mixin dontbreak {
+	/* These are technically the same, but use both */
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	-ms-word-break: break-all;
+	/* This is the dangerous one in WebKit, as it breaks things wherever */
+	word-break: break-all;
+	/* Instead use this non-standard one: */
+	word-break: break-word;
+
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}
+
+@mixin clearfix {
+	clear: both;
+	content: "";
+	display: block;
+}
+
+@function color($value, $valuechange:0) {
+	@if ($valuechange==0) {
+		@return $value;
+	}
+
+	@else if($valuechange > 0) {
+		@return lighten($value, $valuechange);
+	}
+
+	@else {
+		@return darken($value, -$valuechange);
+	}
+}
+
+@mixin underline {
+	text-decoration: underline;
+}
+
+@mixin break {
+	word-break: break-all;
+  word-wrap: break-word;
+}
+
+// END OTHER
+
+
+// MultiLine ELLIPSIS
+@mixin ellipsis($lineHeight: 1.2em, $lineCount: 1, $bg-color: #f7f7f7) {
+	overflow: hidden;
+	position: relative;
+	line-height: $lineHeight;
+	max-height: $lineHeight * $lineCount;
+	text-align: justify;
+	margin-right: 0;
+	padding-right: 0;
+	// &:before {
+	// 	content: '...';
+	// 	position: absolute;
+	// 	right: -5px;
+	// 	bottom: -2px;
+	// 	width: 35px;
+	// 	background: $bg-color;
+	// }
+	&:after {
+		content: '...';
+		position: relative;
+		display: inline-block;
+		right: 0;
+		width: 1em;
+		height: 1em;
+		margin-top: 0.2em;
+		background: $bg-color;
+	}
+}
+// END ELLIPSIS
+
+// ICONARR LEFT RIGHT
+@mixin iconarrow($cl: #000, $w: 1px) {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: transparent;
+  border-top: $w solid $cl;
+  border-right: $w solid $cl;
+  transition: all .3s;
+}
+
+@mixin arrleft($cl: #000, $size:8px, $w: 1px) {
+	position: relative;
+	&::before{
+		content: '';
+		background: transparent;
+		position: absolute;
+		width: $size;
+		height: $size;
+		left: 0;
+		top: 50%;
+		margin-top: -6px;
+		transform: rotate(45deg);
+		border-top: $w solid $cl;
+		border-right: $w solid $cl;
+		transition: all .3s;
+	}
+}
+
+@mixin arrright($cl: #000, $size: 8px, $w: 1px) {
+	position: relative;
+	&::before{
+		content: '';
+		background: transparent;
+		position: absolute;
+		width: $size;
+		height: $size;
+		right: 0;
+		top: 50%;
+		margin-top: -6px;
+		transform: rotate(45deg);
+		border-top: $w solid $cl;
+		border-right: $w solid $cl;
+		transition: all .3s;
+	}
+}
+
+// BG GRADIENT
+@mixin bggradient  {
+	position: relative;
+  // background-image: -webkit-linear-gradient( -3deg, rgb(248,155,0) 0%, rgb(248,198,0) 100%);
+	// background-image: -moz-linear-gradient( -3deg, rgb(248,155,0) 0%, rgb(248,198,0) 100%);
+	// background-image: -ms-linear-gradient( -3deg, rgb(248,155,0) 0%, rgb(248,198,0) 100%);
+	z-index: 0;
+  overflow: hidden;
+	&::after{
+		position: absolute;
+		content: '';
+		background-color: $cl;
+		width: 0;
+		height: 60px;
+		right: 0;
+		top: 0;
+		transition: all 400ms cubic-bezier(0.19, 1, 0.22, 1);
+		-webkit-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+		-moz-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+		-ms-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+		-o-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+		transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+	}
+	@include minquery(960){
+		&:hover::after, &:focus::after, &:active::after{
+			right: inherit;
+			left: 0;
+			width: 100%;
+			z-index: 0;
+		}
+	}
+}
+
+@mixin cubic {
+	transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
+	-webkit-transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+	-moz-transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+	-ms-transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+	-o-transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+	transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@mixin bg($imagename, $level: 1) {
+	@if $level == 1 {
+		background-image:url('#{$dir}#{$imagename}');
+	} @else {
+		background-image:url('#{$dir2}#{$imagename}');
+	}
+	background-size: cover;
+	background-position: center; 
+	background-repeat: no-repeat;
+}
+
+@mixin bgp($dirpage, $imagename, $pattern:false) {
+	@if($pattern){
+		background-image:url('../#{$dirpage}/images/#{$imagename}');
+		background-size: contain;
+		background-position: center; 
+		background-repeat: repeat;
+	}@else{
+		background-image:url('../#{$dirpage}/images/#{$imagename}');
+		background-size: cover;
+		background-position: center; 
+		background-repeat: no-repeat;
+	}
+}
+
+@mixin plusicon($color) {
+	&::before, &::after{
+		position: absolute;
+		content: "";
+		background: $color;
+		right: 20px;
+		display: block;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		transition: all 0.3s;
+	}
+	&::before{
+		width: 14px;
+		height: 2px;
+		right: 1px;
+	}
+	&::after{
+		height: 14px;
+		width: 2px;
+		right: 7px;
+	}
+	&.open{
+		&::after{
+			transform: rotate(90deg);
+		}
+	}
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  @each $property in $properties {
+    #{$property}: $min-value;
+  }
+
+  @media screen and (min-width: $min-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+    }
+  }
+
+  @media screen and (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: $max-value;
+    }
+  }
+}
+// Usage:
+// ======
+// /* Single property */
+// html {
+//   @include fluid-type(font-size, 320px, 1366px, 14px, 18px);
+// }
+
+// /* Multiple properties with same values */
+// h1 {
+//   @include fluid-type(padding-bottom padding-top, 20em, 70em, 2em, 4em);
+// }
