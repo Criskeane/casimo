@@ -59,6 +59,7 @@ button{
     border-radius: 45px;
     z-index: 0;
     overflow: hidden;
+    max-height: 84px;
     &::after{
       position: absolute;
       content: '';
@@ -95,6 +96,33 @@ button{
       }
       @include query($sp) {
       }
+    }
+  }
+  &.bgorg{
+    a{
+      background: #F17223;
+    }
+  }
+  &.bggray{
+    a{
+      background: #DEDEDE;
+      color: #4D4D4D;
+      span::before{
+        border-color: #4D4D4D;
+      }
+    }
+    &:hover a span::before{
+      border-color: #fff;
+    }
+  }
+  &.bgblue{
+    a{
+      background: #0028AF;
+    }
+  }
+  @include minquery(960){
+    &:hover a{
+      color: #fff;
     }
   }
   &.btnback{

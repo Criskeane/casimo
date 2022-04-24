@@ -1,26 +1,26 @@
 @charset "utf-8";
 
 @mixin query($size) {
-    @media all and (max-width: $size + px) {
+    @media all and (max-width: $size+px) {
         @content;
     }
 }
 
 @mixin minquery($size) {
-    @media all and (min-width: $size + px) {
+    @media all and (min-width: $size+px) {
         @content;
     }
 }
 
 @mixin minmaxquery($size, $size1) {
-    @media only screen and (min-width: $size + px) and (max-width: $size1 + px) {
+    @media only screen and (min-width: $size+px) and (max-width: $size1+px) {
         @content;
     }
 }
 
 $cl: #000;
 $clp: #F24350;
-$cltext: #333;
+$cltext: #171717;
 $cltitle: #171717;
 $cltitlesub: #333;
 $bg: #F8F5EF;

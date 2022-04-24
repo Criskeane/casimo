@@ -29,10 +29,10 @@
     }
   }
 
-  &_list {
+  &__list {
     &--item {
       margin-bottom: 6px;
-
+      @include shadow;
       &:last-child {
         margin-bottom: 0;
       }
@@ -103,8 +103,7 @@
   }
 
   .recommend {
-    .sidebar_list--item {
-
+    .sidebar__list--item {
       &:first-child,
       &:nth-child(2) {
         @include arrright($cl: #000, $size: 8px, $w: 1px);
@@ -125,7 +124,7 @@
 
   .payment,
   .game {
-    .sidebar_list--item {
+    .sidebar__list--item {
       @include arrright($cl: #000, $size: 8px, $w: 1px);
 
       &::before {
@@ -142,7 +141,7 @@
   }
 
   .pickup {
-    .sidebar_list--item {
+    .sidebar__list--item {
       margin-bottom: 25px;
 
       &:last-child {
@@ -236,12 +235,34 @@
 
   .bonus {
     .boxshadow {
+      @include shadow;
       padding: 27px;
       padding-bottom: 35px;
     }
 
     .btnpage {
       margin-top: 55px;
+    }
+    .slick-prev {
+      left: -16px
+    }    
+    .slick-prev:before {
+      content: "";
+      background: url(../images/arrslick.png) no-repeat center center;
+      background-size: 10px;
+      left: 0;
+      top: 0;
+    }
+    .slick-next {
+      right: -16px
+    }
+    .slick-next:before {
+      content: "";
+      background: url(../images/arrslick.png) no-repeat center center;
+      transform: rotate(180deg);
+      background-size: 10px;
+      left: 0;
+      top: 0;
     }
   }
 

@@ -684,3 +684,7 @@
 // h1 {
 //   @include fluid-type(padding-bottom padding-top, 20em, 70em, 2em, 4em);
 // }
+
+@mixin shadow {
+  box-shadow: 3px 3px 12px rgba($color: #000, $alpha: 0.15);
+}

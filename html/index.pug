@@ -23,7 +23,7 @@ block content
             img(src="./images/ranking1.jpg", alt="")
           .txt
             .rate
-              .rate--icon
+              .rate--icon.rate--icon1
                 img(src="./images/ranknum1.png", alt="")
               .rate--content
                 span.rate--star
@@ -39,7 +39,7 @@ block content
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                   </span>
-                span.rate--num 4.6
+                span.rate--num.fontroboto 4.6
             h3 ベラジョンカジノ
             p 日本人気No.1のオンラインカジノといえばベラジョンカジノ。オンラインカジノファン・初心者共に楽しめるサービスが豊富で、圧倒的な人気を誇っています。
             .btnpage.bgorg
@@ -53,8 +53,8 @@ block content
             img(src="./images/ranking2.jpg", alt="")
           .txt
             .rate
-              .rate--icon
-                img(src="./images/ranknum1.png", alt="")
+              .rate--icon.rate--icon2
+                img(src="./images/ranknum2.png", alt="")
               .rate--content
                 span.rate--star
                   <i class="fa fa-star"></i>
@@ -69,7 +69,7 @@ block content
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                   </span>
-                span.rate--num 4
+                span.rate--num.fontroboto 4
             h3 ミスティーノカジノ
             p 日本人気No.1のオンラインカジノといえばベラジョンカジノ。オンラインカジノファン・初心者共に楽しめるサービスが豊富で、圧倒的な人気を誇っています。
             .btnpage.bgorg
@@ -83,8 +83,8 @@ block content
             img(src="./images/ranking3.jpg", alt="")
           .txt
             .rate
-              .rate--icon
-                img(src="./images/ranknum1.png", alt="")
+              .rate--icon.rate--icon3
+                img(src="./images/ranknum3.png", alt="")
               .rate--content
                 span.rate--star
                   <i class="fa fa-star"></i>
@@ -99,7 +99,7 @@ block content
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                   </span>
-                span.rate--num 3
+                span.rate--num.fontroboto 3
             h3 カジノシークレット
             p 日本人気No.1のオンラインカジノといえばベラジョンカジノ。オンラインカジノファン・初心者共に楽しめるサービスが豊富で、圧倒的な人気を誇っています。
             .btnpage.bgorg
@@ -114,7 +114,7 @@ block content
           .txt
             .rate
               .rate--icon
-                img(src="./images/ranknum1.png", alt="")
+                span.fontroboto 4
               .rate--content
                 span.rate--star
                   <i class="fa fa-star"></i>
@@ -129,7 +129,7 @@ block content
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                   </span>
-                span.rate--num 2
+                span.rate--num.fontroboto 2
             h3 エルドアカジノ
             p 日本人気No.1のオンラインカジノといえばベラジョンカジノ。オンラインカジノファン・初心者共に楽しめるサービスが豊富で、圧倒的な人気を誇っています。
             .btnpage.bgorg
@@ -147,17 +147,20 @@ block content
         span 限定ボーナス
       ul.block__bonus--list
         li.block__bonus--item
-          img(src="./images/bonus1.jpg", alt="")
+          img(src="./images/bonus1.jpg", alt="限定ボーナス")
         li.block__bonus--item
-          img(src="./images/bonus2.jpg", alt="")
+          img(src="./images/bonus2.jpg", alt="限定ボーナス")
         li.block__bonus--item
-          img(src="./images/bonus3.jpg", alt="")
+          img(src="./images/bonus3.jpg", alt="限定ボーナス")
         li.block__bonus--item
-          img(src="./images/bonus4.jpg", alt="")
+          img(src="./images/bonus4.jpg", alt="限定ボーナス")
         li.block__bonus--item
-          img(src="./images/bonus5.jpg", alt="")
+          img(src="./images/bonus5.jpg", alt="限定ボーナス")
         li.block__bonus--item
-          img(src="./images/bonus6.jpg", alt="")
+          img(src="./images/bonus1.jpg", alt="限定ボーナス")
+      .btnpage
+        a(href="")
+          span 限定ボーナス一覧はこちら
   section.block.block__search
     .container
       h2.fontspec.block--tit SEARCH
@@ -187,23 +190,284 @@ block content
           a(href="")
             img(src="./images/ico-search6.svg", alt="仮想通貨")
             span 仮想通貨
-  section.block.block__bonus
+  section.block.block__peyment
     .container
       h2.fontspec.block--tit PAYMENT
         span オンラインカジノで使える決済方法
-  section.block.block__cate
+      ul.block__peyment--list
+        li.block__peyment--item
+          .img
+            img(src="./images/imgpayment1.jpg", alt="スティックペイ")
+          .txt
+            h4 スティックペイ
+            p 日本人気No.1のオンラインカジノといえばベラジョンカジノ。オンラインカジノファン・初心者共に楽しめるサービスが豊富で、圧倒的な人気を誇っています。
+            .btnpage.bggray
+              a(href="")
+                span スティックペイについて<br>詳しく見る
+        li.block__peyment--item
+          .img
+            img(src="./images/imgpayment2.jpg", alt="エコペイズ")
+          .txt
+            h4 エコペイズ
+            p 日本人気No.1のオンラインカジノといえばベラジョンカジノ。オンラインカジノファン・初心者共に楽しめるサービスが豊富で、圧倒的な人気を誇っています。
+            .btnpage.bggray
+              a(href="")
+                span エコペイズについて<br>詳しく見る
+        li.block__peyment--item
+          .img
+            img(src="./images/imgpayment3.jpg", alt="ヴィーナスポイント")
+          .txt
+            h4 ヴィーナスポイント
+            p 日本人気No.1のオンラインカジノといえばベラジョンカジノ。オンラインカジノファン・初心者共に楽しめるサービスが豊富で、圧倒的な人気を誇っています。
+            .btnpage.bggray
+              a(href="")
+                span ヴィーナスポイントについて<br>詳しく見る
+        li.block__peyment--item
+          .img
+            img(src="./images/imgpayment4.jpg", alt="仮想通貨（ビットコイン）")
+          .txt
+            h4 仮想通貨（ビットコイン）
+            p 日本人気No.1のオンラインカジノといえばベラジョンカジノ。オンラインカジノファン・初心者共に楽しめるサービスが豊富で、圧倒的な人気を誇っています。
+            .btnpage.bggray
+              a(href="")
+                span 仮想通貨（ビットコイン）について<br>詳しく見る
+        li.block__peyment--item
+          .img
+            img(src="./images/imgpayment5.jpg", alt="アイウォレット")
+          .txt
+            h4 アイウォレット
+            p 日本人気No.1のオンラインカジノといえばベラジョンカジノ。オンラインカジノファン・初心者共に楽しめるサービスが豊富で、圧倒的な人気を誇っています。
+            .btnpage.bggray
+              a(href="")
+                span アイウォレットについて<br>詳しく見る
+        li.block__peyment--item
+          .img
+            img(src="./images/imgpayment6.jpg", alt="クレジットカード")
+          .txt
+            h4 クレジットカード
+            p 日本人気No.1のオンラインカジノといえばベラジョンカジノ。オンラインカジノファン・初心者共に楽しめるサービスが豊富で、圧倒的な人気を誇っています。
+            .btnpage.bggray
+              a(href="")
+                span クレジットカードについて<br>詳しく見る
+      .btnpage
+        a(href="")
+          span オンラインカジノで使える決済方法<br>（入出金方法）一覧はこちら 
+  section.block.block__article
     .container.flexbox
       .block__popular
         h2.fontspec.block--tit POPULAR
           span 人気記事一覧
+        ul.listarticle
+          li.listarticle--item
+            .row
+              .img
+                a(href="")
+                  img(src="../images/imgpopular.jpg", alt="")
+              .text
+                a(href="").tit 【2021年最新】オンラインカジノおすすめランキング…
+                span.txt 2016年には「信頼性・安全性」の欠落が主な要因で日本で逮捕者が出てしまいました。
+                dl.row
+                  dt.ico-cal
+                    span 公開日: 2022年00月00日
+                  dt.ico-time
+                    span 更新日: 2022年00月00日
+          li.listarticle--item
+            .row
+              .img
+                a(href="")
+                  img(src="../images/imgpopular2.jpg", alt="")
+              .text
+                a(href="").tit 【2021年最新】オンラインカジノおすすめランキング…
+                span.txt 2016年には「信頼性・安全性」の欠落が主な要因で日本で逮捕者が出てしまいました。
+                dl.row
+                  dt.ico-cal
+                    span 公開日: 2022年00月00日
+                  dt.ico-time
+                    span 更新日: 2022年00月00日
+          - for (i=1; i<4; i++)
+            li.listarticle--item
+              .row
+                .img
+                  a(href="")
+                    img(src="../images/article2.png", alt="")
+                .text
+                  a(href="").tit 【2021年最新】オンラインカジノおすすめランキング…
+                  span.txt 2016年には「信頼性・安全性」の欠落が主な要因で日本で逮捕者が出てしまいました。
+                  dl.row
+                    dt.ico-cal
+                      span 公開日: 2022年00月00日
+                    dt.ico-time
+                      span 更新日: 2022年00月00日
+        .btnpage
+          a(href="")
+            span オンラインカジノ人気記事一覧はこちら
       .block__new
-        h2.fontspec.block--tit POPULAR
+        h2.fontspec.block--tit NEW
           span 新着記事一覧
-  section.block.block_games
+        ul.listarticle
+          li.listarticle--item
+            .row
+              .img
+                a(href="")
+                  .lable
+                    span.new NEW
+                  img(src="../images/imgpopular.jpg", alt="")
+              .text
+                a(href="").tit 【2021年最新】オンラインカジノおすすめランキング…
+                span.txt 2016年には「信頼性・安全性」の欠落が主な要因で日本で逮捕者が出てしまいました。
+                dl.row
+                  dt.ico-cal
+                    span 公開日: 2022年00月00日
+                  dt.ico-time
+                    span 更新日: 2022年00月00日
+          li.listarticle--item
+            .row
+              .img
+                a(href="")
+                  .lable
+                    span.new NEW
+                  img(src="../images/imgpopular2.jpg", alt="")
+              .text
+                a(href="").tit 【2021年最新】オンラインカジノおすすめランキング…
+                span.txt 2016年には「信頼性・安全性」の欠落が主な要因で日本で逮捕者が出てしまいました。
+                dl.row
+                  dt.ico-cal
+                    span 公開日: 2022年00月00日
+                  dt.ico-time
+                    span 更新日: 2022年00月00日
+          - for (i=1; i<4; i++)
+            li.listarticle--item
+              .row
+                .img
+                  a(href="")
+                    .lable
+                      span.new NEW
+                    img(src="../images/article2.png", alt="")
+                .text
+                  a(href="").tit 【2021年最新】オンラインカジノおすすめランキング…
+                  span.txt 2016年には「信頼性・安全性」の欠落が主な要因で日本で逮捕者が出てしまいました。
+                  dl.row
+                    dt.ico-cal
+                      span 公開日: 2022年00月00日
+                    dt.ico-time
+                      span 更新日: 2022年00月00日
+        .btnpage
+          a(href="")
+            span オンラインカジノ人気記事一覧はこちら
+  section.block.block__games
     .container
       h2.fontspec.block--tit GAMES
         span オンラインカジノで遊べるカジノゲーム
-  section.block.block_games
+      ul.block__games--list
+        li.block__games--item
+          .img.js-square
+            img(src="./images/ico-game1.png", alt="バカラ")
+          span.txt バカラ
+        li.block__games--item
+          .img.js-square
+            img(src="./images/ico-game2.png", alt="ブラックジャック")
+          span.txt ブラックジャック
+        li.block__games--item
+          .img.js-square
+            img(src="./images/ico-game3.png", alt="スロット")
+          span.txt スロット
+        li.block__games--item
+          .img.js-square
+            img(src="./images/ico-game4.png", alt="ポーカー")
+          span.txt ポーカー
+        li.block__games--item
+          .img.js-square
+            img(src="./images/ico-game5.png", alt="ルーレット")
+          span.txt ルーレット
+        li.block__games--item
+          .img.js-square
+            img(src="./images/ico-game6.png", alt="シックボー")
+          span.txt シックボー
+        li.block__games--item
+          .img.js-square
+            img(src="./images/ico-game7.png", alt="スポーツベット")
+          span.txt スポーツベット
+      .btnpage
+        a(href="")
+          span オンラインカジノで遊べるカジノゲーム一覧はこちら
+  section.block.block__about
     .container
       h2.fontspec.block--tit ABOUT
         span Casimoについて
+      .block__about--info
+        img(src="./images/imgabout.jpg", alt="Casimoについて")
+        .text
+          h4.text_center 日本最大級のオンラインカジノメディア
+          p 今回はオンラインカジノを始める前に準備した方がいいものをまとめましたので、ご紹介します。オンラインカジノは、スマホやPCでも気軽に遊ぶことができますが、いくつか準備して欲しいものがあります。この機会にオンラインカジノを始めようとしても、準備不足でなかなかゲームがプレイできないとやる気が削がれてしまうので必要なものは先に揃えておきましょう。オンラインカジノは海外で運営されているので、始めるにあたって、不安に感じることも少ないくないはずです。そんな方の不安を少しでも取り除ける様、準備しておくものや登録方法などの情報をご紹介してるので是非最後までご覧ください。今回はオンラインカジノを始める前に準備した方がいいものをまとめましたので、ご紹介します。オンラインカジノは、スマホやPCでも気軽に遊ぶことができますが、いくつか準備して欲しいものがあります。この機会にオンライ
+          h5.titline 国内初！GPWA認定オンラインカジノ位比較サイト
+          .flexbox
+            .img
+              img(src="./images/gpwa.jpg", alt="国内初！GPWA認定オンラインカジノ位比較サイト")
+            .txt
+              p 「オンラインカジノ比較ナビ®」は、GPWA（ギャンブリングポータルウェブマスター協会）から日本国内におけるオンラインカジノのポータルサイトとして初めて情報の公正さが認められました。当サイトでは実際の経験とオンラインカジノ側より提供された最新の情報を元に随時更新を行い、常に公正な情報をお届けできるよう心がけています。
+              .btnpage.bgblue
+                a(href="")
+                  span GPWAの認定と審査基準について詳しくはこちら
+        .btnpage
+          a(href="")
+            span Casimo編集部の詳細はこちら
+      .block__about--affiliated
+        h4.text_center 提携オンラインカジノ
+        .block__about--affiliated--slider
+          .block__about--affiliated--item
+            .img
+              img(src="./images/casimo-onl1.jpg", alt="")
+            .txt
+              h6 テキストが入ります。
+              p テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+          .block__about--affiliated--item
+            .img
+              img(src="./images/casimo-onl2.jpg", alt="")
+            .txt
+              h6 テキストが入ります。
+              p テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+          .block__about--affiliated--item
+            .img
+              img(src="./images/casimo-onl3.jpg", alt="")
+            .txt
+              h6 テキストが入ります。
+              p テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+          .block__about--affiliated--item
+            .img
+              img(src="./images/casimo-onl4.jpg", alt="")
+            .txt
+              h6 テキストが入ります。
+              p テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+          .block__about--affiliated--item
+            .img
+              img(src="./images/casimo-onl5.jpg", alt="")
+            .txt
+              h6 テキストが入ります。
+              p テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+          .block__about--affiliated--item
+            .img
+              img(src="./images/casimo-onl6.jpg", alt="")
+            .txt
+              h6 テキストが入ります。
+              p テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+          .block__about--affiliated--item
+            .img
+              img(src="./images/casimo-onl7.jpg", alt="")
+            .txt
+              h6 テキストが入ります。
+              p テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+      .block__about--media
+        h4.text_center 運営メディアサイト
+        .flexbox
+          .block__about--media--item
+            a(href="")
+              img(src="./images/mediasite1.jpg", alt="")
+              span セカカジ〜世界中のカジノホテル情報をご紹介
+          .block__about--media--item
+            a(href="")
+              img(src="./images/mediasite2.jpg", alt="")
+              span セカカジ〜世界中のカジノホテル情報をご紹介
+      .block__about--twitter
+        h4.text_center 公式Twitter
+        .iframe
+          img(src="./images/twitter.jpg", alt="")

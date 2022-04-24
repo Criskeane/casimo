@@ -10,53 +10,53 @@ mixin sidebar()
     .sidebox.recommend
       h2.fontspec.sidetit RECOMMEND
         span おすすめオンラインカジノ
-      ul.sidebar_list
-        li.boxshadow.sidebar_list--item
+      ul.sidebar__list
+        li.sidebar__list--item
           a(href="")
             .img
               img(src="../images/imgrec1.png", alt="")
             span.txt ベラジョンカジノ
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             .img
               img(src="../images/imgrec2.png", alt="")
             span.txt ミスティーノカジノ
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             .img
               img(src="../images/imgrec3.png", alt="")
             span.txt カジノシークレット
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             .img
               img(src="../images/imgrec4.png", alt="")
             span.txt インターカジノ
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             .img
               img(src="../images/imgrec5.png", alt="")
             span.txt ビットカジノ
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             .img
               img(src="../images/imgrec6.png", alt="")
             span.txt ラッキーニッキーカジノ
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             .img
               img(src="../images/imgrec7.png", alt="")
             span.txt カジ旅
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             .img
               img(src="../images/imgrec8.png", alt="")
             span.txt エンパイアカジノ
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             .img
               img(src="../images/imgrec9.png", alt="")
             span.txt エルドアカジノ
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             .img
               img(src="../images/imgrec10.png", alt="")
@@ -74,7 +74,7 @@ mixin sidebar()
               img(src="../images/imgbonus.png", alt="") 
           .slideritem
             a(href="").img
-              img(src="../images/imgbonus.png", alt="") 
+              img(src="../images/imgbonus2.png", alt="") 
           .slideritem
             a(href="").img
               img(src="../images/imgbonus.png", alt="") 
@@ -87,14 +87,14 @@ mixin sidebar()
     .sidebox.payment
       h2.fontspec.sidetit PAYMENT
         span オンラインカジノで使える決済方法
-      ul.sidebar_list
-        li.boxshadow.sidebar_list--item
+      ul.sidebar__list
+        li.sidebar__list--item
           a(href="")
             img(src="../images/imgpay1.png", alt="")
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             img(src="../images/imgpay2.png", alt="")
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             img(src="../images/imgpay3.png", alt="")
       .btnpage
@@ -103,18 +103,18 @@ mixin sidebar()
     .sidebox.game
       h2.fontspec.sidetit GAMES
         span オンラインカジノで遊べるカジノゲーム
-      ul.sidebar_list
-        li.boxshadow.sidebar_list--item
+      ul.sidebar__list
+        li.sidebar__list--item
           a(href="")
             .img 
               img(src="../images/icongame.png", alt="")
             span.txt バカラ
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             .img 
               img(src="../images/icongame.png", alt="")
             span.txt ルーレット
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="")
             .img 
               img(src="../images/icongame.png", alt="")
@@ -128,23 +128,23 @@ mixin sidebar()
       .boxshadow
         img(src="../images/twitter2.png", alt="")
     .sidebox.pickup
-      ul.sidebar_list
-        li.boxshadow.sidebar_list--item
+      ul.sidebar__list
+        li.sidebar__list--item
           a(href="" target="_Blank")
             img(src="../images/brn1.jpg", alt="")
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="" target="_Blank")
             img(src="../images/dummy2.png", alt="")
-        li.boxshadow.sidebar_list--item
+        li.sidebar__list--item
           a(href="" target="_Blank")
             img(src="../images/dummy2.png", alt="")
-        //- li.boxshadow.sidebar_list--item
+        //- li.sidebar__list--item
         //-   a(href="" target="_Blank")
         //-     img(src="../images/brn2.jpg", alt="")
-        //- li.boxshadow.sidebar_list--item
+        //- li.sidebar__list--item
         //-   a(href="" target="_Blank")
         //-     img(src="../images/brn3.jpg", alt="")
-        //- li.boxshadow.sidebar_list--item
+        //- li.sidebar__list--item
         //-   a(href="" target="_Blank")
         //-     img(src="../images/brn4.jpg", alt="")
     .sidebox.popular
@@ -184,11 +184,25 @@ mixin sidebar()
     .sidebox.pickup
       h2.fontspec.sidetit MEDIA
         span 当社運営メディア
-      ul.sidebar_list
-        li.sidebar_list--item
+      ul.sidebar__list
+        li.sidebar__list--item
           a(href="" target="_Blank")
             img(src="../images/imgmedia.jpg", alt="")
-        li.sidebar_list--item
+        li.sidebar__list--item
           a(href="" target="_Blank")
             img(src="../images/imgmedia.jpg", alt="")
   
+mixin rate
+  span.rate--star
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <span class="rate--percent" style="width:90%">
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+    </span>
