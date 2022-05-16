@@ -509,15 +509,20 @@
 // END ELLIPSIS
 
 // ICONARR LEFT RIGHT
-@mixin iconarrow($cl: #000, $w: 1px) {
+@mixin iconarrow($cl: #000, $size: 12px, $w: 1px, $right: 20px) {
   position: absolute;
+	content: '';
   top: 50%;
-  width: 12px;
-  height: 12px;
+	margin-top: -6px;
+	right: $right;
+  width: $size;
+	height: $size;
   background: transparent;
   border-top: $w solid $cl;
   border-right: $w solid $cl;
   transition: all .3s;
+	transform: rotate(45deg);
+	z-index: 9;
 }
 
 @mixin arrleft($cl: #000, $size:8px, $w: 1px) {

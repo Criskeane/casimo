@@ -2,18 +2,20 @@
 @import "../scss/components/mixins";
 
 .header{
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  background: url(../images/linehd.png) no-repeat left top;
-  border: 0;
-  &_nav{
-    background: none;
+  @include minquery($pc){
     position: absolute;
-    top: 649px;
+    left: 0;
+    top: 0;
     width: 100%;
-    margin-top: 0;
+    background: url(../images/linehd.png) no-repeat left top;
+    border: 0;
+    &_nav{
+      background: none;
+      position: absolute;
+      top: 649px;
+      width: 100%;
+      margin-top: 0;
+    }
   }
 }
 
@@ -21,22 +23,56 @@
   max-height: 720px;
   background: url(../images/banner.jpg) no-repeat top center;
   background-size: cover;
+  @include query($sp){
+    position: relative;
+    height: auto;
+    max-height: inherit;
+    background: url(../images/banner_sp.jpg) no-repeat left top;
+    background-size: 100%;
+    min-height: 520px;
+    margin-top: 59px;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 240px; 
+      background: rgb(0,0,0);
+      background: linear-gradient(0deg, rgba($color: #000, $alpha: 1) 0%, rgba($color: #3F3F3F, $alpha: 0.71) 50%, rgba($color: #808080, $alpha: 0) 100%);
+    }
+  }
   .container{
     height: 720px;
-    @include flexbox(flex-start, center)
+    @include flexbox(flex-start, center);
+    @include query($sp){
+      height: 520px;
+      max-height: inherit;
+      align-items: flex-end;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 45px;
+    }
   }
   &-tit{
     font-size: 60px;
     color: #fff;
     line-height: 1.4;
+    @include query($sp){
+      font-size: 40px;
+      line-height: 1.2;
+    }
   }
 }
 
 .block{
   padding: 90px 0 100px;
+  @include query($sp){
+    padding: 50px 0;
+  }
   &--tit{
     font-size: 80px;
-    font-weight: 700;
+    font-weight: 900;
     text-align: center;
     margin-bottom: 60px;
     line-height: 1;
@@ -48,7 +84,14 @@
       margin-top: 10px;
     }
     @include query($tab) {
-      font-size: 3.5vw;
+      // font-size: 3.5vw;
+    }
+    @include query($sp) {
+      font-size: 40px;
+      margin-bottom: 40px; 
+      span{
+        font-size: 16px;
+      }
     }
   }
 }
@@ -62,6 +105,9 @@
     width: 70px;
     height: 70px;
     z-index: 99;
+    @include query($sp){
+      display: none !important;
+    }
   }    
   .slick-prev:before {
     content: "";
@@ -77,6 +123,9 @@
     width: 70px;
     height: 70px;
     z-index: 99;
+    @include query($sp){
+      display: none !important;
+    }
   }
   .slick-next:before {
     content: "";
@@ -92,111 +141,74 @@
 .block__ranking{
   background: url(../images/bgranking.jpg) no-repeat top center;
   background-size: cover;
+  @include query($sp){
+    padding-top: 100px;
+    background: url(../images/bgranking_sp.jpg) no-repeat top center;
+    background-size: cover;
+  }
   &--slider{
     .slick-slide{
       margin-right: 40px;
       width: 405px;
+      @include query($sp){
+        width: 280px;
+        margin-right: 15px;
+      }
     }
     @include slick;
   }
   &--item{
     @include shadow;
     background: #fff;
-    .img{
-      
-    }
     .txt{
       padding: 40px 20px;
+      @include query($sp){
+        padding: 16px 8px;
+      }
     }
     h3{
       font-size: 30px;
       margin: 20px 0 15px;
       line-height: 1.2;
+      @include query($sp){
+        font-size: 16px;
+        margin: 12px 10px 4px;
+      }
     }
     p{
       font-size: 15px;
       max-height: 81px;
+      @include query($sp){
+        padding: 0 10px;
+        max-height: 134px;
+      }
     }
     .btnpage{
       margin-top: 15px;
+      @include query($sp){
+        margin-top: 8px;
+      }
       a{
-        max-height: 60px;
-        span{
-          font-size: 16px;
+        font-size: 16px;
+        height: 60px;
+        @include query($sp) {
+          font-size: 12px;
+          height: 40px;
+          &::before {
+            right: 20px;
+            width: 10px;
+            height: 10px;
+            margin-top: -5px;
+          }
         }
       }
       &.bgorg{
         margin-top: 30px;
+        @include query($sp) {
+          margin-top: 8px;
+        }
       }
     }
-  }
-}
-
-.rate{
-  @include flexbox(flex-start, center);
-  &--icon{
-    flex: 0 0 80px;
-    background: url(../images/txtranking.png) no-repeat top 10px center;
-    background-size: 58px;
-    min-height: 80px;
-    span{
-      font-weight: 900;
-      font-size: 40px;
-      text-align: center;
-      display: block;
-      padding-top: 30px;
-      line-height: 1;
-      position: relative;
-      left: -2px;
-    }
-  }
-  &--content{
-    flex: 1 1 auto;
-    padding-left: 20px;
-    @include flexbox(flex-start, center);
-    flex-wrap: wrap;
-  }
-  &--star{
-    line-height: 1;
-    position: relative;
-    white-space: nowrap;
-    display: inline-block;
-    max-width: 165px;
-    .fa-star{
-      font-family: fontAwesome;
-      font-weight: 400;
-      font-style: normal;
-      display: inline-block;
-      margin: .1rem;
-      margin-left: 0.1rem;
-      color: #c1c1c1;
-      text-rendering: auto;
-      font-size: 28px;
-      &:first-child { 
-        margin-left: 0;
-      }
-    }
-  }
-  &--percent{
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
-    overflow: hidden;
-    line-height: 1;
-    .fa-star{
-      color: #F2A30B !important;
-    }
-  }
-  &--num{
-    font-size: 36px;
-    color: #E60F4A;
-    font-weight: 900;
-    line-height: 1;
-    flex: 0 0 100%;
-    margin-top: 5px;
   }
 }
 
@@ -207,6 +219,10 @@
   grid-row-gap: 30px;
   justify-content: center;
   list-style: none;
+  @include query($sp){
+    grid-gap: 15px;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .block__bonus{
@@ -217,14 +233,19 @@
   &--list{
     margin: 60px auto;
     @include gird;
-  }
-  &--item{
+    @include query($sp) {
+      margin: 40px 0 0;
+    }
   }
 }
 
 .block__search{
-  background: url(../images/bgranking.jpg) no-repeat top center;
+  background: url(../images/bgsearch.jpg) no-repeat top center;
   background-size: cover;
+  @include query($sp){
+    background: url(../images/bgsearch_sp.jpg) no-repeat top center;
+    background-size: cover;
+  }
   &--list{
     @include gird;
   }
@@ -274,18 +295,27 @@
       width: 100%;
       z-index: 1;
       @include arrright($cl: #fff, $size: 12px, $w: 2px);
-    }
-    &:hover{
-      img{
-        opacity: 1;
-      }
-      a{
-        &::after {
-          transform: scale(1.3);
+      @include query($sp) {
+        font-size: 18px;
+        margin-left: 40px;
+        &::before {
+          right: 15px;
         }
-        span{
-          &::before {
-            right: -10px;
+      }
+    }
+    @include minquery($pc){
+      &:hover{
+        img{
+          opacity: 1;
+        }
+        a{
+          &::after {
+            transform: scale(1.3);
+          }
+          span{
+            &::before {
+              right: -10px;
+            }
           }
         }
       }
@@ -301,6 +331,9 @@
   &--list{
     margin: 60px auto;
     @include gird;
+    @include query($sp){
+      margin: 40px 0 0;
+    }
   }
   &--item{
     @include shadow;
@@ -315,6 +348,10 @@
       margin-bottom: 20px;
       line-height: 1.2;
       text-align: center; 
+      @include query($sp){
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
     }
     p{
       font-size: 15px;
@@ -323,10 +360,20 @@
       max-width: 90%;
       margin: 0 auto;
       margin-top: 20px;
+      @include query($sp){
+        margin-top: 10px;
+        max-width: 100%;
+      }
       a{
         height: 60px;
-        span{
-          font-size: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 16px;
+        @include query($sp){
+          letter-spacing: -1px;
+          &::before {
+            right: 25px;
+          }
         }
       }
     }
@@ -339,112 +386,135 @@
   .flexbox{
     align-items: flex-start;
   }
-  .btnpage{
-    margin-top: 70px;
+  @include query($sp){
+    background: none;
+    padding: 0;
+  }
+  @include minquery($pc){
+    .btnpage{
+      margin-top: 70px;
+    }
   }
   [class*='block__']{
     flex: 0 0 44%;
     max-width: 575px;
+    @include query($sp){
+      flex: 0 0 calc(100% + 50px);
+      max-width: calc(100% + 50px);
+      margin-left: -25px;
+      padding: 50px 25px;
+      background: url(../images/bgnews_sp.jpg) no-repeat top center;
+      background-size: cover;
+    }
   }
   .listarticle{
     &--item{
-      margin-top: 40px;
-      .img{
-        height: 110px;
-        max-width: 210px;
-        flex: 0 0 36.7%;
-      }
-      .text{
-        padding-right: 0;
-        padding-left: 20px;
-      }
-      .txt{
-        height: 20px;
-        overflow: hidden;
-        margin-bottom: 8px;
-      }
-      dt{
-        &.ico-cal{
-          background: url(../images/ico-cal.svg) no-repeat left center;
-          background-size: 16px;
-          padding-left: 25px;
-        }
-        &.ico-time{
-          background: url(../images/ico-time.svg) no-repeat left center;
-          background-size: 16px;
-          padding-left: 25px;
-        }
-        span{
-          font-size: 12px;
-          color: #000;
-        }
-      }
-      &:first-child,
-      &:nth-child(2) {
-        height: 300px;
-        margin-top: 30px;
-        transition: all .3s;
-        &:hover{
-          opacity: .7;
-          img{
-            opacity: 1;
-          }
-        }
-        .row{
-          position: relative;
-        }
-        .tit{
-          font-size: 25px;
-        }
+      @include minquery($pc){
+        margin-top: 40px;
         .img{
-          width: 100%;
-          flex: 0 0 100%;
-          max-width: inherit;
-          height: auto;
-          a{
-            pointer-events: none;
-          }
+          height: 110px;
+          max-width: 210px;
+          flex: 0 0 36.7%;
         }
         .text{
-          position: absolute;
-          width: 100%;
-          height: auto;
-          padding: 30px 25px;
-          left: 0;
-          bottom: 0;
-          a{
-            
-          }
+          padding-right: 0;
+          padding-left: 20px;
         }
         .txt{
-          font-weight: 600;
-          height: auto;
-          max-height: 48px;
+          height: 20px;
+          overflow: hidden;
+          margin-bottom: 8px;
         }
-        *{
-          color: #fff;
+        &:first-child,
+        &:nth-child(2) {
+          height: 300px;
+          margin-top: 30px;
+          transition: all .3s;
+          &:hover{
+            opacity: .7;
+            img{
+              opacity: 1;
+            }
+          }
+          .row{
+            position: relative;
+          }
+          .tit{
+            font-size: 25px;
+          }
+          .img{
+            width: 100%;
+            flex: 0 0 100%;
+            max-width: inherit;
+            height: auto;
+            a{
+              pointer-events: none;
+            }
+          }
+          .text{
+            position: absolute;
+            width: 100%;
+            height: auto;
+            padding: 30px 25px;
+            left: 0;
+            bottom: 0;
+            a{
+              
+            }
+          }
+          .txt{
+            font-weight: 600;
+            height: auto;
+            max-height: 48px;
+          }
+          *{
+            color: #fff;
+          }
+          dt{
+            &.ico-cal{
+              background: url(../images/ico-cal-white.svg) no-repeat left center;
+              background-size: 22px;
+              padding-left: 33px;
+            }
+            &.ico-time{
+              background: url(../images/ico-time-white.svg) no-repeat left center;
+              background-size: 22px;
+              padding-left: 33px;
+            }
+            span{
+              font-size: 15px;
+            }
+          }
+        }
+        &:first-child { 
+          margin-top: 0;
+        }
+        &:nth-child(2) {
+          margin-bottom: 90px;
         }
         dt{
           &.ico-cal{
-            background: url(../images/ico-cal-white.svg) no-repeat left center;
-            background-size: 22px;
-            padding-left: 33px;
+            background: url(../images/ico-cal.svg) no-repeat left center;
+            background-size: 16px;
+            padding-left: 25px;
           }
           &.ico-time{
-            background: url(../images/ico-time-white.svg) no-repeat left center;
-            background-size: 22px;
-            padding-left: 33px;
+            background: url(../images/ico-time.svg) no-repeat left center;
+            background-size: 16px;
+            padding-left: 25px;
           }
           span{
-            font-size: 15px;
+            font-size: 12px;
+            color: #000;
           }
         }
       }
-      &:first-child { 
-        margin-top: 0;
-      }
-      &:nth-child(2) {
-        margin-bottom: 90px;
+      @include query($sp){
+        display: none !important;
+        &:first-child,
+        &:nth-child(2) {
+          display: block !important;
+        }
       }
     }
   }
@@ -460,30 +530,47 @@
     flex-wrap: wrap;
     max-width: 1100px;
     margin: 0 auto;
+    @include query($sp){
+      justify-content: space-between;
+    }
   }
   &--item{
     flex: 0 0 25%;
     max-width: 245px;
     margin: 0 20px 40px;
-    &:nth-child(1){
-      margin-left: 0;
+    @include minquery($pc){
+      &:nth-child(1){
+        margin-left: 0;
+      }
+      &:nth-child(4){
+        margin-right: 0;
+      }
+      &:nth-child(5),
+      &:nth-child(6),
+      &:nth-child(7){
+        margin-bottom: 0;
+      }
     }
-    &:nth-child(4){
-      margin-right: 0;
-    }
-    &:nth-child(5),
-    &:nth-child(6),
-    &:nth-child(7){
-      margin-bottom: 0;
+    @include query($sp){
+      flex: 0 0 47%;
+      margin: 0;
+      margin-bottom: 25px;
+      &:nth-child(7){
+        margin: 0 auto;
+      }
     }
     .img{
-      border: 1px solid #fff;
       border-radius: 100%;
       @include flexbox(center, center);
       width: 100%;
+      background: url(../images/ellipse.svg) no-repeat center center;
+      background-size: calc(100% - 4px);
       img{
         max-width: 172px;
         width: 72%;
+        @include query($sp){
+          width: 68%;
+        }
       }
     }
     .txt{
@@ -495,10 +582,15 @@
       margin-top: 20px;
       font-weight: bold;
       line-height: 1;
+      @include query($sp){
+        font-size: 16px;
+      }
     }
   }
-  .btnpage{
-    margin-top: 60px;
+  @include minquery($pc){
+    .btnpage{
+      margin-top: 60px;
+    }
   }
 }
 
@@ -506,10 +598,19 @@
   background: url(../images/bgnews.jpg) no-repeat top center;
   background-size: cover;
   padding-bottom: 160px;
+  @include query($sp){
+    background: url(../images/bgnews_sp.jpg) no-repeat top center;
+    background-size: cover;
+    padding-bottom: 50px;
+  }
   h4{
     font-size: 26px;
     line-height: 1.2;
     margin-bottom: 25px;
+    @include query($sp){
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
   }
   &--info{
     max-width: 1100px;
@@ -517,51 +618,91 @@
     .text{
       padding: 50px 45px;
       background: #fff;
+      @include query($sp){
+        padding: 20px 15px;
+      }
     }
     h4{
       margin: 0 0 50px;
+      @include query($sp){
+        margin-bottom: 10px;
+      }
     }
     h5{
       font-size: 22px;
       background: url(../images/linetit.jpg) no-repeat left bottom;
       margin: 20px 0;
       padding-bottom: 15px;
+      @include query($sp){
+        font-size: 20px;
+        padding-bottom: 3px;
+        line-height: 1.2;
+        margin: 10px 0;
+      }
     }
     .flexbox{
       flex-wrap: nowrap;
       align-items: flex-start;
+      @include query($sp){
+        flex-wrap: wrap;
+      }
       .img{
         flex: 0 0 300px;
+        @include query($sp){
+          flex: 0 0 100%;
+          margin-bottom: 10px;
+        }
       }
       .txt{
         flex: 1 1 auto;
         padding-left: 30px;
+        @include query($sp){
+          padding-left: 0;
+        }
       }
       .btnpage.bgblue{
         margin: 0;
         margin-top: 20px;
+        @include query($sp){
+          margin-top: 10px;
+        }
         a{
           border-radius: 10px;
-          max-height: 60px;
-          padding: 19px 0;
-          span{
-            font-size: 16px;
-            text-decoration: underline;
+          height: 60px;
+          font-size: 16px;
+          text-decoration: underline;
+          @include query($sp){
+            &::before {
+              right: 25px;
+            }
           }
         }
       }
     }
-    .btnpage{
-      margin-top: 40px;
+    @include minquery($pc){
+      .btnpage{
+        margin-top: 40px;
+      }
     }
   }
   &--affiliated{
     margin-top: 100px;
-    .slick-list{
-      margin: 0 -34px;
+    @include query($sp){
+      margin-top: 50px;
+    }
+    @include minquery($pc){
+      .slick-list{
+        margin: 0 -34px;
+      }
     }
     .slick-slide {
-      margin: 0 12px;
+      @include minquery($pc){
+        margin: 0 12px;
+      }
+      @include query($tab){
+        width: 240px;
+        margin-right: 15px;
+      }
     }
     &--item{
       height: 100%;
@@ -573,6 +714,9 @@
     h6{
       text-align: center;
       margin-bottom: 15px;
+      @include query($sp){
+        font-size: 18px;
+      }
     }
     p{
       font-size: 14px;
@@ -581,6 +725,9 @@
   }
   &--media{
     margin-top: 100px;
+    @include query($sp){
+      margin-top: 50px;
+    }
     .flexbox{
       align-items: flex-start;
     }
@@ -588,6 +735,11 @@
       max-width: 630px;
       flex: 0 0 49%;
       @include shadow;
+      @include query($sp){
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 15px;
+      }
       span{
         background: #fff;
         display: block;
@@ -600,6 +752,17 @@
         &::before {
           right: 20px;
         }
+        @include query($sp){
+          font-size: 14px;
+          padding: 12px 8px;
+          &::before {
+            right: 8px;
+            width: 10px;
+            height: 10px;
+            margin-top: -5px;
+            border-width: 1px;
+          }
+        }
       }
     }
   }
@@ -608,9 +771,16 @@
     background: #2F2331;
     text-align: center;
     padding: 60px 5vw;
+    @include query($sp){
+      margin-top: 35px;
+      padding: 50px 15px 25px;
+    }
     h4{
       color: #fff;
       margin-bottom: 40px;
+      @include query($sp){
+        margin-bottom: 15px;
+      }
     }
     .iframe{
       margin: 0 auto;

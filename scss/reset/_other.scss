@@ -269,7 +269,7 @@
 }
 .dissp,.breaksp {
     display: block;
-    @include minquery($sp) {
+    @include minquery(640) {
         display: none;
     }
 }

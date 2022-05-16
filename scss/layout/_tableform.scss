@@ -20,9 +20,9 @@
 			color: #000;
 
 			@include query($sp){
-				padding: 15px;
+				padding: 0;
 				border: none;
-				border-bottom: 1px solid $bordercolor;
+				font-size: 16px;
 				&:after {
 					@include clearfix();
 				}
@@ -45,7 +45,8 @@
 			font-weight: bold;
 			border-radius: $b_radius;
 			@include query($sp) {
-				height: 42px;
+				height: 56px;
+				font-size: 16px;
 			}
 			&:focus { 
 				outline: none !important;
@@ -61,7 +62,7 @@
 			padding: 20px;
 			height: 270px;
 			@include query($sp) {
-				height: 150px;
+				height: 200px;
 			}
 		}
 		th {
@@ -70,10 +71,20 @@
 			width: $thper;
 			font-size: $thfontsize;
 			vertical-align: $thvertical;
+			@include query($sp){
+				padding-top: 22px;
+				padding-bottom: 8px;
+			}
 			.required,.nonerequired {
 				display: table;
 				float: right;
 				margin-right: 15px;
+				@include query($sp){
+					float: none;
+					margin-right: 0;
+					margin-left: 5px;
+					display: inline-block;
+				}
 				&:before {
 					content: "必須";
 					font-size: 18px;
@@ -85,7 +96,11 @@
 					line-height: 1;
 					background: $requirebg;
 					@include query($sp){
-						font-size: 11px;
+						font-size: 14px;
+						padding-left: 5px;
+						padding-right: 5px;
+						position: relative;
+						top: -2px;
 					}
 				}
 			}
@@ -106,6 +121,11 @@
 			tr,tbody,th,td {
 				display: block;
 				width: 100%;
+			}
+			tr:first-child{
+				th{
+					padding-top: 0;
+				}
 			}
 		}
 	}

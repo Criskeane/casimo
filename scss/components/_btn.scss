@@ -45,25 +45,30 @@ button{
   margin-top: 50px;
   transition: all .3s;
   @include query($sp) {
-    margin-top: 20px;
+    margin-top: 25px;
     max-width: 360px;
   }
   a,button{
     @include flexbox(center, center);
     text-align: center;
-    padding: 29px 0;
+    padding: 0 40px;
     width: 100%;
-    color: #fff;    
+    height: 83px;
+    color: #fff;
     position: relative;
     background: $clp;
     border-radius: 45px;
     z-index: 0;
     overflow: hidden;
-    max-height: 84px;
+    max-height: 83px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.4;
+    text-decoration: none;
     &::after{
       position: absolute;
       content: '';
-      background-color: $cl;
+      background-color: #0028AF;
       width: 0;
       height: 100%;
       right: 0;
@@ -74,72 +79,95 @@ button{
       -ms-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
       -o-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
       transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+      z-index: -1;
+    }
+    &::before {
+      @include iconarrow($cl: #fff, $size: 12px, $w: 2px, $right: 20px);
     }
     @include minquery(960){
       &:hover::after, &:focus::after, &:active::after{
         right: inherit;
         left: 0;
         width: 100%;
-        z-index: 0;
+        z-index: -1;
       }
     }
-    span{
-      z-index: 2;
-      font-size: 18px;
-      font-weight: bold;
-      @include arrright($cl: #fff, $size: 12px, $w: 2px);
-      display: block;
-      width: 100%;
-      line-height: 1.4;
-      &::before{
-        right: 25px;
-      }
-      @include query($sp) {
+    @include query($sp){
+      font-size: 17px;
+      height: 66px;
+      &::before {
+        right: 40px;
       }
     }
   }
   &.bgorg{
     a{
       background: #F17223;
+      height: 66px;
     }
   }
   &.bggray{
     a{
       background: #DEDEDE;
-      color: #4D4D4D;
-      span::before{
+      color: #4D4D4D !important;
+      height: 66px;
+      &::before {
         border-color: #4D4D4D;
       }
     }
-    &:hover a span::before{
-      border-color: #fff;
+    @include minquery(960){
+      &:hover a::before{
+        border-color: #fff;
+      }
     }
   }
   &.bgblue{
     a{
       background: #0028AF;
+      border-radius: 10px;
     }
   }
-  @include minquery(960){
-    &:hover a{
-      color: #fff;
-    }
-  }
-  &.btnback{
-    // margin-top: 0;
-    // margin-left: 0;
+  &.bgwhite{
+    border-radius: 10px;
     a{
-      span{
-        &::before{
-          right: inherit;
-          left: 35px;
-          transform: rotate(-135deg) !important;
+      border: 3px solid #0028AF;
+      background: #fff;
+      border-radius: 10px;
+      color: #0028AF !important;
+      max-height: inherit;
+      height: auto;
+      &::before {
+        border-color: #0028AF;
+      }
+    }
+    @include minquery(960){
+      &:hover{
+        a{
+          background: #0028AF;
+          color: #fff !important;
+          text-decoration: underline;
+          &::before {
+            border-color: #fff;
+          }
         }
       }
     }
   }
+  @include minquery(960){
+    &:hover a{
+      color: #fff !important;
+    }
+  }
+  &.btnback{
+    a{
+      &::before{
+        right: inherit;
+        left: 35px;
+        transform: rotate(-135deg) !important;
+      }
+    }
+  }
   &.btnnext{
-    // margin-top: 0;
-    // margin-right: 0;
+    
   }
 }

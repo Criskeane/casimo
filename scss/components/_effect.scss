@@ -52,7 +52,11 @@
 .fadeOut{
   @include fadeOut($duration: 0.3s, $delay: 0s, $function: cubic-bezier(0.25, 0.1, 0.25, 1));
 }
-
+@include query($tab) {
+  .header_nav_inside{
+    @include fadeOut($duration: 1s, $delay: 0s, $function: cubic-bezier(0.25, 0.1, 0.25, 1));
+  }
+}
 // .fadeIn{
 //   @include fadeIn($duration: 1s, $delay: 0.3s, $function: cubic-bezier(0.25, 0.1, 0.25, 1));
 // }
@@ -63,9 +67,12 @@
 
 //Menu run in step - Navstate SHOW
 .menu-open{
+  .header_nav_inside{
+    @include fadeIn($duration: 0.3s, $delay: 0s, $function: cubic-bezier(0.25, 0.1, 0.25, 1));
+  }
   .nav-list-item {
     @include query($tab) {
-      @include fadeInLeft($duration: 0.6s,$function: cubic-bezier(0, 0.2, 0.8, 1));
+      @include fadeInRight($duration: 0.6s,$function: cubic-bezier(0, 0.2, 0.8, 1));
     }
     @for $i from 1 through 7 {
       &:nth-child(#{$i}) {

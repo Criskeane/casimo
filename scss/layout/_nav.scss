@@ -5,10 +5,13 @@
 		@include flexbox(space-between, center);
 		background: #fff;
 	}
-	@include query($sp) {
+	@include query($tab) {
 		height: auto;
-		padding: 0 3%;
+		padding: 10vh 20px;
 		overflow: hidden;
+		position: relative;
+		z-index: 9;
+		border-top: 60px solid #000;
 	}
 	&-item {
 		@include minquery($pc){
@@ -53,6 +56,11 @@
 				}
 			}
 		}
+		@include query($tab) {
+			&:first-child { 
+				display: none;
+			}
+		}
 		a {
 			font-size: 14px;
 			font-weight: bold;
@@ -64,9 +72,13 @@
 			text-align: center;
 			background: url(../images/arrdown.svg) no-repeat center bottom 6px;
 			background-size: 11px;
-			@include query($sp) {
+			@include query($tab) {
 				padding: 20px 0;
-				text-align: left;
+				text-align: right;
+				font-size: 20px;
+				color: #fff;
+				background: url(../images/arrmenu.png) no-repeat right center;
+				padding-right: 35px;
 			}
 			@include minquery($pc) {
 				&:hover {

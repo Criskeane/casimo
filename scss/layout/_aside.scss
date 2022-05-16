@@ -7,7 +7,6 @@
     text-align: center;
     margin-bottom: 30px;
     line-height: 1;
-
     span {
       font-weight: bold;
       text-align: center;
@@ -15,15 +14,23 @@
       font-size: 17px;
       margin-top: 10px;
     }
-
     @include query($tab) {
       font-size: 3.5vw;
+    }
+    @include query($sp) {
+      font-size: 40px;
+      span{
+        font-size: 16px;
+      }
     }
   }
 
   .sidebox {
     margin-bottom: 70px;
-
+    @include query($sp){
+      margin-top: 100px;
+      margin-bottom: 0;
+    }
     &:last-child {
       margin-bottom: 0;
     }
@@ -36,19 +43,25 @@
       &:last-child {
         margin-bottom: 0;
       }
-
+      @include query($sp){
+        margin-bottom: 5px;
+      }
       a {
         @include flexbox(flex-start, center);
         padding: 12px 15px;
-
-        // @include arrright($cl: #000, $size: 8px, $w: 1px);
-        // &::before{
-        //     right: 20px;
-        //     margin-top: -4px;
-        // }
-        &:hover {
-          .txt {
-            text-decoration: none;
+        @include arrright($cl: #000, $size: 8px, $w: 1px);
+        &::before{
+          right: 20px;
+          margin-top: -4px;
+        }
+        @include minquery($pc){
+          &:hover {
+            .txt {
+              text-decoration: none;
+            }
+            &::before{
+              right: 10px;
+            }
           }
         }
       }
@@ -85,11 +98,14 @@
   .btnpage {
     max-width: 295px;
     margin-top: 35px;
-
+    @include query($sp){
+      max-width: 328px;
+      margin-top: 25px;
+    }
     a,
     button {
+      padding: 10px 30px;
       height: 66px;
-
       span {
         font-size: 17px;
 
@@ -104,33 +120,33 @@
 
   .recommend {
     .sidebar__list--item {
-      &:first-child,
-      &:nth-child(2) {
-        @include arrright($cl: #000, $size: 8px, $w: 1px);
+      // &:first-child,
+      // &:nth-child(2) {
+      //   @include arrright($cl: #000, $size: 8px, $w: 1px);
 
-        &::before {
-          right: 20px;
-          margin-top: -4px;
-        }
+      //   &::before {
+      //     right: 20px;
+      //     margin-top: -4px;
+      //   }
 
-        &:hover {
-          &::before {
-            right: 15px;
-          }
-        }
-      }
+      //   &:hover {
+      //     &::before {
+      //       right: 15px;
+      //     }
+      //   }
+      // }
     }
   }
 
   .payment,
   .game {
     .sidebar__list--item {
-      @include arrright($cl: #000, $size: 8px, $w: 1px);
+      // @include arrright($cl: #000, $size: 8px, $w: 1px);
 
-      &::before {
-        right: 20px;
-        margin-top: -4px;
-      }
+      // &::before {
+      //   right: 20px;
+      //   margin-top: -4px;
+      // }
 
       &:hover {
         &::before {
@@ -238,10 +254,24 @@
       @include shadow;
       padding: 27px;
       padding-bottom: 35px;
+      @include query($sp){
+        padding: 0 20px;
+        box-shadow: none;
+      }
     }
-
+    .sliderbonus {
+      // @include query($sp){
+      //   padding: 0 20px;
+      // }
+    }
     .btnpage {
       margin-top: 55px;
+      @include query($sp){
+        margin-top: 35px;
+        width: calc(100% + 40px);
+        margin-left: -20px;
+        max-width: inherit;
+      }
     }
     .slick-prev {
       left: -16px
@@ -264,10 +294,18 @@
       left: 0;
       top: 0;
     }
+    .slick-dots{
+      @include query($sp){
+        bottom: 0;
+      }
+    }
   }
 
   .slideritem {
     a {
+      img{
+        width: 100%;
+      }
       &:hover {
         opacity: 0.7;
 
@@ -287,7 +325,10 @@
 
   .twitter {
     text-align: center;
-
+    margin-bottom: 50px;
+    .boxshadow{
+      @include shadow;
+    }
     iframe {
       text-align: center;
     }

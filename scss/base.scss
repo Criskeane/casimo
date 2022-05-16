@@ -51,6 +51,10 @@ body {
     font-size:17px;
 	font-weight:500;
     color: $cltext;
+    @include query($sp){
+        overflow-x: hidden;
+        font-size: 14px;
+    }
     .maincl{
         color: $cl;
     }
@@ -120,7 +124,7 @@ body {
         padding: 0 15px;
     }
     @include query($sp) {
-        padding: 0 3%;
+        padding: 0 25px;
     }
 }
 
@@ -136,20 +140,8 @@ body {
 @import "../scss/components/btn";
 @import "../scss/components/wpcontent";
 
-
+/* purgecss start ignore */
 .slick-slider{position:relative;display:block;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-ms-touch-action:pan-y;touch-action:pan-y;-webkit-tap-highlight-color:transparent}.slick-list{position:relative;overflow:hidden;display:block;margin:0;padding:0}.slick-list:focus{outline:none}.slick-list.dragging{cursor:pointer;cursor:hand}.slick-slider .slick-list,.slick-slider .slick-track{-webkit-transform:translate3d(0, 0, 0);-moz-transform:translate3d(0, 0, 0);-ms-transform:translate3d(0, 0, 0);-o-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}.slick-track{position:relative;left:0;top:0;display:block;margin-left:auto;margin-right:auto}.slick-track:after,.slick-track:before{content:"";display:table}.slick-track:after{clear:both}.slick-loading .slick-track{visibility:hidden}.slick-slide{float:left;height:100%;min-height:1px;display:none}[dir=rtl] .slick-slide{float:right}.slick-slide img{display:block}.slick-slide.slick-loading img{display:none}.slick-slide.dragging img{pointer-events:none}.slick-initialized .slick-slide{display:block}.slick-loading .slick-slide{visibility:hidden}.slick-vertical .slick-slide{display:block;height:auto;border:1px solid transparent}.slick-arrow.slick-hidden{display:none}
-
-.slick-loading .slick-list {
-  background: #fff url("./ajax-loader.gif") center center no-repeat
-}
-
-@font-face {
-  font-family: "slick";
-  src: url("./fonts/slick.eot");
-  src: url("./fonts/slick.eot?#iefix") format("embedded-opentype"), url("./fonts/slick.woff") format("woff"), url("./fonts/slick.ttf") format("truetype"), url("./fonts/slick.svg#slick") format("svg");
-  font-weight: normal;
-  font-style: normal
-}
 
 .slick-next,
 .slick-prev {
@@ -203,44 +195,19 @@ body {
   width: 10px;
 }
 
-// .slick-prev {
-//   left: -16px
-// }
-
 [dir=rtl] .slick-prev {
   left: auto;
   right: -7px
 }
 
-// .slick-prev:before {
-//   content: "";
-//   background: url(../../images/arrslick.png) no-repeat center center;
-//   background-size: 10px;
-//   left: 0;
-//   top: 0;
-// }
-
 [dir=rtl] .slick-prev:before {
   content: "→"
 }
-
-// .slick-next {
-//   right: -16px
-// }
 
 [dir=rtl] .slick-next {
   left: -7px;
   right: auto
 }
-
-// .slick-next:before {
-//   content: "";
-//   background: url(../../images/arrslick.png) no-repeat center center;
-//   transform: rotate(180deg);
-//   background-size: 10px;
-//   left: 0;
-//   top: 0;
-// }
 
 [dir=rtl] .slick-next:before {
   content: "←"
@@ -318,14 +285,110 @@ body {
   opacity: 1;
   background: #F24350;
 }
+/* purgecss end ignore */
+
+.rate{
+    @include flexbox(flex-start, center);
+    &--icon{
+        flex: 0 0 80px;
+        background: url(../images/txtranking.png) no-repeat top 10px center;
+        background-size: 58px;
+        min-height: 80px;
+        @include query($sp){
+            flex: 0 0 40px;
+            min-height: 40px;
+            background: url(../images/txtranking.png) no-repeat top 3px center;
+            background-size: 38px;
+        }
+        span{
+            font-weight: 900;
+            font-size: 40px;
+            text-align: center;
+            display: block;
+            padding-top: 30px;
+            line-height: 1;
+            position: relative;
+            left: -2px;
+            @include query($sp){
+                font-size: 26px;
+                padding-top: 14px;
+            }
+        }
+    }
+    &--content{
+        flex: 1 1 auto;
+        padding-left: 20px;
+        @include flexbox(flex-start, center);
+        flex-wrap: wrap;
+        @include query($sp){
+            padding-left: 8px;
+        }
+    }
+    &--star{
+        line-height: 1;
+        position: relative;
+        white-space: nowrap;
+        display: inline-block;
+        max-width: 165px;
+        .fa-star{
+            font-family: fontAwesome;
+            font-weight: 400;
+            font-style: normal;
+            display: inline-block;
+            margin: .1rem;
+            margin-left: 0.1rem;
+            color: #c1c1c1;
+            text-rendering: auto;
+            font-size: 28px;
+            &:first-child { 
+                margin-left: 0;
+            }
+            @include query($sp){
+                font-size: 18px;
+                margin-left: 0;
+            }
+        }
+    }
+    &--percent{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        overflow: hidden;
+        line-height: 1;
+        .fa-star{
+            color: #F2A30B !important;
+        }
+    }
+    &--num{
+        font-size: 36px;
+        color: #E60F4A;
+        font-weight: 900;
+        line-height: 1;
+        flex: 0 0 100%;
+        margin-top: 5px;
+        @include query($sp){
+            font-size: 16px;
+            margin-top: 2px;
+        }
+    }
+}
 
 .listarticle{
     align-items: flex-start;
     justify-content: flex-start;
     &--item{
         margin-top: 50px;
+        @include query($sp){
+            margin-top: 15px;
+        }
         .row{
             flex-wrap: nowrap;
+            @include query($sp){
+                flex-wrap: wrap;
+            }
         }
         &:nth-child(1){
             margin-top: 0;
@@ -340,6 +403,9 @@ body {
             &:hover{
                 text-decoration: none;
             }
+            @include query($sp){
+                margin: 10px 0;
+            }
         }
         .text{
             flex: 1 1 auto;
@@ -351,6 +417,9 @@ body {
             @include query($q960){
                 padding-right: 0;
             }
+            @include query($sp){
+              padding-left: 0;
+            }
         }
         .txt{
             font-size: 15px;
@@ -358,6 +427,11 @@ body {
             height: 50px;
             overflow: hidden;
             margin-bottom: 18px;
+            @include query($sp){
+                font-size: 14px;
+                height: auto;
+                margin-bottom: 10px;
+            }
         }
         .img{
             height: 163px;
@@ -368,6 +442,12 @@ body {
                 height: 100%;
                 object-fit: cover;
                 transition: all .3s !important;
+            }
+            @include query($sp){
+                flex: 0 0 100%;
+                max-width: 100%;
+                max-width: 100%;
+                height: 180px;
             }
         }
         .lable{
@@ -399,9 +479,17 @@ body {
                 }
             }
         }
+        dl{
+            @include query($sp){
+                justify-content: space-between;
+            }
+        }
         dt{
             @include flexbox(flex-start, center);
             margin-right: 20px;
+            @include query($sp){
+                margin-right: 0;
+            }
             &:last-child { 
                 margin-right: 0;
             }
@@ -409,11 +497,19 @@ body {
                 background: url(../images/ico-cal.svg) no-repeat left center;
                 background-size: 22px;
                 padding-left: 32px;
+                @include query($sp){
+                    background-size: 16px;
+                    padding-left: 22px;
+                }
             }
             &.ico-time{
                 background: url(../images/ico-time.svg) no-repeat left center;
                 background-size: 22px;
                 padding-left: 32px;
+                @include query($sp){
+                    background-size: 16px;
+                    padding-left: 22px;
+                }
             }
             span{
                 font-weight: 600;
@@ -426,6 +522,12 @@ body {
                 @include query(960){
                     font-size: 1rem;
                 }
+                @include query($sp){
+                    font-size: 12px;
+                }
+                @include query(375){
+                    font-size: 11px;
+                }
             }
         }
     }
@@ -433,4 +535,13 @@ body {
 
 .homepage,.front-page{
     .footer{margin-top: 0;}
+    .btnpage{
+        a{
+            @include query($sp) {
+                span{
+                    display: none;
+                }
+            }
+        }
+    }
 }

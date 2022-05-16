@@ -5,11 +5,15 @@
 // @import "../scss/layout/pagination";
 
 .headtitle {
-    $pages: contact, category, error, privacy, author, sitemap;
+    $pages: contact, category, error, privacy, author, authors, sitemap;
     @each $page in $pages {
         &-#{$page} {
             background: url('../images/main-'+$page+'.jpg') no-repeat center center;
             background-size: cover;
+            @include query($sp){
+                background: url('../images/main-'+$page+'_sp.jpg') no-repeat center center;
+                background-size: cover;
+            }
         }
     }
 
@@ -26,7 +30,30 @@
         height: 100%;
     }
     @include query($sp) {
-        height: 160px;
+        height: 360px;
+        &::after {
+            background: none;
+        }
+        &.headtitle-contact,
+        &.headtitle-category,
+        &.headtitle-authors{
+            height: 140px;
+            background-position: center bottom;
+            .container{
+                height: 140px;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 0;
+                &::after {
+                    background: none;
+                    height: 100%;
+                }
+                h1{
+                    font-size: 28px;
+                    text-align: center;
+                }
+            }
+        }
     }
     .container {
         position: relative;
@@ -34,6 +61,22 @@
         padding: 158px 0;
         @include query($container) {
             padding: 158px 15px;
+            height: 360px;
+        }
+        @include query($sp) {
+            padding: 0 15px;
+            @include flexbox(flex-start, flex-end);
+            padding-bottom: 40px;
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 240px; 
+                background: rgb(0,0,0);
+                background: linear-gradient(0deg, rgba($color: #000, $alpha: 1) 0%, rgba($color: #3F3F3F, $alpha: 0.71) 50%, rgba($color: #808080, $alpha: 0) 100%);
+            }
         }
         h1 {
             font-size: 45px;
@@ -45,8 +88,11 @@
                 min-width: 440px;
             }
             @include query($sp) {
-                font-size: 26px;
-                padding: 10px 40px;
+                font-size: 40px;
+                padding: 0;
+                line-height: 1.2;
+                position: relative;
+                z-index: 9;
             }
         }
     }
@@ -54,21 +100,43 @@
   
 .breadcrumb{
     background: #707070;
+    overflow-y: hidden;
+    @include query($sp){
+        margin-top: 59px;
+        overflow-x: scroll;
+        .container{
+            padding: 0 15px;
+        }
+    }
     &__list{
         @include flexbox(flex-start, center);
         height: 24px;
+        @include query($sp){
+            height: 30px;
+        }
     }
     &--item{
         font-size: 12px;
         padding: 2px 25px 2px 15px;
         color: #fff;
         position: relative;
+        @include query($sp){
+            padding: 6px 20px 6px 5px;
+            word-break: keep-all;
+            word-wrap: break-word;
+            font-size: 11px;
+            display: inline-block;
+            flex: 0 0 auto;
+        }
         &:first-child{
             padding-left: 0;
         }
         &:last-child{
             background: #2F2F2F;
             padding-right: 15px;
+            @include query($sp){
+                padding-right: 5px;
+            }
             &::before,
             &::after{
                 content: '';
@@ -76,23 +144,45 @@
                 top: 0;
                 width: 10px;
                 height: 24px;
+                @include query($sp){
+                    height: 30px;
+                    width: 14px;
+                }
             }
             &::after{
-                background: url(../images/pathright.png) no-repeat right center;
+                background: url(../images/pathright.svg) no-repeat right center;
                 background-size: 10px;
                 right: -10px;
+                @include query($sp){
+                    background: url(../images/pathright.svg) no-repeat right center;
+                    background-size: 30px;
+                    right: -14px;
+                }
             }
             &::before{
-                background: url(../images/pathleft.png) no-repeat right center;
+                background: url(../images/pathleft.svg) no-repeat right center;
                 background-size: 10px;
                 left: -10px;
+                @include query($sp){
+                    background: url(../images/pathleft.svg) no-repeat right center;
+                    background-size: 30px;
+                    width: 16px;
+                    left: -14px;
+                }
             }
         }
         a{
             font-weight: 500;
             color: #fff;
-            &:hover{
-                text-decoration: underline;
+            @include minquery(960){
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+            @include query($sp){
+                font-size: 11px;
+                word-break: keep-all;
+                display: inline;
             }
         }
     }
@@ -100,29 +190,29 @@
 
 .main_body{
     margin-top: 100px;
+    @include query($sp){
+        margin-top: 50px;
+    }
     .container{
         @include flexbox(space-between, flex-start);
         width: 100%;
-        @include query(960){
+        @include query(1199){
             flex-wrap: wrap;
         }
     }
     .content{
-        max-width: 900px;
-        flex: 0 0 calc(70% - 10px);
-        @include query(960){
+        max-width: 69.2%;
+        flex: 0 0 calc(69.2% - 10px);
+        @include query(1199){
             flex: 0 0 100%;
-            margin-bottom: 50px;
+            max-width: 100%;
         }
     }
     .sidebar{
         flex: 0 0 30%;
         max-width: 27%;
         min-width: 280px;
-        @include query(1200) {
-            // flex: 0 0 calc(30% - 20px);
-        }
-        @include query(960){
+        @include query(1199){
             flex: 0 0 60%;
             max-width: 360px;
             margin: 0 auto;
@@ -134,10 +224,47 @@
     }
 }
 
+.page-detail{
+    .headtitle{
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+    .main_body {
+        margin-top: 60px;
+    }
+    .sidebar .game, .sidebar .pickup, .sidebar .popular, .sidebar .twitter{
+        display: block;
+    }
+    @include query(960){
+        .sidebar{
+            display: none;
+        }
+    }
+}
+
+@mixin fixul {
+    margin: 0;
+    padding: 0;
+    &::before {
+        background: none;
+        top: 0;
+    }
+}
+
+@mixin titbox($clx,$fz) {
+    text-align: center;
+    color: $clx;
+    font-size: $fz;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+}
+
 .content{
     h2{
-        background: #000 url(../images/bgline.png) no-repeat left center;
-        background-size: 12px;
+        background: #000;
         position: relative;
         color: #fff;
         font-size: 24px;
@@ -146,45 +273,68 @@
         padding-left: 32px;
         line-height: 1.4;
         margin: 60px 0;
+        &::before {
+            position: absolute;
+            content: '';
+            background: url(../images/bgline.png) no-repeat left center;
+            background-size: cover;
+            width: 12px;
+            left: 0;
+            height: 100%;
+            top: 0;
+            @include query($sp){
+                width: 10px;
+            }
+        }
+        @include query($sp){
+            font-size: 18px;
+            margin: 90px 0 40px;
+            padding-left: 22px;
+            padding-right: 15px;
+        }
     }
     h3{
-        // font-size: 24px;
-        // border-bottom: 3px solid #000;
-        // padding-bottom: 20px;
-        // line-height: 1.4;
-        // position: relative;
-        // margin-top: 60px;
-        // margin-bottom: 45px;
-        // &::after{
-        //     position: absolute;
-        //     content: '';
-        //     background: #C8922B;
-        //     width: 50px;
-        //     left: 0;
-        //     bottom: -3px;
-        //     height: 3px;
-        // }
         font-size: 22px;
-        background: #EBEBEB url(../images/bgline.png) no-repeat left center;
-        background-size: 8px;
+        background: #EBEBEB;
         margin-top: 60px;
         margin-bottom: 45px;
         line-height: 1.4;
         padding: 12px 30px;
+        position: relative;
+        &::before {
+            position: absolute;
+            content: '';
+            background: url(../images/bgline.png) no-repeat left center;
+            background-size: cover;
+            width: 8px;
+            left: 0;
+            height: 100%;
+            top: 0;
+        }
         + .boxlist,
         + .boxpanel,
         + .table,
         + table,
         + p{
             margin-top: 45px;
+            @include query($sp){
+                margin-top: 30px;
+            }
+        }
+        @include query($sp){
+            font-size: 16px;
+            margin-top: 35px;
+            margin-bottom: 30px;
+            padding: 8px 25px;
         }
     }
     .boxlist{
-        background: #F0F0F0;
-        padding: 30px 40px;
         margin-top: 60px;
-        border-radius: 10px;
         ul{
+            background: #F0F0F0;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 0;
             li{
                 font-size: 17px;
                 position: relative;
@@ -203,28 +353,55 @@
                     left: 0;
                     top: 10px;
                 }
+                @include query($sp){
+                    padding-left: 15px;
+                    font-size: 14px;
+                    margin-bottom: 10px;
+                    &::before {
+                        top: 8px;
+                    }
+                }
             }
             a{
-                &:hover{
-                    text-decoration: underline;
+                @include minquery(960){
+                    &:hover{
+                        text-decoration: underline;
+                    }
                 }
             }
         }
     }
     .boxheading{
         margin: 60px 0;
-        h3{
+        @include query($sp){
+            margin: 20px 0 25px;
+        }
+        &--tit{
             background: none;
             margin: 0;
-            padding: 20px 40px;
+            padding: 15px 30px 20px;
             background: #F0F0F0;
             display: inline-block;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
             position: relative;
+            font-weight: bold;
+            font-size: 22px;
+            @include query($sp){
+                font-size: 16px;
+                padding: 15px;
+            }
         }
         .boxlist{
             margin-top: -20px;
+            li::before{
+                background: #000;
+            }
+            ul{
+                @include query($sp){
+                    padding: 15px;
+                }
+            }
         }
     }
 }
@@ -239,8 +416,19 @@
         font-size: 15px;
     }
     .vertitop th{
-        vertical-align: top;
-        padding-top: 37px;
+        @include minquery($pc){
+            vertical-align: top;
+            padding-top: 37px;
+        }
+    }
+    @include query($sp){
+        .txttop{
+            font-size: 16px;
+        }
+        p.mt20{
+            font-size: 12px;
+            margin-top: 5px !important;
+        }
     }
 }
 
@@ -248,15 +436,29 @@
     .content{
         .flexbox{
             align-items: flex-start;
-            &:first-child{
+            @include query($sp){
+                flex-wrap: wrap;
+            }
+            &:first-child .inbox:first-child{
                 h3{
                     margin-top: 0;
+                }
+            }
+            @include minquery(640){
+                &:first-child{
+                    h3{
+                        margin-top: 0;
+                    }
                 }
             }
         }
         .inbox{
             flex: 0 0 48%;
             max-width: 420px;
+            @include query($sp){
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
         }
     }
     .game, .pickup, .popular, .twitter{
@@ -279,6 +481,9 @@
     margin-top: 90px;
     &--item{
         margin: 0 8px;
+        @include query($sp){
+            margin: 5px;
+        }
         a{
             font-weight: bold;
             border: 1px solid #000;
@@ -286,6 +491,16 @@
             @include flexbox(center, center);
             height: 50px;
             padding: 0 17px;
+            @include query($sp){
+                font-size: 16px;
+                height: 40px;
+            }
+            @include query(420){
+                font-size: 14px;
+                height: 36px;
+                min-width: 36px;
+                padding: 0 10px;
+            }
         }
         &.active a,
         &:hover a{
@@ -303,11 +518,21 @@
 
 .author{
     &__info{
+        @include flexbox(space-between, flex-start);
         justify-content: space-between;
-        margin-bottom: 50px;
+        margin-bottom: 60px;
+        @include query($sp){
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
         &--img{
             flex: 0 0 130px;
             max-width: 130px;
+            position: relative;
+            @include query($sp){
+                margin: 0 auto;
+                margin-bottom: 25px;
+            }
             .img{
                 width: 130px;
                 height: 130px;
@@ -325,7 +550,14 @@
                 text-align: center;
                 display: block;
                 width: 130px;
-                margin-top: 15px;
+                position: absolute;
+                left: 0;
+                bottom: -32px;
+                @include query($sp){
+                    font-size: 20px;
+                    position: relative;
+                    bottom: 0;
+                }
             }
         }
         &--txt{
@@ -334,6 +566,10 @@
             padding: 20px;
             border-radius: 15px;
             position: relative;
+            @include query($sp){
+                flex: 0 0 100%;
+                padding: 15px;
+            }
             &::after {
                 content: '';
                 position: absolute;
@@ -343,6 +579,14 @@
                 width: 26px;
                 height: 24px;
             }
+            @include query($sp){
+                &::after {
+                    transform: rotate(90deg);
+                    left: 50%;
+                    top: -14px;
+                    margin-left: -13px;
+                }
+            }
             p{
                 font-size: 15px;
             }
@@ -350,22 +594,45 @@
     }
     &__detail{
         margin-bottom: 120px;
+        @include query($sp){
+            font-size: 100px;
+        }
         &--table{
             width: 100%;
             th,td{
                 border: 1px solid #D0D0D0;
                 padding: 30px;
                 font-size: 15px;
+                @include query($sp){
+                    padding: 15px;
+                }
             }
             th{
                 background: #F0F0F0;
                 width: 180px;
                 text-align: left;
+                @include query($sp){
+                    width: 80px;
+                }
+            }
+            ul{
+                margin: 0;
+                padding: 0;
+                background: none;
+                list-style: none;
+                align-items: center;
             }
             li{
                 margin-right: 20px;
+                height: 20px;
+                @include query($sp){
+                    height: auto;
+                }
                 img{
                     height: 20px;
+                    @include query($sp){
+                        height: 48px;
+                    }
                 }
             }
             .tdmap{
@@ -373,20 +640,40 @@
                 span{
                     padding: 30px;
                     display: block;
+                    @include query($sp){
+                        padding: 15px;
+                    }
                 }
             }
             .iframe{
                 line-height: 0;
+                @include query($sp){
+                    height: 130px;
+                    iframe{
+                        height: 130px;
+                    }
+                }
             }
         }
         &.operator{
             margin-bottom: 60px;
+            @include query($sp){
+                margin-bottom: 140px;
+            }
         }
     }
     &__view{
         margin-bottom: 100px;
+        @include query($sp){
+            margin-bottom: 0;
+        }
         ul{
+            margin: 0;
+            background: none;
             padding: 0 50px;
+            @include query($sp){
+                padding: 0;
+            }
         }
         &--writers{
             flex: 0 0 49%;
@@ -395,6 +682,7 @@
             margin-right: 2%;
             .flexbox{
                 justify-content: flex-start;
+                flex-wrap: nowrap;
             }
             &:first-child ,
             &:nth-child(2) { 
@@ -403,9 +691,17 @@
             &:nth-child(2n){
                 margin-right: 0;
             }
+            @include query($sp){
+                flex: 0 0 100%;
+                margin-top: 25px;
+                margin-right: 0;
+                &:nth-child(2) { 
+                    margin-top: 25px;
+                }
+            }
         }
         &--img{
-            flex: 0 0 140px;
+            flex: 0 0 39%;
             max-width: 140px;
             overflow: hidden;
             height: 140px;
@@ -414,16 +710,29 @@
                 width: 100%;
                 height: 100%;
             }
+            @include query($sp){
+                height: 80px;
+                flex: 0 0 80px;
+            }
         }
         &--txt{
             padding-left: 20px;
+            flex: 1 1 auto;
+            @include query($sp){
+                padding-left: 15px;
+            }
             .name{
                 font-size: 18px;
                 font-weight: bold;
                 color: #0028AF;
                 text-decoration: underline;
-                &:hover{
-                    text-decoration: none;
+                @include minquery(960){
+                    &:hover{
+                        text-decoration: none;
+                    }
+                }
+                @include query($sp){
+                    font-size: 16px;
                 }
             }
             .txt{
@@ -431,12 +740,18 @@
                 font-weight: bold;
                 display: block;
                 margin-top: 10px;
+                @include query($sp){
+                    font-size: 14px;
+                }
             }
         }
     }
     &__article{
         .listarticle--item{
             display: none;
+            @include query($sp){
+                margin-top: 35px;
+            }
         }
     }
 }
@@ -445,6 +760,9 @@
     max-width: 400px;
     margin: 0 auto;
     margin-top: 50px;
+    @include query($sp){
+        margin-top: 25px;
+    }
     &.fadeOut{
         visibility: hidden;
         display: none;
@@ -461,10 +779,2334 @@
         padding: 17px 0;
         cursor: pointer;
         transition: all .3s;
-        @include minquery($pc){
+        @include minquery(960){
             &:hover{
                 background: #0028AF url(../images/arrdown2-white.svg) no-repeat right 20px center;
                 color: #fff;
+            }
+        }
+    }
+}
+
+.post{
+    &--detail{
+        img{
+            max-width: 100%;
+        }
+        a{
+            color: $blue;
+            text-decoration: underline;
+            @include minquery(960){
+                &:hover { 
+                    text-decoration: none;
+                }
+            }
+        }
+        .btnpage{
+            max-width: 100%;
+            a{
+                color: #fff;
+                text-decoration: none;
+            }
+            &.bgwhite{
+                margin-top: 60px;
+                @include query($sp){
+                    margin-top: 15px;
+                }
+                a{
+                    max-height: inherit;
+                    padding: 26px 50px 26px 40px;
+                    font-size: 20px;
+                    @include shadow;
+                    &::before {
+                        right: 30px;
+                        width: 14px;
+                        height: 14px;
+                        margin-top: -7px;
+                    }
+                    @include query($sp){
+                        font-size: 16px;
+                        padding: 10px 50px;
+                        &::before {
+                            right: 25px;
+                            width: 12px;
+                            height: 12px;
+                            margin-top: -6px;
+                        }
+                    }
+                }
+            }
+        }
+        ul:not(.list), ol:not(.list){
+            background: #F0F0F0;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 60px 0;
+            @include query($sp){
+                margin: 20px 0;
+                padding: 15px 12px;
+            }
+            li{
+                font-size: 17px;
+                position: relative;
+                padding-left: 25px;
+                margin-bottom: 15px;
+                &:last-child { 
+                    margin-bottom: 0;
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    background: #333333;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 100%;
+                    left: 0;
+                    top: 10px;
+                }
+                @include query($sp){
+                    font-size: 14px;
+                    padding-left: 15px;
+                    margin-bottom: 6px;
+                    &::before {
+                        top: 7px;
+                    }
+                }
+            }
+        }
+        ol:not(.list){
+            counter-reset: item;
+            li{
+                counter-increment: item;
+                &::before{
+                    background: #333;
+                    width: 16px;
+                    height: 16px;
+                    top: 6px;
+                    z-index: 1;
+                    @include query($sp){
+                        width: 12px;
+                        height: 12px;
+                        top: 4px;
+                        left: -1px;
+                    }
+                }
+                &::after {
+                    content: counters(item, ".");
+                    position: absolute;
+                    left: 4.5px;
+                    top: 5px;
+                    font-size: 13px;
+                    color: #fff;
+                    z-index: 2;
+                    @include query($sp){
+                        font-size: 9px;
+                        top: 4px;
+                        left: 2.5px;
+                    }
+                }
+            }
+        }
+        h3{
+            + .boxhead{
+                margin-top: 45px;
+                @include query($sp){
+                    margin-top: 30px;
+                }
+            }
+        }
+        h4{
+            font-size: 22px;
+            background: url(../images/linetit.jpg) no-repeat left bottom;
+            margin-top: 60px;
+            margin-bottom: 35px;
+            padding-bottom: 15px;
+            @include query($sp){
+                font-size: 14px;
+                margin-top: 35px;
+                margin-bottom: 30px;
+                padding-bottom: 4px;
+            }
+        }
+        h5{
+            font-size: 20px;
+            margin-bottom: 10px;
+            @include query($sp){
+                font-size: 18px;
+            }
+        }
+    }
+    &--title{
+        font-size: 35px;
+        margin-bottom: 25px;
+        line-height: 1.2;
+        letter-spacing: -0.2;
+        @include query($sp) {
+            font-size: 24px;
+            line-height: 1.4;
+        }
+    }
+    &--info{
+        @include flexbox(space-between, center);
+        @include query($sp){
+            flex-wrap: wrap;
+        }
+        .social{
+            @include flexbox(flex-end, center);
+            margin: 0;
+            padding: 0;
+            background: none;
+            li{
+                @include fixul;
+                margin-left: 25px;
+                &:first-child { 
+                    margin-left: 0;
+                }
+            }
+            @include query($sp){
+                flex: 0 0 100%;
+                justify-content: flex-start;
+                margin-top: 30px;
+                li{
+                    margin-left: 20px;
+                }
+            }
+        }
+        dl{
+            @include query($sp){
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                width: 100%;
+            }
+        }
+        dt{
+            padding: 5px 0;
+        }
+        .ico-cal{
+            background: url(../images/ico-cal.svg) no-repeat left center;
+            background-size: 30px;
+            padding-left: 40px;
+            @include query($sp){
+                background-size: 16px;
+                padding-left: 25px;
+                flex: 0 0 50%;
+            }
+        }
+        .ico-time{
+            background: url(../images/ico-time.svg) no-repeat left center;
+            background-size: 30px;
+            padding-left: 40px;
+            margin-left: 20px;
+            @include query($sp){
+                background-size: 16px;
+                margin-left: 0;
+                padding-left: 25px;
+                flex: 0 0 50%;
+            }
+        }
+        span{
+            font-size: 15px;
+            color: #000;
+            @include query($sp){
+                font-size: 12px;
+            }
+        }
+    }
+    &--thumbnail{
+        margin: 25px 0 55px;
+        @include query($sp){
+            margin: 40px 0 30px;
+        }
+    }
+    .author__info{
+        &--img{
+            .txt {
+                color: $blue;
+                text-decoration: underline;
+            }
+        }
+        &:nth-child(even){
+            flex-direction: row-reverse;
+            .author__info--txt{
+                &::after {
+                    right: -18px;
+                    top: 30px;
+                    left: inherit;
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        &:nth-child(odd){
+            .author__info--txt{
+                background: #D1F3FF;
+                &::after {
+                    background: url(../images/polygon-blue.svg) no-repeat;
+                }
+            }
+        }
+        @include minquery($pc){
+            &:nth-child(even){
+                .author__info--txt{
+                    &::after {
+                        right: -18px;
+                        left: inherit;
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            &:nth-child(odd){
+                .author__info--txt{
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        right: -18px;
+                        top: 30px;
+                        width: 26px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+        @include query($sp){
+            flex-wrap: nowrap;
+            margin-bottom: 15px;
+            &--img{
+                flex: 0 0 56px;
+                max-width: 56px;
+                margin: inherit;
+                .img{
+                    width: 56px;
+                    height: 56px;
+                }
+                .txt{
+                    width: 56px;
+                    font-size: 14px;
+                }
+            }
+            &--txt{
+                flex: 0 0 calc(100% - 70px);
+                p{
+                    font-size: 14px;
+                }
+            }
+            &:nth-child(even){
+                .author__info--txt{
+                    &::after {
+                        background: none;
+                        right: -7px;
+                        left: inherit;
+                        transform: rotate(180deg);
+                        top: 18px;
+                        width: 0; 
+                        height: 0; 
+                        border-top: 10px solid transparent;
+                        border-bottom: 10px solid transparent;
+                        border-right: 10px solid #FFE0E9;
+                    }
+                }
+            }
+            &:nth-child(odd){
+                .author__info--txt{
+                    &::after {
+                        transform: rotate(0);
+                        right: inherit;
+                        left: 6px;
+                        top: 18px;
+                        width: 0; 
+                        height: 0; 
+                        border-top: 10px solid transparent;
+                        border-bottom: 10px solid transparent;
+                        border-right: 10px solid #D1F3FF;
+                    }
+                }
+            }
+        }
+    }
+    .textlink{
+        margin: 40px 0;
+        @include query($sp){
+            margin: 20px 0 40px;
+        }
+        a{
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+            @include query($sp){
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    table{
+        border: 1px solid #D0D0D0;
+        table-layout: fixed;
+        border-collapse: collapse;
+        margin: 60px 0;
+        width: 100%;
+        @include query($sp){
+            margin: 30px 0;
+            min-width: 750px;
+            table-layout: auto;
+        }
+        + h3{
+            margin-top: 100px;
+        }
+        th,td{
+            border: 1px solid #D0D0D0;
+            font-size: 15px;
+            padding: 25px 30px;
+            @include query($sp){
+                min-width: 250px;
+            }
+        }
+        &.is-style-lefthead{
+            td:first-child{
+                background: #FFEDF2;
+                font-weight: bold;
+            }
+        }
+        &.is-style-tophead{
+            tr:first-child td{
+                background: #FFEDF2;
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+        &.is-style-lefttophead{
+            tr:first-child td{
+                background: #FFEDF2;
+                font-weight: bold;
+                text-align: center;
+            }
+            td:first-child{
+                background: #FFEDF2;
+                font-weight: bold;
+            }
+        }
+        &.is-style-leftheadsmall{
+            table-layout: auto;
+            td:first-child{
+                width: 180px;
+            }
+        }
+        &.is-style-fix{
+            table-layout: auto;
+            td{
+                vertical-align: middle;
+            }
+            td:first-child{
+                width: 300px;
+                text-align: center;
+                a{
+                    display: block;
+                    font-weight: bold;
+                    font-size: 18px;
+                    margin-top: 20px;
+                }
+            }
+        }
+        &.is-style-img{
+            td:first-child{
+                @include query($sp){
+                    padding: 25px 15px;
+                    max-width: 216px;
+                    min-width: 216px;
+                }
+            }
+        }
+        &.is-style-fix3col{
+            td{
+                vertical-align: middle;
+            }
+            td:first-child{
+                width: 100px;
+                @include query($sp){
+                    max-width: 88px;
+                    min-width: 88px;
+                }
+            }
+            &.is-style-img{
+                td:nth-child(2){
+                    @include query($sp){
+                        padding: 25px 15px;
+                        max-width: 216px;
+                        min-width: 216px;
+                    }
+                }
+            }
+            // td:nth-child(1){
+            //     width: 100px;
+            //     font-weight: bold;
+            //     font-size: 24px;
+            //     color: #707070;
+            // }
+            tr:not(tr:first-child){
+                td:first-child{
+                    font-weight: bold;
+                    font-size: 24px;
+                    color: #707070;
+                    text-align: center;
+                }
+            }
+            td:nth-child(2){
+                width: 300px;
+                text-align: center;
+                a{
+                    display: block;
+                    font-weight: bold;
+                    font-size: 18px;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+    .scrolltable{
+        max-width: 1500px;
+        margin: 60px 0;
+        @include minquery($pc){
+            .uagb-section__inner-wrap{
+                overflow-x: scroll;
+                table{
+                    min-width: 1500px;
+                    margin: 0;
+                }
+            }
+        }
+        @include query($sp){
+            overflow-y: scroll;
+            margin: 0;
+            margin-top: 30px;
+            .uagb-section__inner-wrap{
+                table{
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .scrolltableSp{
+        @include query($sp) {
+            margin-top: 30px;
+            .uagb-section__inner-wrap{
+                overflow-x: scroll;
+                table{
+                    margin: 0 0 8px;
+                }
+            }
+            &:first-child { 
+                .uagb-section__inner-wrap{
+                    overflow-x: scroll;
+                    table{
+                        margin: 0 0 0;
+                    }
+                }
+            }
+        }
+    }
+    .boxhead{
+        margin: 60px 0;
+        @include query($sp){
+            margin: 30px 0;
+        }
+        &--tit{
+            @include titbox($clx: #fff, $fz: 22px);
+            display: inline-block;
+            padding: 12px 30px 17px;
+            position: relative;
+            z-index: 1;
+            min-width: 180px;
+            line-height: 1.4;
+            @include query($sp){
+                font-size: 16px;
+                padding: 14px 15px;
+                display: block;
+                text-align: left;
+            }
+        }
+        &--inbox{
+            padding: 25px 30px;
+            border-radius: 10px;
+            background: #fff;
+            margin-top: -10px;
+            position: relative;
+            z-index: 2;
+            border-top-left-radius: 0;
+            @include query($sp){
+                margin-top: 0;
+                border-top-right-radius: 0;
+                padding: 15px;
+            }
+            // ul{
+            //     margin: 0;
+            //     padding: 0;
+            //     background: none;
+            // }
+        }
+        &--blue{
+            .boxhead--tit,ul li::before{
+                background: #1D9BF0;
+            }
+            .boxhead--inbox{
+                border: 1px solid #1D9BF0;
+            }
+            ul{
+                padding: 0;
+                margin: 0;
+                background: none;
+            }
+        }
+        &--cautions{
+            .boxhead--tit{
+                background: #E60F4A url(../images/note.svg) no-repeat left 15px top 15px;
+                background-size: 24px;
+                padding-left: 45px;
+            }
+            .boxhead--inbox{
+                border: 1px solid #E60F4A;
+            }
+        }
+        &--boxlink{
+            @include query($sp){
+                margin-top: 50px;
+            }
+            .boxhead--tit{
+                background: #F0F0F0;
+                color: #000;
+                @include query($sp) {
+                    font-size: 18px;
+                    padding-top: 20px;
+                }
+            }
+            .boxhead--inbox{
+                background: #F0F0F0;
+                @include query($sp){
+                    padding-bottom: 25px;
+                }
+            }
+            ul{
+                padding: 0;
+                margin: 0;
+                background: none;
+                li{
+                    background: #fff;
+                    margin-bottom: 15px;
+                    padding: 16px 60px;
+                    &:last-child { 
+                        margin-bottom: 0;
+                    }
+                    &::before {
+                        background: #000;
+                        left: 30px;
+                        top: 26px;
+                    }
+                    @include query($sp){
+                        padding: 10px 30px;
+                        padding-right: 25px;
+                        margin-bottom: 10px;
+                        &::before {
+                            top: 50%;
+                            margin-top: -4px;
+                            left: 15px;
+                        }
+                    }
+                }
+                a{
+                    font-weight: bold;
+                    @include query($sp){
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        &--limited{
+            @include query($sp){
+                margin-top: 50px;
+            }
+            .boxhead--tit{
+                background: #F24350;
+                color: #fff;
+                z-index: 3;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                @include query($sp){
+                    display: inline-block;
+                    font-size: 22px;
+                    text-align: center;
+                }
+            }
+            .boxhead--inbox{
+                padding: 40px 50px 30px 35px;
+                @include shadow;
+                margin-top: -20px;
+                @include flexbox(flex-start, center);
+                @include query($sp){
+                    margin-top: 0;
+                    flex-wrap: wrap;
+                    padding: 50px 10px;
+                }
+            }
+            .img{
+                flex: 0 0 192px;
+                text-align: center;
+                @include query($sp){
+                    flex: 0 0 100%;
+                    margin: 0 0 40px;
+                }
+                a{
+                    display: block;
+                    text-align: center;
+                    font-size: 24px;
+                    color: #E60F4A;
+                    margin-top: 20px;
+                    line-height: 1;
+                    font-weight: bold;
+                }
+                img{
+                    max-height: 75px;
+                }
+            }
+            .txt{
+                flex: 1 1 auto;
+                padding-left: 25px;
+                @include query($sp){
+                    padding-left: 0;
+                    flex: 0 0 100%;
+                }
+            }
+            .btnpage{
+                margin: 0;
+                max-width: 260px;
+                flex: 0 0 44%;
+                a{
+                    font-size: 15px;
+                    @include query($sp){
+                        font-size: 17px;
+                    }
+                }
+                @include query($sp){
+                    flex: 0 0 100%;
+                    max-width: 290px;
+                    margin: 0 auto;
+                }
+            }
+            dl{
+                max-width: 326px;
+                @include flexbox(flex-start, center);
+                flex-wrap: nowrap;
+                height: 66px;
+                width: 100%;
+                flex: 0 0 54%;
+                @include query($sp){
+                    flex: 0 0 100%;
+                    max-width: 100%
+                }
+                dt{
+                    @include flexbox(center, center);
+                    flex-wrap: wrap;
+                    text-align: center;
+                    font-weight: bold;
+                    color: #fff;
+                    padding: 10px 15px;
+                    max-width: 138px;
+                    flex: 0 0 43%;
+                    align-self: stretch;
+                    small{
+                        font-weight: bold;
+                        color: #E60F4A;
+                        background: #fff;
+                        border-radius: 4px;
+                        font-size: 12px;
+                        display: block;
+                        padding: 2px 0;
+                        width: 100%;
+                    }
+                    @include query($sp){
+                        max-width: 110px;
+                        padding: 10px;
+                    }
+                }
+                dd{
+                    @include flexbox(center, center);
+                    align-self: stretch;
+                    flex: 1 1 auto;
+                    @include query($sp){
+                        justify-content: flex-start;
+                        padding-left: 15px;
+                    }
+                }
+            }
+            .row{
+                margin: 5px 0;
+                justify-content: space-between;
+                @include query($sp){
+                    margin: 0;
+                    flex-wrap: wrap;
+                }
+                &.bonus{
+                    @include query($sp){
+                        margin-bottom: 5px;
+                    }
+                    dt{
+                        background: #F24350;
+                        font-size: 17px;
+                        @include query($sp){
+                            font-size: 14px;
+                        }
+                    }
+                    dd{
+                        background: #FFEDF2;
+                        font-size: 18px;
+                        font-weight: bold;
+                        @include query($sp){
+                            font-size: 14px;
+                        }
+                    }
+                    .price{
+                        font-size: 40px;
+                        font-weight: 900;
+                        color: #F24350;
+                        font-family: 'Roboto' !important;
+                        margin-left: 10px;
+                        @include query($sp){
+                            font-size: 32px;
+                        }
+                    }
+                }
+                &.conditions{
+                    dt{
+                        background: #707070;
+                        font-size: 18px;
+                        @include query($sp){
+                            font-size: 14px;
+                        }
+                    }
+                    dd{
+                        background: #F0F0F0;
+                        font-size: 14px;
+                    }
+                    @include query($sp){
+                        .bgorg{
+                            margin: 25px auto 15px;
+                        }   
+                    }
+                }
+            }
+        }
+        &--faq{
+            .boxhead--tit{
+                background: #F0F0F0;
+                color: #000;
+                @include query($sp){
+                    display: inline-block;
+                    min-width: 160px;
+                    text-align: center;
+                }
+            }
+            .boxhead--inbox{
+                background: #F0F0F0;
+                color: #000;
+            }
+            dl{
+                background: #fff;
+                margin-bottom: 15px;
+                &:last-child { 
+                    margin-bottom: 0;
+                }
+                @include query($sp){
+                    margin-bottom: 8px;
+                }
+            }
+            dt{
+                padding: 15px 20px;
+                cursor: pointer;
+                @include query($sp){
+                    padding: 0 15px;
+                }
+                p{
+                    text-decoration: underline;
+                    position: relative;
+                    padding-left: 50px;
+                    min-height: 34px;
+                    @include query($sp){
+                        padding-left: 30px;
+                        padding-right: 20px;
+                        @include flexbox(flex-start, center);
+                        min-height: 56px;
+                    }
+                    &::after {
+                        position: absolute;
+                        content: '';
+                        background: url(../images/arrdown2-black.svg) no-repeat center center;
+                        background-size: 18px;
+                        width: 18px;
+                        height: 18px;
+                        right: 0;
+                        top: 50%;
+                        margin-top: -9px;
+                        transition: all .3s;
+                    }
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        background: url(../images/iconq.svg) no-repeat center center;
+                        background-size: 32px;
+                        width: 32px;
+                        height: 34px;
+                        left: 0;
+                        top: 50%;
+                        margin-top: -17px;
+                        transition: all .3s;
+                        @include query($sp){
+                            width: 24px;
+                            height: 24px;
+                            background-size: 24px;
+                            margin-top: -12px;
+                        }
+                    }
+                }
+                &.open p{
+                    &::after {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            dd{
+                display: none;
+                padding: 20px 30px;
+                padding-bottom: 35px;
+                position: relative;
+                @include query($sp){
+                    border-top: 8px solid #F0F0F0;
+                    padding: 15px;
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    background: url(../images/icona.svg) no-repeat center center;
+                    background-size: 32px;
+                    width: 32px;
+                    height: 34px;
+                    left: 20px;
+                    top: 20px;
+                    transition: all .3s;
+                    @include query($sp){
+                        width: 24px;
+                        height: 24px;
+                        background-size: 24px;
+                        left: 15px;
+                        top: 18px;
+                    }
+                }
+                p{
+                    padding-left: 40px;
+                    margin-bottom: 25px;
+                    @include query($sp){
+                        padding-left: 30px;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .blockquote{
+        background: #F0F0F0;
+        border-radius: 10px;
+        padding: 25px 30px;
+        margin: 60px 0;
+        position: relative;
+        &:not(.blockquote--heading)::before {
+            content: '';
+            position: absolute;
+            background: url(../images/blockquote.svg) no-repeat left top;
+            width: 108px;
+            height: 88px;
+            background-size: 108px;
+            left: 30px;
+            top: -25px;
+            z-index: 0;
+            @include query($sp){
+                top: -30px;
+                left: 15px;
+            }
+        }
+        @include query($sp){
+            padding: 30px 15px;
+            margin: 30px 0;
+            &:not(.blockquote--heading){
+                margin-top: 60px;
+                padding-bottom: 15px;
+            }
+        }
+        p{
+            position: relative;
+            z-index: 1;
+            margin-bottom: 25px;
+            &:last-child { 
+                margin-bottom: 0;
+            }
+        }
+        &--heading{
+            background: #FFEDF2;
+            h6{
+                font-size: 19px;
+                margin-bottom: 30px;
+            }
+        }
+    }
+    .introduct{
+        margin: 60px 0;
+        @include query($sp){
+            margin-top: 70px;
+        }
+        .btnpage{
+            max-width: 400px;
+        }
+        &.referral{
+            margin-bottom: 80px;
+            @include query($sp){
+                margin-bottom: 60px;
+            }
+        }
+        &--head{
+            @include flexbox(flex-start, center);
+            padding: 20px 30px;
+            background: #1C1C1C;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            .iconrank{
+                flex: 0 0 80px;
+                @include query($sp){
+                    flex: 0 0 40px;
+                }
+            }
+            @include query($sp){
+                padding: 15px;
+            }
+        }
+        &.referral{
+            .introduct--head{
+                background: #2F2331;
+                @include query($sp){
+                    flex-wrap: wrap;
+                }
+            }
+            .introduct--tit{
+                text-decoration: underline;
+                @include query($sp){
+                    font-size: 18px;
+                }
+            }
+        }
+        &--tit{
+            flex: 1 1 auto;
+            color: #fff;
+            font-size: 30px;
+            padding-left: 30px;
+            font-weight: bold;
+            @include query($sp){
+                font-size: 20px;
+                padding-left: 15px;
+            }
+        }
+        &--ratetotal{
+            @include query($sp){
+                flex: 0 0 100%;
+                margin-top: 15px;
+            }
+            .evaluation{
+                color: #fff;
+                text-align: center;
+                font-size: 20px;
+                font-weight: bold;
+                small{
+                    display: block;
+                    font-size: 16px;
+                    line-height: 1;
+                }
+                @include query($sp){
+                    font-size: 14px;
+                    margin-left: -5px;
+                    small{
+                        font-size: 12px;
+                    }
+                }
+            }
+            .rate--content{
+                margin: 0 15px;
+                padding: 0;
+                @include query($sp){
+                    margin: 0 10px;
+                    flex: 0 0 auto;
+                }
+            }
+            .rate--num{
+                margin-top: 0;
+                color: #F2A30B;
+                font-size: 36px;
+                flex: 0 0 auto;
+                @include query($sp){
+                    font-size: 28px;
+                }
+            }
+            .rate--star{
+                max-width: inherit;
+                @include query($sp){
+                    .fa-star{
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+        &--content{
+            background: #fff;
+            @include shadow;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 25px 30px 35px;
+            .btnpage.bgwhite{
+                max-width: 100%;
+            }
+            @include query($sp){
+                padding: 30px 15px;
+            }
+        }
+        &--info{
+            .flexbox{
+                flex-wrap: nowrap;
+                align-items: flex-start;
+                margin-top: 30px;
+                @include query($sp){
+                    flex-wrap: wrap;
+                    margin-top: 20px;
+                }
+                &:first-child { 
+                    margin-top: 0;
+                }
+                .txt{
+                    flex: 1 1 auto;
+                    padding-right: 40px;
+                    @include query($sp){
+                        flex: 0 0 100%;
+                        padding-right: 0;
+                        order: 2;
+                        margin-top: 20px;
+                    }
+                }
+                .img{
+                    flex: 0 0 39%;
+                    max-width: 328px;
+                    @include query($sp){
+                        flex: 0 0 100%;
+                        order: 1;
+                        max-width: 100%;
+                        text-align: center;
+                    }
+                }
+                .btnpage{
+                    max-width: 328px;
+                    flex: 0 0 39%;
+                    margin: 0;
+                    @include query($sp){
+                        max-width: 100%;
+                        flex: 0 0 100%;
+                        margin-top: 20px;
+                    }
+                }
+            }
+            .price{
+                background: #FFEDF2;
+                border-radius: 10px;
+                @include flexbox(flex-start, center);
+                flex-wrap: nowrap;
+                padding: 10px 15px;
+                flex: 1 1 auto;
+                margin-right: 20px;
+                @include query($sp){
+                    flex-wrap: wrap;
+                    padding: 15px 20px 20px 20px;
+                    margin-right: 0;
+                }
+                span{
+                    font-size: 20px;
+                    font-weight: bold;
+                    @include query($sp){
+                        text-align: center;
+                        flex: 0 0 100%;
+                        font-size: 18px;
+                    }
+                    &.num{
+                        font-size: 50px;
+                        color: #E60F4A;
+                        line-height: 1;
+                        font-weight: 900;
+                        font-family: 'Roboto' !important;
+                        margin: 0 15px;
+                        @include query($sp){
+                            margin: 0;
+                        }
+                    }
+                    small{
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: #000;
+                    }
+                }
+            }
+        }
+        &--casinoonl{
+            margin: 35px 0;
+            @include query($sp){
+                margin-top: 50px;
+            }
+            &--tit{
+                background: #0AB1EF;
+                @include titbox($clx: #fff, $fz: 20px);
+                @include query($sp){
+                    font-size: 16px;
+                    text-align: left;
+                    padding: 15px 25px;
+                }
+            }
+            ul{
+                margin: 0;
+                background: #E8F6FF;
+                padding: 30px 25px;
+                border-radius: 0;
+                @include flexbox(space-between, center);
+                margin-top: 4px;
+                @include query($sp){
+                    margin-top: 0;
+                    @include shadow;
+                    flex-wrap: wrap;
+                    padding: 20px 15px;
+                }
+                li{
+                    padding: 0;
+                    margin-bottom: 0;
+                    &::before {
+                        background: none;
+                    }
+                    img{
+                        max-height: 70px;
+                    }
+                    @include query($sp){
+                        flex: 0 0 46%;
+                        margin-bottom: 4%;
+                        text-align: center;
+                        &:last-child { 
+                            margin: 0 auto;
+                        }
+                    }
+                }
+            }
+        }
+        &--data{
+            &--tit{
+                background: #F0F0F0;
+                @include titbox($clx: #333, $fz: 20px);
+                border: 1px solid #D0D0D0;
+                border-bottom: 0;
+                @include query($sp){
+                    font-size: 18px;
+                    text-align: left;
+                    padding-left: 25px;
+                }
+            }
+            table{
+                margin: 0;
+                border: 1px solid #F0F0F0;
+                @include query($sp){
+                    min-width: 100%;
+                    border: 0;
+                    border-right: 1px solid #D0D0D0;
+                    border-bottom: 1px solid #D0D0D0;
+                }
+                td:nth-child(odd){
+                    background: #F0F0F0;
+                }
+                td{
+                    @include query($sp){
+                        padding: 12px 25px;
+                        display: block;
+                        width: 100%;
+                        border-right: 0;
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+        .btnpage.bgwhite{
+            margin-top: 25px;
+            @include query($sp){
+                margin-top: 15px;
+            }
+            a{
+                padding-right: 70px;
+                &::before {
+                    right: 55px;
+                }
+                @include query($sp){
+                    padding: 15px 40px;
+                    font-size: 16px;
+                    &::before {
+                        right: 20px;
+                        width: 12px;
+                        height: 12px;
+                        margin-top: -6px;
+                    }
+                }
+            }
+        }
+        &--inbox{
+            padding: 30px;
+            border: 2px solid #2F2331;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            @include query($sp){
+                padding: 15px;
+            }
+        }
+        &--rate{
+            @include flexbox(space-between, flex-start);
+            @include query($sp){
+                flex-wrap: wrap;
+            }
+            .img{
+                flex: 0 0 44%;
+                max-width: 366px;
+                span{
+                    line-height: 1;
+                    font-size: 16px;
+                    margin-top: 5px;
+                    display: block;
+                }
+                @include query($sp){
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    text-align: center;
+                    img{
+                        width: 100%;
+                    }
+                    span{
+                        text-align: right;
+                        font-size: 12px;
+                        margin-top: 10px;
+                    }
+                }
+            }
+            .boxrate{
+                flex: 1 1 auto;
+                padding-left: 28px;
+                @include query($sp){
+                    flex: 0 0 100%;
+                    padding-left: 0;
+                    margin-top: 15px;
+                }
+            }
+            dl{
+                background: #F0F0F0;
+                border-radius: 6px;
+                padding: 14px 25px;
+                @include flexbox(flex-start, center);
+                margin-bottom: 8px;
+                @include query($sp){
+                    padding: 15px;
+                }
+                &:last-child { 
+                    margin-bottom: 0;
+                }
+                dt{
+                    font-weight: bold;
+                    font-size: 20px;
+                    flex: 0 0 50%;
+                    @include query($sp){
+                        font-size: 18px;
+                    }
+                }
+                .rate--content{
+                    padding-left: 0;
+                    flex: 0 0 50%;
+                    i{
+                        margin-left: 0.3rem;
+                        @include query($sp){
+                            margin-left: 0;
+                        }
+                    }
+                }
+                .rate--star{
+                    max-width: inherit;
+                    .fa-star{
+                        font-size: 30px;
+                        @include query($sp){
+                            font-size: 24px;
+                        }
+                    }
+                }
+            }
+        }
+        &--button{
+            @include flexbox(space-between, flex-end);
+            @include query($sp){
+                flex: 0 0 100%;
+                max-width: 100%;
+                flex-wrap: wrap;
+                margin-top: 20px;
+                .introduct--btn{
+                    &:nth-child(2){
+                        order: 1;
+                    }
+                    &:nth-child(1){
+                        order: 2;
+                    }
+                }
+            }
+        }
+        &--btn{
+            flex: 0 0 50%;
+            max-width: 402px;
+            text-align: center;
+            @include query($sp){
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 15px;
+            }
+            .lable{
+                font-weight: bold;
+                text-align: center;
+                display: inline-block;
+                font-size: 17px;
+                background: url(../images/ico-lableleft.svg) no-repeat left top, url(../images/ico-lableright.svg) no-repeat right top;
+                background-size: 22px;
+                color: #E60F4A;
+                padding: 0 40px;
+                // &.dissp{
+                //     display: none !important;
+                // }
+                @include query($sp){
+                    font-size: 16px;
+                    padding: 0 20px;
+                    // &.dissp{
+                    //     display: inline-block !important;
+                    //     margin-bottom: 5px;
+                    // }
+                    // &.dispc{
+                    //     display: none;
+                    // }
+                }
+            }
+            .btnpage{
+                margin-top: 10px;
+                @include query($sp){
+                    margin-top: 0;
+                }
+            }
+            a{
+                font-size: 17px;
+                @include query($sp){
+                    padding-left: 50px;
+                    padding-right: 60px;
+                }
+            }
+        }
+        &--payment{
+            margin-top: 45px;
+            &--tit{
+                background: #0AB1EF;
+                @include titbox($clx: #fff, $fz: 20px);
+                box-shadow: 2px 2px 6px rgba($color: #000000, $alpha: 0.1);
+                @include query($sp){
+                    text-align: left;
+                    font-size: 16px;
+                }
+            }
+            &--dl{
+                dl{
+                    @include flexbox(flex-start, flex-start);
+                    margin-top: 3px;
+                    @include query($sp){
+                        flex-wrap: wrap;
+                        margin-top: 15px;
+                        &:first-child { 
+                            margin-top: 4px;
+                        }
+                        
+                    }
+                }
+                dt{
+                    @include flexbox(center, center);
+                    font-size: 15px;
+                    font-weight: bold;
+                    align-self: stretch;
+                    background: #E8F6FF;
+                    flex: 0 0 165px;
+                    box-shadow: 2px 2px 6px rgba($color: #000000, $alpha: 0.1);
+                    @include query($sp){
+                        flex: 0 0 100%;
+                        justify-content: flex-start;
+                        padding: 12px 24px;
+                    }
+                }
+                dd{
+                    --gap: 3px;
+                    align-self: stretch;
+                    @include flexbox(flex-start, flex-start);
+                    flex-wrap: wrap;
+                    flex: 1 1 auto;
+                    margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
+                    width: calc(100% + var(--gap));
+                    @include query($sp){
+                        --gap: 4px;
+                    }
+                    span{
+                        @include flexbox(center, center);
+                        min-height: 75px;
+                        min-width: 131px;
+                        flex: 0 0 calc(20% - 3px);
+                        margin: var(--gap) 0 0 var(--gap);
+                        box-shadow: 2px 2px 6px rgba($color: #000000, $alpha: 0.1);
+                        img{
+
+                        }
+                    }
+                    @include query($sp){
+                        span{
+                            flex: 0 0 calc(33.333% - 4px);
+                            min-width: inherit;
+                            min-height: 54px;
+                            padding: 0 4px;
+                        }
+                    }
+                }
+            }
+        }
+        &--commentary{
+            h2{
+                @include minquery(640){
+                    margin-top: 45px;
+                    width: calc(100% + 60px);
+                    margin-left: -30px;
+                }
+                @include query($sp){
+                    margin-top: 35px;
+                }
+            }
+        }
+        &--point{
+            dl{
+                margin: 25px 0;
+                &:first-child { 
+                    margin-top: 0;
+                }
+            }
+            dt{
+                font-size: 15px;
+                font-weight: bold;
+                display: inline-block;
+                text-align: center;
+                background: url(../images/bgtxt.png) center center;
+                background-size: cover;
+                border-radius: 4px;
+                color: #fff;
+                padding: 0 10px;
+                margin-bottom: 25px;
+                @include query($sp){
+                    font-size: 12px;
+                    margin-bottom: 15px;
+                    padding: 2px 10px;
+                }
+            }
+            ul{
+                background: none;
+                margin: 0;
+                padding: 0;
+                li{
+                    padding-left: 0;
+                    &::before {
+                        background: none;
+                    }
+                }
+            }
+        }
+        &--tab{
+            margin: 60px 0 35px;
+            @include query($sp){
+                overflow: hidden;
+                margin: 45px 0 30px;
+            }
+            .tabslist {
+                margin: 0;
+                padding: 0;
+                background: none;
+                @include flexbox(flex-start, flex-start);
+                @include query($sp){
+                    overflow-x: scroll;
+                }
+                li{
+                    margin: 0;
+                    padding: 14px 20px;
+                    background: #F0F0F0;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    margin-right: 4px;
+                    cursor: pointer;
+                    span{
+                        font-size: 18px;
+                        color: #C4C4C4;
+                        font-weight: bold;
+                        line-height: 1;
+                    }
+                    @include query($sp){
+                        padding: 21px 20px 24px;
+                        word-break: keep-all;
+                        word-wrap: normal;
+                    }
+                    &::before {
+                        background: none;
+                    }
+                    &.active{
+                        background: #E8F6FF;
+                        span{
+                            color: #1D9BF0;
+                        }
+                    }
+                }
+            }
+        }
+        &--contenttab{
+            background: #F5FBFF;
+            padding: 12px 25px 25px;
+            border-radius: 10px;
+            @include query($sp){
+                padding: 20px;
+                padding-top: 25px;
+                .row{
+                    flex-wrap: nowrap;
+                    overflow-y: scroll;
+                }
+            }
+            dl{
+                background: #fff;
+                padding: 20px;
+                @include flexbox(flex-start, flex-start);
+                margin-bottom: 20px;
+                &:last-child { 
+                    margin-bottom: 0;
+                }
+                @include query($sp){
+                    flex-wrap: wrap;
+                    min-width: 263px;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    margin-right: 10px;
+                    margin-bottom: 0;
+                    &:last-child { 
+                        margin-right: 0;
+                    }
+                }
+            }
+            dt{
+                flex: 0 0 130px;
+                text-align: center;
+                @include query($sp){
+                    flex: 0 0 100%;
+                    .icon{
+                        width: 160px;
+                        height: 160px;
+                        margin: 0 auto;
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+                .name{
+                    font-weight: bold;
+                    display: block;
+                    font-size: 17px;
+                    margin-top: 7px;
+                    @include query($sp){
+                        font-size: 18px;
+                        margin-top: 10px;
+                    }
+                }
+            }
+            dd{
+                flex: 1 1 auto;
+                padding-left: 25px;
+                @include query($sp){
+                    padding-left: 0;
+                    flex: 0 0 100%;
+                    margin-top: 15px;
+                }
+            }
+            .info{
+                margin: 10px 0;
+                span{
+                    font-size: 16px;
+                    @include query($sp){
+                        min-width: 105px;
+                        text-align: center;
+                        display: inline-block;
+                    }
+                }
+                .date{
+                    font-size: 15px;
+                }
+            }
+            p{
+                font-size: 15px;
+            }
+        }
+        &--benefits{
+            margin-top: 100px;
+            margin-bottom: 15px;
+            @include query($sp){
+                margin-top: 70px;
+                margin-bottom: 25px;
+            }
+            .boxhead--tit{
+                background: #F24350;
+                color: #fff;
+                font-size: 18px;
+                @include query($sp){
+                    font-size: 15px;
+                }
+            }
+            .boxhead--inbox{
+                background: #FFEDF2;
+                border-top-left-radius: 0;
+                @include query($sp){
+                    padding: 25px 15px 15px;
+                }
+            }
+            ul{
+                margin: 0;
+                padding: 0;
+                li{
+                    padding: 0;
+                    margin-bottom: 20px;
+                    &:last-child { 
+                        margin-bottom: 0;
+                    }
+                    @include flexbox(flex-start, center);
+                    @include query($sp){
+                        flex-wrap: wrap;
+                        margin-bottom: 15px;
+                    }
+                    span{
+                        font-size: 22px;
+                        color: #E60F4A;
+                        font-weight: bold;
+                        &.lable{
+                            background: url(../images/bgtxt.png) center center;
+                            background-size: cover;
+                            color: #fff;
+                            font-size: 18px;
+                            border-radius: 4px;
+                            min-width: 100px;
+                            text-align: center;
+                            height: 30px;
+                            margin-right: 25px;
+                        }
+                        @include query($sp){
+                            font-size: 14px;
+                            &.lable{
+                                font-size: 12px;
+                                min-width: 48px;
+                                height: 24px;
+                                @include flexbox(center, center);
+                                margin-bottom: 5px;
+                            }
+                        }
+                    }
+                    &::before {
+                        background: none;
+                    }
+                }
+            }
+            .introduct--imgbenefits{
+                margin: 45px 0;
+                @include query($sp){
+                    margin: 40px 0 25px;
+                }
+            }
+            .btnpage{
+                margin-top: 45px;
+                @include query($sp){
+                    margin-top: 25px;
+                }
+            }
+        }
+        &--related{
+            &.casinorelated{
+                margin-top: 35px;
+            }
+            h2{
+                margin-top: 35px;
+            }
+        }
+    }
+    .internallink{
+        margin: 60px 0;
+        @include query($sp){
+            margin-top: 70px;
+            margin-bottom: 30px;
+        }
+        &--list{
+            @include flexbox(space-between, flex-start);
+            flex-wrap: wrap;
+        }
+        &--item{
+            margin: 0;
+            padding: 0;
+            margin-top: 18px;
+            @include shadow;
+            flex: 0 0 49%;
+            max-width: 434px;
+            &:first-child ,
+            &:nth-child(2) {
+                margin-top: 0;
+            }
+            @include query($sp){
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-top: 15px;
+                &:nth-child(2) {
+                    margin-top: 15px
+                }
+            }
+            a {
+                @include flexbox(flex-start, center);
+                padding: 6px 15px;
+                color: #000;
+                @include arrright($cl: #000, $size: 12px, $w: 2px);
+                &::before{
+                    right: 30px;
+                    margin-top: -6px;
+                    @include query($sp){
+                        right: 15px;
+                        width: 10px;
+                        height: 10px;
+                        margin-top: -5px;
+                    }
+                }
+                @include minquery(960){
+                    &:hover {
+                        opacity: 0.7;
+                        img {
+                            opacity: 1;
+                        }
+                        .txt {
+                            text-decoration: none;
+                        }
+                        &::before {
+                            right: 20px;
+                        }
+                    }
+                }
+                @include query($sp){
+                    padding: 8px;
+                }
+            }
+            .img {
+                width: 60px;
+                height: 60px;
+                border-radius: 100%;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .txt {
+                font-weight: bold;
+                font-size: 20px;
+                text-decoration: underline;
+                margin-left: 30px;
+                @include query($sp){
+                    margin-left: 15px;
+                    font-size: 18px;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    .internalrate{
+        @include shadow;
+        margin: 60px 0;
+        @include query($sp){
+            margin: 60px 0 40px;
+        }
+        &--tit{
+            background: #0028AF;
+            @include titbox($clx: #fff, $fz: 26px);
+            text-align: left;
+            padding: 20px 30px;
+            @include query($sp){
+                font-size: 18px;
+                padding: 15px;
+            }
+        }
+        &--inbox{
+            padding: 30px 30px 35px;
+            border: 3px solid #0028AF;
+            border-top: 0;
+            @include flexbox(flex-start, flex-start);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            @include query($sp){
+                padding: 15px;
+                padding-bottom: 25px;
+                flex-wrap: wrap;
+            }
+            .img{
+                flex: 0 0 40%;
+                max-width: 333px;
+                @include query($sp){
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    margin-bottom: 15px;
+                    text-align: center;
+                }
+            }
+            .txt{
+                flex: 1 1 auto;
+                padding-left: 30px;
+                @include query($sp){
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    padding-left: 0;
+                }
+            }
+            .btnpage.bgwhite{
+                a{
+                    font-size: 17px;
+                    max-height: 83px;
+                    &::before {
+                        width: 12px;
+                        height: 12px;
+                        margin-top: -6px;
+                        right: 20px;
+                    }
+                }
+                @include query($sp){
+                    margin-top: 15px;
+                    a{
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+    .step{
+        text-align: center;
+        margin: 100px 0;
+        @include query($sp){
+            margin: 40px 0 45px;
+        }
+        span{
+            color: #0028AF;
+            font-family: 'Roboto' !important;
+            font-size: 16px;
+            font-weight: 700;
+            .num{
+                font-size: 26px;
+                margin-left: 5px;
+            }
+        }
+        &--tit{
+            background: none;
+            color: #000;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            font-size: 30px;
+            &::before {
+                background: none;
+            }
+            @include query($sp){
+                font-size: 22px;
+            }
+        }
+    }
+    .casinorelated{
+        margin: 60px 0;
+        &--tit{
+            background: #E60F4A;
+            @include titbox($clx: #fff, $fz: 20px);
+            box-shadow: 2px 2px 6px rgba($color: #000000, $alpha: 0.1);
+            @include query($sp){
+                font-size: 18px;
+                text-align: left;
+                padding: 15px;
+            }
+        }
+        ul{
+            li{
+                box-shadow: 2px 2px 6px rgba($color: #000000, $alpha: 0.1);
+                padding: 0;
+                margin-bottom: 0;
+                margin-top: 3px;
+                a{
+                    font-size: 20px;
+                    color: #000;
+                    font-weight: bold;
+                    padding: 20px 40px;
+                    display: block;
+                    @include arrright($cl: #000, $size: 8px, $w: 1px);
+                    &::before {
+                        right: 20px;
+                    }
+                    @include minquery(960){
+                        &:hover::before{
+                            right: 10px;
+                        }
+                    }
+                    @include query($sp){
+                        font-size: 14px;
+                        padding: 15px;
+                        padding-right: 50px;
+                    }
+                }
+            }
+        }
+        .btnpage{
+            margin-top: 35px;
+            @include query($sp){
+                margin-top: 25px;
+            }
+            a{
+                height: 66px;
+                font-size: 17px;
+            }
+        }
+    }
+    .actionlead{
+        border: 3px solid #E60F4A;
+        border-radius: 10px;
+        @include shadow;
+        margin-bottom: 45px;
+        @include query($sp){
+            margin-bottom: 60px;
+        }
+        &--inbox{
+            padding: 30px 35px 35px 60px;
+            @include flexbox(flex-start, center);
+            @include query($sp){
+                padding: 25px 15px 50px 15px;
+                flex-wrap: wrap;
+            }
+            .img{
+                flex: 0 0 23%;
+                max-width: 182px;
+                @include query($sp){
+                    flex: 0 0 100%;
+                    margin: 0 auto;
+                }
+                a{
+                    font-weight: bold;
+                    display: block;
+                    color: #0028AF;
+                    font-size: 18px;
+                    text-align: center;
+                    margin-top: 25px;
+                    @include query($sp){
+                        margin-top: 20px;
+                    }
+                }
+            }
+            .txt{
+                flex: 1 1 auto;
+                padding-left: 25px;
+                @include query($sp) {
+                    padding-left: 0;
+                    margin-top: 30px;
+                }
+            }
+            dl{
+                @include flexbox(flex-start, flex-start);
+                flex: 0 0 49%;
+                max-width: 295px;
+                background: #B9B9B9;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                &:nth-child(2n){
+                    margin-right: 0;
+                }
+                @include query($sp){
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    margin: 0;
+                    margin-bottom: 15px;
+                }
+                dt{
+                    flex: 1 1 auto;
+                    @include flexbox(flex-start, center);
+                    padding: 0 0 0 10px;
+                    align-self: stretch;
+                    height: 32px;
+                    span{
+                        font-size: 15px;
+                        color: #fff;
+                        font-weight: bold;
+                        margin-left: 10px;
+                        @include query($sp){
+                            font-size: 16px;
+                        }
+                        @include query(420){
+                            font-size: 15px;
+                            margin-left: 5px;
+                        }
+                    }
+                    @include query($sp){
+                        height: 34px;
+                    }
+                }
+                .icon{
+                    flex: 0 0 20px;
+                    @include flexbox(center, center);
+                    img{
+                        max-height: 18px;
+                    }
+                }
+                .price{
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: #1C1C1C;
+                    line-height: 1;
+                    font-family: 'Roboto' !important;
+                    small{
+                        font-size: 14px;
+                    }
+                }
+                dd{
+                    @include flexbox(center, center);
+                    font-size: 24px;
+                    font-weight: bold;
+                    flex: 0 0 42%;
+                    max-width: 125px;
+                    background: #F4F4F4;
+                    line-height: 1;
+                    align-self: stretch;
+                    @include query($sp){
+                        max-width: 135px;
+                    }
+                }
+            }
+            .btnpage{
+                max-width: 550px;
+                margin-top: 30px;
+                @include query($sp){
+                    margin-top: 10px;
+                }
+                a{
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+    .authorcard{
+        @include shadow;
+        border-radius: 10px;
+        &--tit{
+            background: #1C1C1C;
+            @include titbox($clx: #fff, $fz: 20px);
+            padding-top: 11px;
+            padding-bottom: 11px;
+            @include query($sp){
+                text-align: left;
+                font-size: 18px;
+                padding: 14px 20px;
+            }
+        }
+        &--inbox{
+            padding: 35px 40px;
+            @include query($sp){
+                padding: 25px 15px 30px;
+            }
+        }
+        .row{
+            flex-wrap: nowrap;
+            @include query($sp){
+                flex-wrap: wrap;
+            }
+        }
+        .name{
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            @include query($sp){
+                font-size: 18px;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+        }
+        .txt{
+            flex: 1 1 auto;
+            padding-right: 35px;
+            @include query($sp){
+                padding-right: 0;
+                order: 2;
+            }
+        }
+        .img{
+            max-width: 197px;
+            flex: 0 0 30%;
+            margin-top: 15px;
+            @include query($sp){
+                margin-top: 0;
+                text-align: center;
+                order: 1;
+                flex: 0 0 160px;
+                width: 160px;
+                height: 160px;
+                margin: 0 auto;
+                margin-bottom: 15px;
+            }
+        }
+        .btnpage{
+            margin-top: 20px;
+            @include query($sp){
+                margin-top: 30px;
+            }
+            a{
+                font-size: 20px;
+                text-decoration: underline;
+                @include query($sp){
+                    font-size: 16px;
+                    min-height: 58px;
+                }
+            }
+        }
+        ul{
+            @include flexbox(flex-start, flex-start);
+            margin-top: 30px;
+            @include query($sp){
+                margin-top: 10px;
+            }
+            li{
+                height: 36px;
+                margin-right: 40px;
+                @include query($sp){
+                    text-align: center;
+                    margin-right: 0;
+                    flex: 0 0 25%;
+                }
+            }
+            a{
+                @include flexbox(flex-start, center);
+                height: 36px;
+                @include query($sp){
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
+
+#toc_container{
+    @include query($sp){
+        margin-top: 95px;
+    }
+    .toc_title{
+        font-size: 20px;
+        font-weight: bold;
+        color: #fff;
+        background: #1C1C1C;
+        padding: 19px 35px;
+        position: relative;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        cursor: pointer;
+        @include query($sp){
+            font-size: 18px;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+        &::before {
+            position: absolute;
+            content: '';
+            background: url(../images/arrdown2-white.svg) no-repeat center center;
+            background-size: 18px;
+            width: 18px;
+            height: 18px;
+            right: 30px;
+            top: 50%;
+            margin-top: -9px;
+            transition: all .3s;
+            @include query($sp){
+                right: 22px;
+            }
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            left: 0;
+            bottom: 0;
+            background: url(../images/linearc.png) no-repeat left bottom;
+        }
+        &.open{
+            &::before {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    .toc_list{
+        background: #F0F0F0;
+        margin: 0;
+        padding: 25px 30px;
+        list-style-type: none;
+        counter-reset: item;
+        display: none;
+        @include query($sp){
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 15px;
+        }
+        li {
+            counter-increment: item;
+            padding-left: 30px;
+            &::before {
+                position: absolute;
+                content: counters(item, ".") ". ";
+                font-size: 15px;
+                padding: 0 20px 0 0;
+                top: 3px;
+                background: none;
+                display: block;
+                @include query($sp){
+                    top: 1px;
+                }
+            }
+            ul{
+                margin: 0;
+                padding: 0;
+                counter-reset: item;
+                margin-left: -15px;
+                li{
+                    padding-left: 40px;
+                }
+                li:before {
+                    content: counters(item, ".") " ";
+                }
+            }
+        }
+        li{
+            margin: 6px 0;
+        }
+        a{
+            font-size: 15px;
+            color: #171717;
+        }
+    }
+}
+
+.p-authors{
+    .content{
+        p{
+            @include query($sp){
+                font-size: 16px;
             }
         }
     }

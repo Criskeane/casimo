@@ -19,38 +19,37 @@ block content
           tbody
             tr
               th
-                span.required
                 |お名前
+                span.required
               td
                 input(name="nameuser" id="nameuser" placeholder="例）山田　太郎" type="text" size="150" value="")
             tr
-              th
-                span.required
+              th 
                 |お名前（フリガナ）
+                span.required
               td
                 input(name="phonetic" id="phonetic" placeholder="例）ヤマダ　タロウ" type="text" maxlength="150" value="")
             tr.vertitop
-              th
-                span.required
+              th 
                 |メールアドレス
+                span.required
               td
                 input(name="email" id="email" placeholder="例）info@example.com" type="email" maxlength="150" value="")
                 p.mt20 ※迷惑メールに割り振られる恐れがあるため、@docomo.ne.jp、@i.softbank.jp、@ezweb.ne.jpなどキャリアメールのご使用は極力お控えください。
             tr
-              th
-                span.nonerequired
+              th 
                 |電話番号
+                span.nonerequired
               td
                 input(name="tel" id="tel" placeholder="例）090-1234-5678" type="tel" maxlength="10" value="")
             tr.vertitop
-              th
-                span.nonerequired
+              th 
                 |お問い合わせ内容
+                span.nonerequired
               td
                 textarea(rows='4', cols='50', placeholder="お問い合わせの内容をご記入ください")
         .form_submit
           .btnpage
-            button
-              span 上記の内容で送信する
+            button 上記の内容で送信する
 
     +sidebar

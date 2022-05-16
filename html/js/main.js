@@ -92,6 +92,7 @@ $(document).ready(function () {
       arrows: true,
       dots: true,
       autoplay: true,
+      adaptiveHeight: true,
     });
   }
 
@@ -103,6 +104,14 @@ $(document).ready(function () {
       dots: false,
       autoplay: true,
       variableWidth: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            arrows: false,
+          }
+        }
+      ]
     });
   }
 
@@ -115,6 +124,30 @@ $(document).ready(function () {
       autoplay: true,
       centerMode: true,
       centerPadding: '25px',
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            variableWidth: true,
+            centerPadding: '0',
+            centerMode: false,
+            arrows: false,
+          }
+        },
+        {
+          breakpoint: 639,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: true,
+            centerPadding: '0',
+            centerMode: false,
+            arrows: false,
+          }
+        }
+      ]
     });
   }
 
@@ -169,7 +202,7 @@ $(document).ready(function () {
     });
   }
   //END BACKTO TOP
-
+  
   $('.block__about--affiliated--item h6').tile(7);
   $('.block__about--affiliated--item p').tile(7);
 });
@@ -179,13 +212,18 @@ function load_function() {
   pageReload();
   accordion();
   linkAnchor();
-  showhideauthor(6);
-  showhidearticle(3);
+  showhidearticle(3,3);
+  showhidearticlecl(2,2);
+  if (viewportW < 639) {
+    showhideauthor(3,3);
+  } else {
+    showhideauthor(6,6);
+  }
 }
 
 //CREAT FUNCTION ------------------------------------------------
 
-function showhideauthor(num) {
+function showhideauthor(num, total) {
   $(".author__view--writers").slice(0, num).show();
   var item = $('.author__view--writers');
   var itemLenght = item.length;
@@ -196,34 +234,49 @@ function showhideauthor(num) {
     a.preventDefault();
     var $this = $(this).closest('.author__view').find(".author__view--writers:hidden");
     var length = $this.length;
-    if (length <= 6) {
+    if (length <= total) {
       $(this).addClass('fadeOut');
     }
-    $this.slice(0, 6).slideDown();
+    $this.slice(0, total).slideDown();
     // $("html,body").animate({
     //   scrollTop: $(this).offset().top
     // }, 800)
   });
 }
 
-function showhidearticle(num) {
-  $(".listarticle--item").slice(0, num).show();
+function showhidearticle(num, total) {
+  $(".author__article--ath .listarticle--item").slice(0, num).show();
   var item = $('.listarticle--item');
   var itemLenght = item.length;
   if(itemLenght <= num) {
-    $('.author__article .btnmore').hide();
+    $('.author__article--ath .btnmore').hide();
   }
-  $(".author__article .btnmore").on("click", function (a) {
+  $(".author__article--ath .btnmore").on("click", function (a) {
     a.preventDefault();
-    var $this = $(this).closest('.author__article').find(".listarticle--item:hidden");
+    var $this = $(this).closest('.author__article--ath').find(".listarticle--item:hidden");
     var length = $this.length;
-    if (length <= 4) {
+    if (length <= total) {
       $(this).addClass('fadeOut');
     }
-    $this.slice(0, 4).slideDown();
-    // $("html,body").animate({
-    //   scrollTop: $(this).offset().top
-    // }, 800)
+    $this.slice(0, total).slideDown();
+  });
+}
+
+function showhidearticlecl(num, total) {
+  $(".author__article--column .listarticle--item").slice(0, num).show();
+  var item = $('.listarticle--item');
+  var itemLenght = item.length;
+  if(itemLenght <= num) {
+    $('.author__article--column .btnmore').hide();
+  }
+  $(".author__article--column .btnmore").on("click", function (a) {
+    a.preventDefault();
+    var $this = $(this).closest('.author__article--column').find(".listarticle--item:hidden");
+    var length = $this.length;
+    if (length <= total) {
+      $(this).addClass('fadeOut');
+    }
+    $this.slice(0, total).slideDown();
   });
 }
 
@@ -338,7 +391,8 @@ if ($(".js-tab-content").length) {
     $(".js-tab-content").hide();
     $("ul.tabslist li").not($(this)).removeClass("active");
     $(this).hasClass("active") || $(this).addClass("active");
-    a = $(this).attr("data-id");
+    a = $(this).attr("data-tab");
+    // console.log(a);
     $("#tab" + a).fadeIn();
     return !1;
   });
