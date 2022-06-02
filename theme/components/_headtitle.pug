@@ -68,19 +68,22 @@ mixin sidebar()
         .sliderbonus
           .slideritem
             a(href="").img
-              img(src="../images/imgbonus.png", alt="") 
+              img(src="../images/imgbonus1.jpg", alt="")
           .slideritem
             a(href="").img
-              img(src="../images/imgbonus.png", alt="") 
+              img(src="../images/imgbonus2.jpg", alt="")
           .slideritem
             a(href="").img
-              img(src="../images/imgbonus2.png", alt="") 
+              img(src="../images/imgbonus3.jpg", alt="")
           .slideritem
             a(href="").img
-              img(src="../images/imgbonus.png", alt="") 
+              img(src="../images/imgbonus4.jpg", alt="")
           .slideritem
             a(href="").img
-              img(src="../images/imgbonus.png", alt="") 
+              img(src="../images/imgbonus5.jpg", alt="")
+          .slideritem
+            a(href="").img
+              img(src="../images/imgbonus6.jpg", alt="")
         .btnpage 
           a(href="") キャンペーン一覧
     .sidebox.payment
@@ -105,18 +108,38 @@ mixin sidebar()
         li.sidebar__list--item
           a(href="")
             .img 
-              img(src="../images/icongame.png", alt="")
+              img(src="../images/ico-game1.png", alt="")
             span.txt バカラ
         li.sidebar__list--item
           a(href="")
             .img 
-              img(src="../images/icongame.png", alt="")
+              img(src="../images/ico-game2.png", alt="")
+            span.txt ブラックジャック
+        li.sidebar__list--item
+          a(href="")
+            .img 
+              img(src="../images/ico-game3.png", alt="")
+            span.txt スロット
+        li.sidebar__list--item
+          a(href="")
+            .img 
+              img(src="../images/ico-game4.png", alt="")
+            span.txt ポーカー
+        li.sidebar__list--item
+          a(href="")
+            .img 
+              img(src="../images/ico-game5.png", alt="")
             span.txt ルーレット
         li.sidebar__list--item
           a(href="")
             .img 
-              img(src="../images/icongame.png", alt="")
-            span.txt ブラックジャック
+              img(src="../images/ico-game6.png", alt="")
+            span.txt シックボー
+        li.sidebar__list--item
+          a(href="")
+            .img 
+              img(src="../images/ico-game7.png", alt="")
+            span.txt スポーツベット
       .btnpage
         a(href="") おすすめの<br>カジノゲーム一覧
     .sidebox.twitter
@@ -150,34 +173,36 @@ mixin sidebar()
       ul.popular_list
         - for (i=1;i<6;i++)
           li.popular_list--item
-            .flexbox
+            a(href="").flexbox
               .img 
                 img(src="../images/imgpop.jpg", alt="")
               .txt
-                span.date 2021.01.01
-                a(href="").tit 【2021年最新】オンラインカジノおすすめランキング
-            .tag 
-              span #カジノHOW TO
-              span #決済方法
-              span #新規サービス
-              span #キャンペーン
+                span.postdate 2021.01.01
+                span.update 2021.01.01
+                span.tit 【2021年最新】オンラインカジノおすすめランキング
+            //- .tag 
+            //-   span #カジノHOW TO
+            //-   span #決済方法
+            //-   span #新規サービス
+            //-   span #キャンペーン
     .sidebox.popular
       h2.fontspec.sidetit NEWS
         span 新着記事一覧
       ul.popular_list
         - for (i=1;i<6;i++)
           li.popular_list--item
-            .flexbox
+            a(href="").flexbox
               .img 
                 img(src="../images/imgpop.jpg", alt="")
               .txt
-                span.date 2021.01.01
-                a(href="").tit 【2021年最新】オンラインカジノおすすめランキング
-            .tag 
-              span #カジノHOW TO
-              span #決済方法
-              span #新規サービス
-              span #キャンペーン
+                span.postdate 2021.01.01
+                span.update 2021.01.01
+                span.tit 【2021年最新】オンラインカジノおすすめランキング
+            //- .tag 
+            //-   span #カジノHOW TO
+            //-   span #決済方法
+            //-   span #新規サービス
+            //-   span #キャンペーン
     .sidebox.pickup
       h2.fontspec.sidetit MEDIA
         span 当社運営メディア
@@ -187,7 +212,7 @@ mixin sidebar()
             img(src="../images/imgmedia.jpg", alt="")
         li.sidebar__list--item
           a(href="" target="_Blank")
-            img(src="../images/imgmedia.jpg", alt="")
+            img(src="../images/mediasite2.jpg", alt="")
   
 mixin rate
   span.rate--star

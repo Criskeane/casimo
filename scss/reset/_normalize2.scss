@@ -1,3 +1,5 @@
+//MIXINS
+@import "../scss/components/mixins";
 * {
   margin: 0;
   padding: 0;
@@ -214,9 +216,11 @@ a img{
   opacity: 1;
   transition: ease-out 0.3s;
 }
-a img:hover{
-  opacity: 0.7;
-  transition: ease-out 0.3s;
+@include minquery(768){
+  a img:hover{
+    opacity: 0.7;
+    transition: ease-out 0.3s;
+  }
 }
 ins {
   background-color: #ff9;
@@ -239,10 +243,10 @@ abbr[title],dfn[title] {
 a,
 button,
 input {
-  -webkit-transition: all .3s ease-in-out 0s;
-  -moz-transition: all .3s ease-in-out 0s;
-  -o-transition: all .3s ease-in-out 0s;
-  -ms-transition: all .3s ease-in-out 0s;
-  transition: all .3s ease-in-out 0s
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  -ms-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out
 }
 //END RESET

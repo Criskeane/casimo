@@ -68,7 +68,7 @@ button{
     &::after{
       position: absolute;
       content: '';
-      background-color: #0028AF;
+      background-color: $blue;
       width: 0;
       height: 100%;
       right: 0;
@@ -86,18 +86,29 @@ button{
     }
     @include minquery(960){
       &:hover::after, &:focus::after, &:active::after{
-        right: inherit;
-        left: 0;
-        width: 100%;
-        z-index: -1;
+        // right: inherit;
+        // left: 0;
+        // width: 100%;
+        // z-index: -1;
+        opacity: 0.6;
       }
     }
     @include query($sp){
-      font-size: 17px;
+      font-size: 16px;
       height: 66px;
-      &::before {
-        right: 40px;
-      }
+      // &::before {
+      //   opacity: 0.6;
+      // }
+    }
+    @include query(420){
+      padding-left: 35px;
+      padding-right: 35px;
+    }
+    @include query(375){
+      font-size: 15px;
+    }
+    @include query(360){
+      font-size: 13px;
     }
   }
   &.bgorg{
@@ -115,37 +126,39 @@ button{
         border-color: #4D4D4D;
       }
     }
-    @include minquery(960){
-      &:hover a::before{
-        border-color: #fff;
-      }
-    }
+    // @include minquery(960){
+    //   &:hover a::before{
+        // border-color: #fff;
+        // opacity: 0.6;
+      // }
+    // }
   }
   &.bgblue{
     a{
-      background: #0028AF;
+      background: $blue;
       border-radius: 10px;
     }
   }
   &.bgwhite{
     border-radius: 10px;
     a{
-      border: 3px solid #0028AF;
+      border: 3px solid $blue;
       background: #fff;
       border-radius: 10px;
-      color: #0028AF !important;
+      color: $blue !important;
       max-height: inherit;
       height: auto;
       &::before {
-        border-color: #0028AF;
+        border-color: $blue;
       }
     }
     @include minquery(960){
       &:hover{
         a{
-          background: #0028AF;
+          background: $blue;
           color: #fff !important;
-          text-decoration: underline;
+          // text-decoration: underline;
+          opacity: 1;
           &::before {
             border-color: #fff;
           }
@@ -155,7 +168,7 @@ button{
   }
   @include minquery(960){
     &:hover a{
-      color: #fff !important;
+      opacity: 0.6;
     }
   }
   &.btnback{

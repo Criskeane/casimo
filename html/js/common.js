@@ -99,29 +99,6 @@ $(document).ready(function () {
   // });
   //END ICON NAV MENU
 
-  //LINK PAGE
-  $(".js-linkto").click(function (a) {
-    a = $(this).attr("data-to");
-    $("body").hasClass("menu-open") && $("body").removeClass("menu-open");
-    $("html,body").animate(
-      {
-        scrollTop: $("#" + a).offset().top,
-      },
-      0
-    );
-  });
-  //END LINK PAGE
-
-  //HIDDEN SEARCH AREA
-  $(".js-i_search a").click(function () {
-    $(this).toggleClass("search_active");
-    $(".form_search").slideToggle("fast");
-    $("input").css({
-      opacity: "1",
-    });
-  });
-  //END HIDDEN SEARCH AREA
-
   //FIX SCROLL WHEN HEADER FIX
   var heightHD = $("header").outerHeight();
   $(".js-archorlink").each(function () {
@@ -172,6 +149,7 @@ $(document).ready(function () {
 function load_function() {
   pageReload();
   accordion();
+  accordionmenu();
   linkAnchor();
 }
 

@@ -42,12 +42,18 @@
           height: 27px;
         }
       }
+      @include query(420) {
+        flex: 0 0 70%;
+      }
     }
     &_icon{
       flex: 1 1 auto;
       @include flexbox(flex-end, center);
       @include query($tab) {
         flex: 0 0 50%;
+      }
+      @include query(420) {
+        flex: 0 0 30%;
       }
     }
     // &_menu{
@@ -60,10 +66,9 @@
   &_nav{
     position: relative;
     z-index: 98;
-    @include minquery($tab) {
+    @include minquery(1200) {
       height: 71px;
       margin-top: 28px;
-      background: #000;
     }
     @include query($tab){
     }

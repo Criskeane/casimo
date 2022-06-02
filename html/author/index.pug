@@ -6,9 +6,9 @@ block define
   - var textdemo = 0
 //- EDIT ANOTHER 
 block thebreadcrumb
-  +breadcrumb("カジモ編集部のご紹介","笠原　豪")
+  +breadcrumb("カジモ編集部のご紹介","ナオ")
 block mainvs
-  +headtitle("笠原 豪 のプロフィール")
+  +headtitle("ナオ のプロフィール")
 block content
   section.container
     .content
@@ -16,26 +16,38 @@ block content
         .author__info--img
           .img
             img(src="../images/person.png", alt="")
-          span.txt 笠原　豪
+          span.txt ナオ
         .author__info--txt
-          p こんにちは！Casimo編集部の笠原豪です。<br>このメディアは俺の半生を文章化したようなもので、失敗談を含め、参考になる情報がたくさんあります。少しでも稼ぎたいという人はぜひCasimoの情報を参考にしてみてください。
+          p Casimoで責任者をしているナオです。<br><br>学生時代に独学でWebマーケティングを学び、複数の会社を経て、2013年に東京でWEB制作会社を起業。<br>起業後、趣味のカジノ旅行がキッカケで、オンラインカジノに出会い、2018年にCasimo編集部を立ち上げました。<br><br>現在は、最先端の情報を入手するため、オンラインカジノの本場であるマルタ共和国に会社を移転し、各オンラインカジノ会社と提携してCasimo限定ボーナスの交渉や、最新のオンラインカジノのリサーチ業務に従事。<br><br>Casimo編集部では、オンラインカジノに関する正しい情報をお届けし、どこよりもお得に遊んでもらえるように運営して参ります。
       .author__detail
         table.author__detail--table
           tr
             th 名前
-            td 笠原　豪（かさはら　ごう）
+            td ナオ
           tr
-            th 愛称
-            td 豪くん
+            th 役職
+            td サイト運営者
           tr
             th 年齢
-            td 1985年生まれ（33歳）
+            td 30代
           tr
-            th 性格
-            td 知的で理屈っぽい。気になったら徹底的に調べて、実際に経験してみたいと気が済まない。
+            th オンライン<br>カジノ歴
+            td 4年
+          tr
+            th 好きな<br>カジノゲーム
+            td バカラ・シックボー
+          tr
+            th お気に入り<br>オンラインカジノ
+            td エルドアカジノ
           tr
             th 趣味
-            td ギャンブルで作った1,000万円以上の借金を返し続ける生活を送っていたところ、26歳でオンラインカジノに出会う。5年間カジノ攻略法・必勝法の研究を続け、今ではメディアを立ち上げるほど稼げるようになった。
+            td カジノ旅行
+          tr
+            th 性格
+            td 情熱的で行動でみんなを引っ張る。誰にでも優しく接する。
+          tr
+            th 生年月日
+            td XXXX年XX月XX日
           tr
             th SNS
             td
@@ -63,17 +75,14 @@ block content
         .btnmore
           span もっと見る
       .author__article.author__article--ath
-        h2 笠原豪が担当した記事
+        h2 ナオが担当した記事
         ul.listarticle
           li.listarticle--item
-            .row
+            a(href="").row
               .img
-                a(href="")
-                  .lable
-                    span.date 2021.01.01
-                  img(src="../images/article1.png", alt="")
+                img(src="../images/article1.png", alt="")
               .text
-                a(href="").tit 【2021年最新】オンラインカジノおすすめランキング…
+                p.tit 【2021年最新】オンラインカジノおすすめランキング…
                 p.txt 2016年には「信頼性・安全性」の欠落が主な要因で日本で逮捕者が出てしまいました。
                 dl.row
                   dt.ico-cal
@@ -82,15 +91,13 @@ block content
                     span 更新日: 2022年00月00日
           - for (i=1; i<10; i++)
             li.listarticle--item
-              .row
+              a(href="").row
                 .img
-                  a(href="")
-                    .lable.row
-                      span.date 2021.01.01
-                      span.new NEW
-                    img(src="../images/article2.png", alt="")
+                  .lable.row
+                    span.new NEW
+                  img(src="../images/article2.png", alt="")
                 .text
-                  a(href="").tit 【2021年最新】オンラインカジノおすすめランキング…
+                  p.tit 【2021年最新】オンラインカジノおすすめランキング…
                   p.txt 2016年には「信頼性・安全性」の欠落が主な要因で日本で逮捕者が出てしまいました。
                   dl.row
                     dt.ico-cal
