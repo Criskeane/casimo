@@ -6,7 +6,7 @@
 var viewportW = jQuery(window).width(),
   viewportH = jQuery(window).height(),
   documentH = 0,
-  viewportSP = 768,
+  viewportSP = 1039,
   opacity = "opacity:0";
 
 $(document).ready(function () {
@@ -87,7 +87,7 @@ $(document).ready(function () {
         }));
   });
 
-  if (viewportW > 1200) {
+  if (viewportW > 1039) {
     if ($('.banner').length) {
       jQuery(window).resize(function () {
         var heightBN = $('.banner').outerHeight();
@@ -233,7 +233,7 @@ function load_function() {
   showhidearticlecl(2,2);
   if (viewportW < 639) {
     showhideauthor(3,3);
-    internallink(3,3);
+    internallink(5,5);
   } else {
     showhideauthor(6,6);
   }
@@ -541,3 +541,47 @@ $(function () {
     });
   }
 });
+
+//NAV MENU
+function navmenu(parentClass, type) {
+  if (type == "click") {
+    var navClass = parentClass + " .megamenu > a";
+    if (viewportW > 1200) {
+      $(navClass).eq(0).addClass("open");
+    }
+    $(navClass).on("click", function (a) {
+      a.preventDefault();
+      a = $(this);
+      var b = a.next(".js-dropdown");
+      $(navClass).not(a).removeClass("open");
+      $(".js-dropdown").not(a.next()).slideUp("fast");
+      a.toggleClass("open");
+      b.slideToggle(250);
+    });
+  } else if (type == "hover") {
+    var navClass = parentClass + " .megamenu";
+    $(navClass).on({
+      mouseenter: function () {
+        var e = $(".header_nav").outerHeight();
+        $(this)
+          .find(".js-dropdown")
+          .css("top", e - 13)
+          .stop(!0, !0)
+          .delay(100)
+          .slideDown(200),
+          $(this).addClass("is-act");
+      },
+      mouseleave: function () {
+        $(this).find(".js-dropdown").stop(!0, !0).delay(100).slideUp(400),
+          $(this).removeClass("is-act");
+      },
+    });
+  }
+}
+
+if (viewportW > 1200) {
+  navmenu(".js-navheader", "hover");
+} else {
+  navmenu(".js-navheader", "click");
+}
+//END NAV MENU

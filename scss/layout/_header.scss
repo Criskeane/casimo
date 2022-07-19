@@ -18,7 +18,7 @@
     z-index: 99;
   }
   @include query($tab){
-    padding: 14px 0 10px;
+    padding-top: 5px;
     border-bottom: 0;
     position: fixed;
     left: 0;
@@ -30,6 +30,12 @@
     }
   }
   &_top{
+    @include query($tab){
+      background: #000;
+      z-index: 100;
+      position: relative;
+      padding: 14px 0 10px;
+    }
     &_logo{
       position: relative;
       z-index: 1;
@@ -70,8 +76,6 @@
       height: 71px;
       margin-top: 28px;
     }
-    @include query($tab){
-    }
     &_inside{
       background: #fff;
       border: 1px solid #fff;
@@ -92,19 +96,20 @@
         opacity: 0;
 				visibility: hidden;
 				transition: all .3s ease;
+        // overflow-y: scroll;
         // background: rgba($color: #000000, $alpha: 0.85);
         
         background: url(../images/bgmenu.jpg) no-repeat top 50px center;
         background-size: cover;
-        height: 100vh;
+        // height: 100vh;
         &::after {
           content: '';
           background: rgba($color: #000000, $alpha: 0.85);
           position: absolute;
           left: 0;
-          top: 0;
+          bottom: 0;
           width: 100%;
-          height: 100%;
+          height: 100vh;
         }
 			}
     }

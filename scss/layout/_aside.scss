@@ -2,7 +2,7 @@
 
 .sidebar {
   .sidetit {
-    font-size: 50px;
+    font-size: 38px;
     font-weight: 700;
     text-align: center;
     margin-bottom: 30px;
@@ -54,11 +54,11 @@
       }
       a {
         @include flexbox(flex-start, center);
-        padding: 12px 15px;
+        padding: 12px 10px;
         @include arrright($cl: #000, $size: 8px, $w: 1px);
         transition: all .2s ease-in-out;
         &::before{
-          right: 20px;
+          right: 15px;
           margin-top: -4px;
         }
         @include query(420) {
@@ -103,8 +103,8 @@
       }
       .txt {
         font-weight: bold;
-        font-size: 18px;
-        margin-left: 15px;
+        font-size: 16px;
+        margin-left: 10px;
         color: $blue;
         @include query(420){
           font-size: 15px;
@@ -304,23 +304,15 @@
     .boxshadow {
       @include shadow;
       padding: 27px;
-      padding-bottom: 35px;
       @include query($sp){
-        padding: 0 20px;
-        box-shadow: none;
+        padding: 20px 27px;
       }
     }
-    .sliderbonus {
-      // @include query($sp){
-      //   padding: 0 20px;
-      // }
-    }
     .btnpage {
-      margin-top: 55px;
+      margin-top: 45px;
       @include query($sp){
         margin-top: 35px;
-        width: calc(100% + 40px);
-        margin-left: -20px;
+        width: 100%;
         max-width: inherit;
       }
     }

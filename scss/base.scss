@@ -48,11 +48,11 @@
 
 body {
     @include gothic;
-    font-size:17px;
-	font-weight:500;
+    font-size: 16px;
+	font-weight: 500;
     color: $cltext;
+    overflow-x: hidden;
     @include query($sp){
-        overflow-x: hidden;
         font-size: 14px;
     }
     .maincl{
@@ -75,7 +75,7 @@ body {
         @include gothic;
         color: $cltext;
         @include minquery($pc){ 
-            font-size: 17px;
+            font-size: 16px;
         }
     }
     dl,dt,li,a,p{
@@ -227,7 +227,7 @@ body {
 
 .slick-dots {
   position: absolute;
-  bottom: -10px;
+  bottom: 0;
   list-style: none;
   display: block;
   text-align: center;
@@ -242,7 +242,7 @@ body {
   position: relative;
   display: inline-block;
   height: 6px;
-  width: 35px;
+  width: 25px;
   margin: 0 5px;
   padding: 0;
   cursor: pointer;
@@ -256,7 +256,7 @@ body {
   background: transparent;
   display: block;
   height: 6px;
-  width: 35px;
+  width: 25px;
   outline: none;
   line-height: 0px;
   font-size: 0px;
@@ -281,7 +281,7 @@ body {
   content: "";
   background: #000;
   height: 6px;
-  width: 35px;
+  width: 25px;
   font-family: "slick";
   font-size: 6px;
   line-height: 20px;
@@ -417,7 +417,7 @@ body {
         }
         .tit{
             font-weight: bold;
-            font-size: 24px;
+            font-size: 20px;
             display: block;
             margin: 0 0 5px;
             line-height: 1.2;
@@ -428,7 +428,7 @@ body {
         }
         .text{
             flex: 1 1 auto;
-            padding: 0 30px 0 40px;
+            padding: 0 0 0 25px;
             @include query(1200){
                 padding-left: 3%;
                 padding-right: 4%;
@@ -450,6 +450,7 @@ body {
                 font-size: 14px;
                 height: auto;
                 margin-bottom: 10px;
+                display: none;
             }
         }
         .img{
@@ -476,10 +477,10 @@ body {
                 z-index: 9;
                 font-weight: bold;
                 width: 94px;
-                height: 39px;
+                height: 34px;
                 @include flexbox(center, center);
                 color: #fff;
-                font-size: 18px;
+                font-size: 16px;
                 &.date{
                     background: url(../images/bgtime.png) no-repeat left center;
                     z-index: 9;
@@ -491,7 +492,6 @@ body {
             }
             &.row{
                 span.new{
-                    // margin-left: -20px;
                     position: relative;
                     z-index: 1;
                 }
@@ -500,6 +500,9 @@ body {
         dl{
             @include query($sp){
                 justify-content: space-between;
+            }
+            @include minquery($pc){
+                margin-top: 30px;
             }
         }
         dt{
@@ -531,6 +534,7 @@ body {
             }
             span{
                 font-weight: 600;
+                font-size: 15px;
                 @include query(1240) {
                     font-size: 1.2vw;
                 }

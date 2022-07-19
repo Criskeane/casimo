@@ -1,21 +1,92 @@
 if(navlevel == 1)
-    nav.container.header_nav_inside
-        ul.nav-list
-            li.nav-list-item
+    nav.container.header_nav_inside.header_nav_dropdown
+        ul.nav-list.js-navheader
+            li.nav-list-item.notnav
                 span.fontspec
                     img(src=dirShare+'menu.png', alt="MENU")
             li.nav-list-item
                 a(href=dir+'') ホーム
-            li.nav-list-item
+            li.nav-list-item.megamenu.dropdown
                 a(href=dir+'') おすすめオンラインカジノ
-            li.nav-list-item
+                ul.js-dropdown.childmenu
+                    li.listnav-item
+                        a(href=dir+"") ベラジョンカジノ
+                    li.listnav-item
+                        a(href=dir+"") ミスティーノ
+                    li.listnav-item
+                        a(href=dir+"") インターカジノ
+                    li.listnav-item
+                        a(href=dir+"") カジノシークレット
+                    li.listnav-item
+                        a(href=dir+"") 遊雅堂
+                    li.listnav-item
+                        a(href=dir+"") ビットカジノ
+                    li.listnav-item
+                        a(href=dir+"") ラッキーニッキーカジノ
+                    li.listnav-item
+                        a(href=dir+"") カジ旅
+            li.nav-list-item.megamenu.dropdown
                 a(href=dir+'') オンラインカジノ基礎編
-            li.nav-list-item
-                a(href=dir+'') おすすめオンラインカジノ
-            li.nav-list-item
+                ul.js-dropdown.childmenu
+                    li.nav-list-item
+                        a(href=dir+'') オンラインカジノとは？
+                    li.nav-list-item
+                        a(href=dir+'') オンラインカジノは違法？合法？
+                    li.listnav-item
+                        a(href=dir+"") オンラインカジノと税金の関係性
+                    li.listnav-item
+                        a(href=dir+"") オンラインカジノは稼げる？
+                    li.listnav-item
+                        a(href=dir+"") 悪質なオンラインカジノの見分け方
+            li.nav-list-item.megamenu.dropdown
                 a(href=dir+'') オンラインカジノ応用編
-            li.nav-list-item
+                ul.js-dropdown.childmenu
+                    li.listnav-item
+                        a(href=dir+"") オンラインカジノの登録方法
+                    li.listnav-item
+                        a(href=dir+"") オンラインカジノへ入金・出金する方法
+                    li.listnav-item
+                        a(href=dir+"") オンラインカジノから出金する方法
+                    li.listnav-item
+                        a(href=dir+"") オンラインカジノのボーナスについて
+                    li.listnav-item
+                        a(href=dir+"") ライブカジノとテーブルゲームについて
+                    li.listnav-item
+                        a(href=dir+"") オンラインカジノを無料で遊ぶ方法
+                    li.listnav-item
+                        a(href=dir+"") オンラインカジノで負けないためには？
+            li.nav-list-item.megamenu.dropdown
+                a(href=dir+'') カジノゲームの遊び方
+                ul.js-dropdown.childmenu
+                    li.listnav-item
+                        a(href=dir+"") バカラ
+                    li.listnav-item
+                        a(href=dir+"") ブラックジャック
+                    li.listnav-item
+                        a(href=dir+"") ビデオスロット
+                    li.listnav-item
+                        a(href=dir+"") ポーカー
+                    li.listnav-item
+                        a(href=dir+"") ルーレット
+                    li.listnav-item
+                        a(href=dir+"") シックポー
+                    li.listnav-item
+                        a(href=dir+"") スポーツベット
+            li.nav-list-item.megamenu.dropdown
                 a(href=dir+'') 決済方法一覧
+                ul.js-dropdown.childmenu
+                    li.listnav-item
+                        a(href=dir+"") クレジットカード・デビットカード
+                    li.listnav-item
+                        a(href=dir+"") ecoPayz（エコペイズ）
+                    li.listnav-item
+                        a(href=dir+"") VenusPoint（ヴィーナスポイント）
+                    li.listnav-item
+                        a(href=dir+"") iWallet（アイウォレット）
+                    li.listnav-item
+                        a(href=dir+"") STICPAY（スティックペイ）
+                    li.listnav-item
+                        a(href=dir+"") Bitcoin（ビットコイン）
 if(navlevel == 2)
     nav.container.header_nav_inside.header_nav_dropdown
         ul.nav-list.js-navheader

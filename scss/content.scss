@@ -19,18 +19,6 @@
     }
   }
   
-//   .scroll-hint.is-right-scrollable {
-//     background: linear-gradient(270deg, rgba(0, 0, 0, .15) 0, rgba(0, 0, 0, 0) 16px, rgba(0, 0, 0, 0));
-//   }
-  
-//   .scroll-hint.is-right-scrollable.is-left-scrollable {
-//     background: linear-gradient(90deg, rgba(0, 0, 0, .15) 0, rgba(0, 0, 0, 0) 16px, rgba(0, 0, 0, 0)), linear-gradient(270deg, rgba(0, 0, 0, .15) 0, rgba(0, 0, 0, 0) 16px, rgba(0, 0, 0, 0));
-//   }
-  
-//   .scroll-hint.is-left-scrollable {
-//     background: linear-gradient(90deg, rgba(0, 0, 0, .15) 0, rgba(0, 0, 0, 0) 16px, rgba(0, 0, 0, 0));
-//   }
-  
   .scroll-hint-icon {
     position: absolute;
     top: calc(50% - 30px);
@@ -148,13 +136,15 @@
         height: 100%;
     }
     @include query($sp) {
-        height: 360px;
         &::after {
             background: none;
         }
         &.headtitle-sitemap,
         &.headtitle-contact,
         &.headtitle-category,
+        &.headtitle-error,
+        &.headtitle-author,
+        &.headtitle-privacy,
         &.headtitle-authors{
             height: 140px;
             background-position: center bottom;
@@ -221,7 +211,7 @@
     background: #707070;
     overflow-y: hidden;
     @include query(1199){
-        margin-top: 59px;
+        margin-top: 64px;
         overflow-x: scroll;
         .container{
             padding: 0 15px;
@@ -252,6 +242,9 @@
         }
         &:first-child{
             padding-left: 0;
+            a::before{
+                border: none;
+            }
         }
         &:last-child{
             background: #2F2F2F;
@@ -296,6 +289,11 @@
         a{
             font-weight: 500;
             color: #fff;
+            @include arrleft($cl: #fff, $size: 6px, $w: 1px);
+            &::before {
+                left: -26px;
+                margin-top: -4px;
+            }
             @include minquery(960){
                 &:hover{
                     text-decoration: underline;
@@ -305,6 +303,10 @@
                 font-size: 11px;
                 word-break: keep-all;
                 display: inline;
+                &::before {
+                    left: -18px;
+                    margin-top: -3px;
+                }
             }
         }
     }
@@ -323,15 +325,15 @@
         }
     }
     .content{
-        max-width: 69.2%;
-        flex: 0 0 calc(69.2% - 10px);
+        max-width: 71.2%;
+        flex: 0 0 calc(71.2% - 10px);
         @include query(1199){
             flex: 0 0 100%;
             max-width: 100%;
         }
     }
     .sidebar{
-        flex: 0 0 30%;
+        flex: 0 0 27%;
         max-width: 27%;
         min-width: 280px;
         @include query(1199){
@@ -410,13 +412,13 @@
         }
         @include query($sp){
             font-size: 18px;
-            margin: 90px 0 40px;
+            margin: 40px 0 15px;
             padding-left: 22px;
             padding-right: 15px;
         }
-        @include query(420){
-            margin: 50px 0 25px;
-        }
+        // @include query(420){
+        //     margin: 40px 0 15px;
+        // }
         @include query(360){
             padding-right: 10px;
         }
@@ -427,7 +429,7 @@
         margin-top: 60px;
         margin-bottom: 45px;
         line-height: 1.4;
-        padding: 12px 30px;
+        padding: 12px 20px;
         position: relative;
         &::before {
             position: absolute;
@@ -458,11 +460,18 @@
     }
     .boxlist{
         margin-top: 60px;
+        @include query($sp){
+            margin-top: 20px;
+        }
         ul{
             background: #F0F0F0;
             padding: 30px;
             border-radius: 10px;
             margin: 0;
+            @include query($sp){
+                margin: 20px 0;
+                padding: 15px 12px;
+            }
             li{
                 font-size: 17px;
                 position: relative;
@@ -481,13 +490,24 @@
                     left: 0;
                     top: 10px;
                 }
+                // @include query($sp){
+                //     padding-left: 15px;
+                //     font-size: 14px;
+                //     margin-bottom: 10px;
+                //     &::before {
+                //         top: 8px;
+                //     }
+                // }
                 @include query($sp){
-                    padding-left: 15px;
                     font-size: 14px;
-                    margin-bottom: 10px;
+                    padding-left: 15px;
+                    margin-bottom: 6px;
                     &::before {
-                        top: 8px;
+                        top: 7px;
                     }
+                }
+                @include query(360){
+                    font-size: 13px;
                 }
             }
             a{
@@ -506,7 +526,7 @@
         &--tit{
             background: none;
             margin: 0;
-            padding: 15px 30px 20px;
+            padding: 15px 20px 20px;
             background: #F0F0F0;
             display: inline-block;
             border-top-left-radius: 10px;
@@ -534,7 +554,7 @@
 }
 
 .p-contact{
-    @include tableform(#fff, 27%, #fff, middle, 18px, 20px 0, 60px, #fff, #1D9BF0, #707070, $b_radius:10px);
+    @include tableform(#fff, 32%, #fff, middle, 16px, 20px 0, 60px, #fff, #1D9BF0, #707070, $b_radius:10px);
     .table_template{
         margin-top: 30px;
     }
@@ -589,11 +609,11 @@
             h3{
                 padding: 0;
                 transition: all .2s ease-in-out;
-                &:hover{
+                &:hover a{
                     opacity: 0.6;
                     text-decoration: underline;
                 }
-                a{
+                a, span{
                     display: block;
                     padding: 12px 30px;
                 }
@@ -735,6 +755,7 @@
         margin-bottom: 120px;
         @include query($sp){
             font-size: 16px;
+            margin-bottom: 60px;
         }
         &--table{
             width: 100%;
@@ -743,6 +764,7 @@
                 padding: 30px;
                 @include query($sp){
                     padding: 15px;
+                    font-size: 14px;
                 }
             }
             th{
@@ -750,7 +772,7 @@
                 width: 180px;
                 text-align: left;
                 @include query($sp){
-                    width: 80px;
+                    width: 120px;
                 }
             }
             ul{
@@ -766,10 +788,16 @@
                 @include query($sp){
                     height: auto;
                 }
+                @include query(420){
+                    margin-right: 10px;
+                }
                 img{
                     height: 20px;
                     @include query($sp){
                         height: 48px;
+                    }
+                    @include query(420){
+                        height: 32px;
                     }
                 }
             }
@@ -796,7 +824,7 @@
         &.operator{
             margin-bottom: 60px;
             @include query($sp){
-                margin-bottom: 140px;
+                margin-bottom: 25px;
             }
         }
     }
@@ -840,9 +868,9 @@
         }
         &--img{
             flex: 0 0 39%;
-            max-width: 140px;
+            max-width: 115px;
             overflow: hidden;
-            height: 140px;
+            height: 115px;
             img{
                 object-fit: cover;
                 width: 100%;
@@ -887,8 +915,19 @@
     &__article{
         .listarticle--item{
             display: none;
+            dl{
+                @include minquery($pc){
+                    margin-top: 30px;
+                    span{
+                        font-size: 15px;
+                    }
+                }
+            }
             @include query($sp){
                 margin-top: 35px;
+                p.txt{
+                    display: none;
+                }
             }
         }
     }
@@ -959,11 +998,11 @@
                 }
                 a{
                     max-height: inherit;
-                    padding: 26px 50px 26px 40px;
-                    font-size: 20px;
-                    @include shadow;
+                    padding: 26px 30px 26px;
+                    font-size: 18px;
+                    // @include shadow;
                     &::before {
-                        right: 30px;
+                        right: 20px;
                         width: 14px;
                         height: 14px;
                         margin-top: -7px;
@@ -972,14 +1011,14 @@
                         font-size: 16px;
                         padding: 10px 50px;
                         &::before {
-                            right: 25px;
+                            right: 20px;
                             width: 12px;
                             height: 12px;
                             margin-top: -6px;
                         }
                     }
                     @include query(420){
-                        padding: 10px 35px;
+                        padding: 10px 30px;
                     }
                     @include query(375){
                         font-size: 15px;
@@ -996,7 +1035,7 @@
         }
         ul:not(.list), ol:not(.list){
             background: #F0F0F0;
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
             margin: 60px 0;
             @include query($sp){
@@ -1055,17 +1094,18 @@
                     content: counters(item, ".");
                     position: absolute;
                     left: 4.5px;
-                    top: 5px;
-                    font-size: 13px;
+                    top: 8px;
+                    font-size: 12px;
                     color: #fff;
                     z-index: 2;
+                    line-height: 1;
                     @include query($sp){
                         font-size: 9px;
-                        top: 4px;
+                        top: 7px;
                         left: 2.5px;
                     }
                     @include query(420){
-                        top: 3px;
+                        top: 5px;
                     }
                 }
             }
@@ -1103,13 +1143,14 @@
         }
     }
     &--title{
-        font-size: 35px;
+        font-size: 30px;
         margin-bottom: 25px;
-        line-height: 1.2;
+        line-height: 1.4;
         letter-spacing: -0.2;
         @include query($sp) {
             font-size: 24px;
             line-height: 1.4;
+            margin-bottom: 15px;
         }
         @include query(420) {
             font-size: 20px;
@@ -1135,7 +1176,7 @@
             @include query($sp){
                 flex: 0 0 100%;
                 justify-content: flex-start;
-                margin-top: 30px;
+                margin-top: 15px;
                 li{
                     margin-left: 20px;
                 }
@@ -1160,6 +1201,9 @@
         }
         dt{
             padding: 5px 0;
+            @include query($sp){
+                padding: 0;
+            }
         }
         .ico-cal{
             background: url(../images/ico-cal.svg) no-repeat left center;
@@ -1206,7 +1250,7 @@
             width: 100%;
         }
         @include query($sp){
-            margin: 40px 0 30px;
+            margin: 15px 0 30px;
         }
     }
     .author__info{
@@ -1382,11 +1426,14 @@
         }
         th,td{
             border: 1px solid #D0D0D0;
-            padding: 25px 30px;
+            padding: 15px 20px;
             @include query($sp){
-                min-width: 250px;
+                min-width: auto;
                 font-size: 14px;
                 padding: 10px;
+                &:first-child { 
+                    min-width: 180px;
+                }
             }
             @include query(360){
                 font-size: 13px;
@@ -1427,6 +1474,10 @@
             table-layout: auto;
             td:first-child{
                 width: 180px;
+                @include query($sp){
+                    min-width: 110px;
+                    width: auto;
+                }
             }
         }
         &.is-style-fix{
@@ -1450,7 +1501,7 @@
                 @include query($sp){
                     padding: 25px 15px;
                     max-width: 216px;
-                    min-width: 216px;
+                    min-width: auto;
                 }
                 @include query(420){
                     padding: 25px 10px;
@@ -1477,7 +1528,7 @@
                     @include query($sp){
                         padding: 25px 15px;
                         max-width: 216px;
-                        min-width: 216px;
+                        min-width: auto;
                     }
                     @include query(420){
                         padding: 25px 10px;
@@ -1593,7 +1644,7 @@
         &--tit{
             @include titbox($clx: #fff, $fz: 22px);
             display: inline-block;
-            padding: 12px 30px 17px;
+            padding: 12px 20px 17px;
             position: relative;
             z-index: 1;
             min-width: 180px;
@@ -1608,7 +1659,7 @@
             }
         }
         &--inbox{
-            padding: 25px 30px;
+            padding: 20px;
             border-radius: 10px;
             background: #fff;
             margin-top: -10px;
@@ -1673,9 +1724,6 @@
             }
             .boxhead--inbox{
                 background: #F0F0F0;
-                // @include query($sp){
-                //     padding-bottom: 25px;
-                // }
             }
             ul{
                 padding: 0;
@@ -1684,7 +1732,7 @@
                 li{
                     background: #fff;
                     margin-bottom: 15px;
-                    padding: 16px 60px;
+                    padding: 16px 30px 16px 60px;
                     &:last-child { 
                         margin-bottom: 0;
                     }
@@ -1738,7 +1786,7 @@
                 }
             }
             .boxhead--inbox{
-                padding: 40px 50px 30px 35px;
+                padding: 40px 20px 25px;
                 @include shadow;
                 margin-top: -20px;
                 @include flexbox(flex-start, center);
@@ -1768,7 +1816,7 @@
                 }
             }
             .img{
-                flex: 0 0 192px;
+                flex: 0 0 172px;
                 text-align: center;
                 @include query($sp){
                     flex: 0 0 100%;
@@ -1780,7 +1828,7 @@
                 .txt{
                     display: block;
                     text-align: center;
-                    font-size: 24px;
+                    font-size: 20px;
                     color: $blue;
                     margin-top: 20px;
                     line-height: 1;
@@ -1800,7 +1848,7 @@
             }
             .txt{
                 flex: 1 1 auto;
-                padding-left: 25px;
+                padding-left: 15px;
                 @include query($sp){
                     padding-left: 0;
                     flex: 0 0 100%;
@@ -1812,6 +1860,8 @@
                 flex: 0 0 44%;
                 a{
                     font-size: 15px;
+                    padding-left: 20px;
+                    padding-right: 20px;
                     @include query($sp){
                         font-size: 17px;
                     }
@@ -1922,7 +1972,7 @@
                         }
                     }
                     .price{
-                        font-size: 40px;
+                        font-size: 34px;
                         font-weight: 900;
                         color: #F24350;
                         font-family: 'Roboto' !important;
@@ -1945,7 +1995,7 @@
                     }
                     dd{
                         background: #F0F0F0;
-                        font-size: 14px;
+                        font-size: 12px;
                         @include query(420){
                             font-size: 13px;
                         }
@@ -2027,7 +2077,7 @@
                     &::before {
                         content: '';
                         position: absolute;
-                        background: url(../images/iconq.svg) no-repeat center center;
+                        background: url(../images/iconq.png) no-repeat center center;
                         background-size: 32px;
                         width: 32px;
                         height: 34px;
@@ -2064,7 +2114,7 @@
                 &::before {
                     content: '';
                     position: absolute;
-                    background: url(../images/icona.svg) no-repeat center center;
+                    background: url(../images/icona.png) no-repeat center center;
                     background-size: 32px;
                     width: 32px;
                     height: 34px;
@@ -2096,7 +2146,7 @@
     .blockquote{
         background: #F0F0F0;
         border-radius: 10px;
-        padding: 25px 30px;
+        padding: 25px 20px;
         margin: 60px 0;
         position: relative;
         &:not(.blockquote--heading)::before {
@@ -2164,7 +2214,7 @@
         }
         &--head{
             @include flexbox(flex-start, center);
-            padding: 20px 30px;
+            padding: 20px;
             background: #1C1C1C;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
@@ -2194,7 +2244,7 @@
         &--tit{
             flex: 1 1 auto;
             color: #fff;
-            font-size: 30px;
+            font-size: 24px;
             padding-left: 30px;
             font-weight: bold;
             @include query(768){
@@ -2284,7 +2334,7 @@
             @include shadow;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
-            padding: 25px 30px 35px;
+            padding: 20px 20px 25px;
             .btnpage.bgwhite{
                 max-width: 100%;
             }
@@ -2340,7 +2390,7 @@
                 border-radius: 10px;
                 @include flexbox(flex-start, center);
                 flex-wrap: nowrap;
-                padding: 10px 15px;
+                padding: 10px 5px 10px 10px;
                 flex: 1 1 auto;
                 margin-right: 20px;
                 @include query($sp){
@@ -2349,11 +2399,11 @@
                     margin-right: 0;
                 }
                 span{
-                    font-size: 20px;
+                    font-size: 18px;
                     font-weight: bold;
-                    @include query(1200){
-                        font-size: 18px;
-                    }
+                    // @include query(1200){
+                    //     font-size: 18px;
+                    // }
                     @include query(768){
                         font-size: 16px;
                     }
@@ -2362,15 +2412,15 @@
                         flex: 0 0 100%;
                     }
                     &.num{
-                        font-size: 50px;
+                        font-size: 36px;
                         color: #E60F4A;
                         line-height: 1;
                         font-weight: 900;
                         font-family: 'Roboto' !important;
                         margin: 0 15px;
-                        @include query(1200){
-                            font-size: 40px;
-                        }
+                        // @include query(1200){
+                        //     font-size: 40px;
+                        // }
                         @include query(768){
                             font-size: 36px;
                         }
@@ -2421,7 +2471,7 @@
                 margin-top: 4px;
                 @include query($sp){
                     margin-top: 0;
-                    @include shadow;
+                    // @include shadow;
                     flex-wrap: wrap;
                     padding: 20px 15px;
                 }
@@ -2490,7 +2540,7 @@
                 }
                 td{
                     @include query($sp){
-                        padding: 12px 25px;
+                        padding: 12px 15px;
                         display: block;
                         width: 50%;
                         flex: 0 0 50%;
@@ -2510,9 +2560,9 @@
                 margin-top: 15px;
             }
             a{
-                padding-right: 70px;
+                // padding-right: 70px;
                 &::before {
-                    right: 55px;
+                    right: 35px;
                 }
                 @include query($sp){
                     padding: 15px 40px;
@@ -2541,7 +2591,7 @@
             }
         }
         &--inbox{
-            padding: 30px;
+            padding: 20px;
             border: 2px solid #2F2331;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
@@ -2579,7 +2629,7 @@
             }
             .boxrate{
                 flex: 1 1 auto;
-                padding-left: 28px;
+                padding-left: 20px;
                 @include query($sp){
                     flex: 0 0 100%;
                     padding-left: 0;
@@ -2589,7 +2639,7 @@
             dl{
                 background: #F0F0F0;
                 border-radius: 6px;
-                padding: 14px 25px;
+                padding: 14px 15px;
                 @include flexbox(flex-start, center);
                 margin-bottom: 8px;
                 @include query($sp){
@@ -2600,8 +2650,8 @@
                 }
                 dt{
                     font-weight: bold;
-                    font-size: 20px;
-                    flex: 0 0 50%;
+                    font-size: 18px;
+                    flex: 0 0 40%;
                     @include query($sp){
                         font-size: 18px;
                     }
@@ -2614,7 +2664,7 @@
                 }
                 .rate--content{
                     padding-left: 0;
-                    flex: 0 0 50%;
+                    flex: 0 0 60%;
                     i{
                         margin-left: 0.3rem;
                         @include query($sp){
@@ -2641,6 +2691,7 @@
         }
         &--button{
             @include flexbox(space-between, flex-end);
+            margin-top: 15px;
             @include query($sp){
                 flex: 0 0 100%;
                 max-width: 100%;
@@ -2657,7 +2708,7 @@
             }
         }
         &--btn{
-            flex: 0 0 50%;
+            flex: 0 0 49%;
             max-width: 402px;
             text-align: center;
             @include query($sp){
@@ -2689,7 +2740,9 @@
                 }
             }
             a{
-                font-size: 17px;
+                font-size: 16px;
+                padding-left: 20px;
+                padding-right: 20px;
                 @include query($sp){
                     padding-left: 50px;
                     padding-right: 60px;
@@ -2711,7 +2764,6 @@
             &--tit{
                 background: #0AB1EF;
                 @include titbox($clx: #fff, $fz: 20px);
-                // box-shadow: 2px 2px 6px rgba($color: #000000, $alpha: 0.1);
                 @include query($sp){
                     font-size: 16px;
                 }
@@ -2735,7 +2787,6 @@
                     align-self: stretch;
                     background: #E8F6FF;
                     flex: 0 0 165px;
-                    // box-shadow: 2px 2px 6px rgba($color: #000000, $alpha: 0.1);
                     @include query($sp){
                         flex: 0 0 100%;
                         justify-content: flex-start;
@@ -2753,21 +2804,21 @@
                     @include query($sp){
                         --gap: 4px;
                     }
-                    span{
+                    a{
                         @include flexbox(center, center);
                         min-height: 75px;
-                        min-width: 131px;
+                        min-width: 130px;
                         flex: 0 0 calc(20% - 3px);
                         margin: var(--gap) 0 0 var(--gap);
                         box-shadow: 2px 2px 6px rgba($color: #000000, $alpha: 0.1);
                     }
                     @include query(768){
-                        span{
+                        a{
                             min-width: 125px;
                         }
                     }
                     @include query($sp){
-                        span{
+                        a{
                             flex: 0 0 calc(33.333% - 4px);
                             min-width: inherit;
                             min-height: 54px;
@@ -2849,13 +2900,10 @@
                         margin-right: 0;
                     }
                     span{
-                        font-size: 17px;
-                        color: #C4C4C4;
+                        font-size: 15px;
+                        color: #B7B7B7;
                         font-weight: bold;
                         line-height: 1;
-                        @include query($sp){
-                            font-size: 15px;
-                        }
                     }
                     @include query($sp){
                         padding-bottom: 18px;
@@ -2890,7 +2938,7 @@
         }
         &--contenttab{
             background: #E8F6FF;
-            padding: 12px 25px 25px;
+            padding: 20px;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
             @include query($sp){
@@ -2950,6 +2998,9 @@
                 margin-bottom: 20px;
                 &:last-child { 
                     margin-bottom: 0;
+                }
+                @include minquery($pc){
+                    align-items: center;
                 }
                 @include query($sp){
                     flex-wrap: wrap;
@@ -3039,7 +3090,7 @@
             }
         }
         &--benefits{
-            margin: 60px 0;
+            margin: 60px 0 30px;
             @include query($sp){
                 margin-top: 50px;
                 margin-bottom: 0;
@@ -3074,7 +3125,7 @@
                         margin-bottom: 15px;
                     }
                     span{
-                        font-size: 22px;
+                        font-size: 20px;
                         color: #E60F4A;
                         font-weight: bold;
                         &.lable{
@@ -3165,7 +3216,7 @@
                 color: #000;
                 @include arrright($cl: #000, $size: 12px, $w: 2px);
                 &::before{
-                    right: 30px;
+                    right: 20px;
                     margin-top: -6px;
                     @include query($sp){
                         right: 15px;
@@ -3207,7 +3258,7 @@
             }
             .txt {
                 font-weight: bold;
-                font-size: 20px;
+                font-size: 18px;
                 color: $blue;
                 margin-left: 30px;
                 @include query($sp){
@@ -3238,7 +3289,7 @@
             background: $blue;
             @include titbox($clx: #fff, $fz: 26px);
             text-align: left;
-            padding: 20px 30px;
+            padding: 20px;
             @include query($sp){
                 font-size: 18px;
                 padding: 15px;
@@ -3248,7 +3299,7 @@
             }
         }
         &--inbox{
-            padding: 30px 30px 35px;
+            padding: 20px 20px 25px;
             border: 3px solid $blue;
             border-top: 0;
             @include flexbox(flex-start, flex-start);
@@ -3257,6 +3308,7 @@
             @include query($sp){
                 padding: 15px;
                 flex-wrap: wrap;
+                border-width: 1px;
             }
             .img{
                 flex: 0 0 40%;
@@ -3278,8 +3330,11 @@
                 }
             }
             .btnpage.bgwhite{
+                margin-top: 20px;
                 a{
-                    font-size: 17px;
+                    font-size: 15px;
+                    padding-left: 10px;
+                    padding-right: 30px;
                     max-height: 83px;
                     &::before {
                         width: 12px;
@@ -3370,7 +3425,7 @@
                     font-size: 20px;
                     color: #000;
                     font-weight: bold;
-                    padding: 20px 40px;
+                    padding: 20px;
                     display: block;
                     @include arrright($cl: #000, $size: 8px, $w: 1px);
                     &::before {
@@ -3422,7 +3477,7 @@
             margin-bottom: 50px;
         }
         &--inbox{
-            padding: 30px 35px 35px 35px;
+            padding: 20px;
             @include flexbox(flex-start, center);
             @include query(768){
                 padding: 25px 15px 50px 15px;
@@ -3456,7 +3511,7 @@
             }
             .txt{
                 flex: 1 1 auto;
-                padding-left: 25px;
+                padding-left: 15px;
                 @include query($sp) {
                     padding-left: 0;
                     margin-top: 30px;
@@ -3494,9 +3549,9 @@
                     @include flexbox(flex-start, center);
                     padding: 0 0 0 10px;
                     align-self: stretch;
-                    height: 32px;
+                    height: 40px;
                     span{
-                        font-size: 15px;
+                        font-size: 13px;
                         color: #fff;
                         font-weight: bold;
                         margin-left: 10px;
@@ -3520,12 +3575,6 @@
                             font-size: 10px;
                         }
                     }
-                    @include query($sp){
-                        height: 34px;
-                    }
-                    @include query(420) {
-                        height: 40px;
-                    }
                 }
                 .icon{
                     flex: 0 0 20px;
@@ -3535,7 +3584,7 @@
                     }
                 }
                 .price{
-                    font-size: 24px;
+                    font-size: 22px;
                     font-weight: bold;
                     color: #1C1C1C;
                     line-height: 1;
@@ -3609,7 +3658,7 @@
             }
         }
         &--inbox{
-            padding: 35px 40px;
+            padding: 25px 20px;
             @include query($sp){
                 padding: 25px 15px 30px;
             }
@@ -3718,7 +3767,7 @@
         font-weight: bold;
         color: #fff;
         background: #1C1C1C;
-        padding: 19px 35px;
+        padding: 19px 25px;
         position: relative;
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
@@ -3739,7 +3788,7 @@
             background-size: 18px;
             width: 18px;
             height: 18px;
-            right: 30px;
+            right: 20px;
             top: 50%;
             margin-top: -9px;
             transition: all .3s;
@@ -3830,6 +3879,14 @@
         p{
             @include query($sp){
                 font-size: 16px;
+            }
+        }
+        h2{
+            @include query($sp){
+                padding-top: 10px;
+                padding-bottom: 10px;
+                margin-top: 40px;
+                margin-bottom: 15px;
             }
         }
     }

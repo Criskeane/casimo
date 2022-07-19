@@ -6,12 +6,24 @@
 		background: #fff;
 	}
 	@include query($tab) {
-		height: auto;
+		height: 100vh;
+		width: 100%;
 		padding: 10vh 20px;
-		overflow: hidden;
-		position: relative;
+		overflow-y: scroll;
+		position: fixed;
 		z-index: 9;
 		border-top: 60px solid #000;
+		// background: rgba($color: #000000, $alpha: 0.85);
+		// &::after {
+		// 	content: '';
+		// 	background: rgba($color: #000000, $alpha: 0.85);
+		// 	position: absolute;
+		// 	left: 0;
+		// 	top: 0;
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	z-index: -1;
+		// }
 	}
 	&-item {
 		@include minquery($pc){
@@ -29,21 +41,23 @@
 				height: 36px;
 				margin-top: -18px;
 			}
-			&:first-child{
-				background: #000 url(../images/arrmenu.png) no-repeat right 20px center;
+			&.notnav{
+				background: #000 url(../images/arrmenu.png) no-repeat right 5px center;
 				max-width: 165px;
 				color: #fff;
 				font-weight: 600;	
-				padding-left: 25px;
+				padding-left: 10px;
 				@include flexbox(flex-start, center);
-				font-size: 25px;
 				letter-spacing: 2px;
 				&::after{
 					background: none;
 				}
 				span{
 					line-height: 1;
-					height: 18px;
+					height: 14px;
+					img{
+						height: 14px;
+					}
 				}
 			}
 			&:nth-child(2){
@@ -53,11 +67,18 @@
 				a{
 					background: none;
 					padding: 16px 0;
+					&:hover{
+						background: none;
+					}
 				}
 			}
 		}
 		@include query($tab) {
-			&:first-child { 
+			border-bottom: 1px solid #fff;
+			&:nth-child(2){
+				border-bottom: 0;
+			}
+			&.notnav { 
 				display: none;
 			}
 		}
@@ -74,16 +95,115 @@
 			background-size: 11px;
 			@include query($tab) {
 				padding: 20px 0;
-				text-align: right;
+				text-align: left;
 				font-size: 20px;
 				color: #fff;
-				background: url(../images/arrmenu.png) no-repeat right center;
+				background: none;
 				padding-right: 35px;
+				background: url(../images/arrmenu.png) no-repeat right center;
 			}
 			@include minquery($pc) {
 				&:hover {
 					opacity: 0.7;
-					background-position: center bottom 2px;
+					background: url(../images/polygon.png) no-repeat;
+					background-position: center bottom;
+				}
+			}
+		}
+		@include minquery($pc){
+			&:nth-child(4),
+			&:nth-child(7){
+				.childmenu{
+					min-width: 280px;
+				}
+			}
+			&:nth-child(5){
+				.childmenu{
+					min-width: 300px;
+				}
+			}
+		}
+	}
+	.megamenu{
+		@include query($tab) {
+			> a{
+				background: none;
+				position: relative;
+				@include plusicon(#fff);
+			}
+		}
+	}
+	.dropdown{
+		position: relative;
+	}
+	.childmenu{
+		display: none;
+		@include query($sp){
+			padding-bottom: 15px;
+			.nav-list-item{
+				border-bottom: 0 !important;
+			}
+		}
+		@include minquery($pc){
+			padding: 20px;
+			min-width: 210px;
+			position: absolute;
+			left: 4%;
+			background: #000;
+			&::after {
+				content: '';
+				position: absolute;
+				width: calc(100%);
+				height: calc(100%);
+				background: url(../images/bgnavsub.png), url(../images/bgnavsub.png);
+				background-repeat: repeat-y, repeat-y;
+				background-position: left top, right top;
+				left: 0;
+				top: 0;
+				z-index: 1;
+			}
+			&::before {
+				content: '';
+				position: absolute;
+				width: calc(100%);
+				height: calc(100%);
+				background: url(../images/bgnavsub2.png), url(../images/bgnavsub2.png);
+				background-repeat: repeat-x, repeat-x;
+				background-position: left top, left bottom;
+				left: 0;
+				top: 0;
+				z-index: 1;
+			}
+		}
+		li{
+			margin: 0;
+			padding: 0;
+			animation: none;
+			&::after {
+				background: none;
+			}
+			a{
+				background: none;
+				padding: 12px 0;
+				color: #fff;
+				position: relative;
+				z-index: 9;
+				@include minquery($pc){
+					text-align: left;
+					&:hover { 
+						opacity: 1;
+						color: #E4C97D;
+					}
+				}
+				@include query($tab){
+					font-size: 18px;
+					padding-right: 35px;
+					&::before {
+						content: '- ';
+					}
+				}
+				@include query(420){
+					font-size: 16px;
 				}
 			}
 		}

@@ -91,7 +91,7 @@
     padding: 50px 0;
   }
   &--tit{
-    font-size: 80px;
+    font-size: 70px;
     font-weight: 900;
     text-align: center;
     margin-bottom: 60px;
@@ -127,7 +127,7 @@
     left: -90px;
     width: 70px;
     height: 70px;
-    z-index: 99;
+    z-index: 95;
     @include query($sp){
       left: -10px;
       width: 35px;
@@ -152,7 +152,7 @@
     right: -90px;
     width: 70px;
     height: 70px;
-    z-index: 99;
+    z-index: 95;
     @include query($sp){
       right: -10px;
       width: 35px;
@@ -179,7 +179,7 @@
   background: url(../images/bgranking.jpg) no-repeat top center;
   background-size: cover;
   @include query($sp){
-    padding-top: 100px;
+    padding-top: 50px;
     background: url(../images/bgranking_sp.jpg) no-repeat top center;
     background-size: cover;
   }
@@ -189,9 +189,9 @@
       position: absolute;
       content: '';
       background: rgba($color: #fff, $alpha: 0.5);
-      left: calc(-30% - 40px);
+      left: calc(-50% - 32px);
       top: 0;
-      width: 30%;
+      width: 50%;
       height: 100%;
       z-index: 2;
       @include query($sp){
@@ -206,9 +206,10 @@
       position: absolute;
       content: '';
       background: rgba($color: #fff, $alpha: 0.5);
-      left: calc(100% + 34px);;
+      left: calc(100% + 28px);
+      // right: -50%;
       top: 0;
-      width: 30%;
+      width: 50%;
       height: 100%;
       @include query($sp){
         left: inherit;
@@ -221,8 +222,8 @@
     }
     .slick-slide{
       @include minquery(640){
-        width: 405px;
-        margin-right: 40px;
+        width: 324px;
+        margin-right: 32px;
       }
       @include query($sp){
         width: auto;
@@ -235,13 +236,13 @@
     @include shadow;
     background: #fff;
     .txt{
-      padding: 40px 20px;
+      padding: 30px 15px;
       @include query($sp){
         padding: 16px 8px;
       }
     }
     h3{
-      font-size: 30px;
+      font-size: 24px;
       margin: 20px 0 15px;
       line-height: 1.2;
       @include query($sp){
@@ -251,7 +252,7 @@
     }
     p{
       font-size: 15px;
-      max-height: 81px;
+      max-height: 108px;
       @include query($sp){
         padding: 0 10px;
         max-height: 134px;
@@ -289,7 +290,7 @@
 @mixin gird {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 40px;
+  grid-gap: 30px;
   grid-row-gap: 30px;
   justify-content: center;
   list-style: none;
@@ -309,6 +310,28 @@
     @include gird;
     @include query($sp) {
       margin: 40px 0 0;
+    }
+  }
+  &--item{ 
+    @include query($sp){
+      &:nth-child(1){
+        order: 4;
+      }
+      &:nth-child(2){
+        order: 5;
+      }
+      &:nth-child(3){
+        order: 3;
+      }
+      &:nth-child(4){
+        order: 1;
+      }
+      &:nth-child(5){
+        order: 2;
+      }
+      &:nth-child(6){
+        order: 6;
+      }
     }
   }
 }
@@ -361,10 +384,10 @@
       max-width: 47px;
     }
     span{
-      font-size: 25px;
+      font-size: 18px;
       font-weight: bold;
       color: #fff;
-      margin-left: 50px;
+      margin-left: 40px;
       display: block;
       width: 100%;
       z-index: 1;
@@ -427,17 +450,30 @@
     .img{
       height: 180px;
       text-align: center;
+      overflow: hidden;
       img{
         object-fit: contain;
         height: 100%;
         width: auto;
       }
+      @include query($sp){
+        height: 130px;
+        position: relative;
+        img{
+          height: 180px;
+          object-fit: cover;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%,-50%);
+        }
+      }
     }
     .txt{
-      padding: 0 20px;
+      padding: 0 15px;
     }
     h4{
-      font-size: 30px;
+      font-size: 22px;
       margin-bottom: 20px;
       line-height: 1.2;
       text-align: center; 
@@ -473,7 +509,7 @@
         height: 60px;
         padding-left: 20px;
         padding-right: 20px;
-        font-size: 16px;
+        font-size: 14px;
         @include query($sp){
           letter-spacing: -1px;
           &::before {
@@ -510,7 +546,7 @@
     }
   }
   [class*='block__']{
-    flex: 0 0 44%;
+    flex: 0 0 48%;
     max-width: 575px;
     @include query($sp){
       flex: 0 0 calc(100% + 50px);
@@ -554,7 +590,7 @@
             position: relative;
           }
           .tit{
-            font-size: 25px;
+            font-size: 20px;
           }
           .img{
             width: 100%;
@@ -603,6 +639,9 @@
         &:nth-child(2) {
           margin-bottom: 90px;
         }
+        dl{
+          margin-top: 15px;
+        }
         dt{
           &.ico-cal{
             background: url(../images/ico-cal.svg) no-repeat left center;
@@ -615,7 +654,7 @@
             padding-left: 25px;
           }
           span{
-            font-size: 12px;
+            font-size: 10px;
             color: #000;
           }
         }
@@ -648,7 +687,7 @@
   &--item{
     flex: 0 0 25%;
     max-width: 245px;
-    margin: 0 20px 40px;
+    margin: 0 10px 30px;
     a{
       &:hover{
         img{
@@ -730,7 +769,7 @@
     padding-bottom: 50px;
   }
   h4{
-    font-size: 26px;
+    font-size: 24px;
     line-height: 1.2;
     margin-bottom: 25px;
     @include query($sp){
@@ -773,7 +812,7 @@
       }
     }
     h5{
-      font-size: 22px;
+      font-size: 20px;
       background: url(../images/linetit.jpg) no-repeat left bottom;
       margin: 20px 0;
       padding-bottom: 15px;
@@ -847,9 +886,9 @@
       position: absolute;
       content: '';
       background: rgba($color: #fff, $alpha: 0.5);
-      left: calc(-30% - 9px);
+      left: calc(-50% - 9px);
       bottom: 0;
-      width: 30%;
+      width: 50%;
       height: 100%;
       z-index: 2;
       @include minquery($pc) {
@@ -867,9 +906,9 @@
       position: absolute;
       content: '';
       background: rgba($color: #fff, $alpha: 0.5);
-      left: calc(100% + 11px);;
+      left: calc(100% + 31px);;
       bottom: 0;
-      width: 30%;
+      width: 50%;
       height: 100%;
       @include minquery($pc) {
         // width: 0;
@@ -900,7 +939,7 @@
       }
     }
     .slick-slide {
-      width: 300px;
+      width: 240px;
       @include minquery($pc){
         margin: 0 12px;
       }
@@ -914,7 +953,7 @@
     }
     .img{
       img{
-        height: 125px;
+        height: 100px;
         object-fit: cover;
         @include query($sp){
           width: 100%;
